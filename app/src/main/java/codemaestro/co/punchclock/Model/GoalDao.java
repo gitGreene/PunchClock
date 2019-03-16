@@ -20,6 +20,9 @@ public interface GoalDao {
     @Query("SELECT * from goal_table")
     LiveData<List<Goal>> getAllGoals();
 
+    @Query("SELECT * from goal_table WHERE category_id =:categoryId")
+    LiveData<List<Goal>> getAllCategoryGoals(int categoryId);
+
     @Query("SELECT * from goal_table WHERE goal_id =:goalId")
     LiveData<Goal> getGoalById(int goalId);
 
