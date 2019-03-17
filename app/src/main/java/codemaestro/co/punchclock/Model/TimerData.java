@@ -10,8 +10,8 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "timer_data_table",
-        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "category_id", onDelete = CASCADE),
-        indices = @Index("category_id"))
+        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "category_name", childColumns = "parent_category_name", onDelete = CASCADE),
+        indices = @Index("parent_category_name"))
 public class TimerData {
 
     @PrimaryKey(autoGenerate = true)
@@ -19,8 +19,8 @@ public class TimerData {
     @ColumnInfo(name = "timer_id")
     private int timerId;
 
-    @ColumnInfo(name = "category_id")
-    private int categoryId;
+    @ColumnInfo(name = "parent_category_name")
+    private String parentCategoryName;
 
     @ColumnInfo(name = "start_time")
     private String startTime;
@@ -50,12 +50,12 @@ public class TimerData {
         this.timerId = timerId;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getParentCategoryName() {
+        return parentCategoryName;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setParentCategoryName(String parentCategoryName) {
+        this.parentCategoryName = parentCategoryName;
     }
 
     public String getStartTime() {

@@ -17,7 +17,7 @@ import codemaestro.co.punchclock.Model.TimerData;
 import codemaestro.co.punchclock.Model.TimerDataDao;
 
 
-@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, TimeEntry.class, TimerData.class}, version = 1, exportSchema = false)
+@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, TimeEntry.class, TimerData.class}, version = 4, exportSchema = false)
 public abstract class Database extends RoomDatabase {
 
     public abstract CategoryDao categoryDao();
@@ -62,7 +62,7 @@ public abstract class Database extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             if(categoryDao.getAllCategories() != null) {
-                Category category = new Category(defaultCategoryName, null, 0L, null, false);
+                Category category = new Category(defaultCategoryName);
                 categoryDao.insertCategory(category);
             }
             return null;

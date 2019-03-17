@@ -11,8 +11,8 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "time_entry_table",
-        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "category_id", onDelete = CASCADE),
-        indices = @Index("category_id"))
+        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "category_name", childColumns = "parent_category_name", onDelete = CASCADE),
+        indices = @Index("parent_category_name"))
 public class TimeEntry{
 
     @PrimaryKey(autoGenerate = true)
@@ -32,17 +32,17 @@ public class TimeEntry{
     @ColumnInfo(name = "date_of_entry")
     private String dateOfEntry;
 
-    @ColumnInfo(name = "category_id")
-    private int categoryId;
+    @ColumnInfo(name = "parent_category_name")
+    private String parentCategoryName;
 
     @Ignore
-    public TimeEntry(int timeBankId, long timeCommitted, String startDate, String endDate, String dateOfEntry, int categoryId) {
+    public TimeEntry(int timeBankId, long timeCommitted, String startDate, String endDate, String dateOfEntry, String parentCategoryName) {
         this.timeBankId = timeBankId;
         this.timeCommitted = timeCommitted;
         this.startDate = startDate;
         this.endDate = endDate;
         this.dateOfEntry = dateOfEntry;
-        this.categoryId = categoryId;
+        this.parentCategoryName = parentCategoryName;
     }
 
     public TimeEntry(long timeCommitted, String startDate, String endDate, String dateOfEntry) {
@@ -93,11 +93,11 @@ public class TimeEntry{
         this.dateOfEntry = dateOfEntry;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getParentCategoryName() {
+        return parentCategoryName;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setParentCategoryName(String parentCategoryName) {
+        this.parentCategoryName = parentCategoryName;
     }
 }
