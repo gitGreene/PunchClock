@@ -3,6 +3,8 @@ package codemaestro.co.punchclock.Model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,11 +12,7 @@ import android.support.annotation.Nullable;
 @Entity(tableName = "category_table")
 public class Category {
 
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    @ColumnInfo(name = "id")
-    private int id;
-
+    @PrimaryKey()
     @NonNull
     @ColumnInfo(name = "category_name")
     private String categoryName;
@@ -34,16 +32,6 @@ public class Category {
     private boolean isFavorite;
 
     @Ignore
-    public Category(int id, @NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable String dateCreated, boolean isFavorite) {
-        this.id = id;
-        this.categoryName = categoryName;
-        this.categoryDescription = categoryDescription;
-        this.categoryTotalTime = categoryTotalTime;
-        this.dateCreated = dateCreated;
-        this.isFavorite = isFavorite;
-    }
-
-    @Ignore
     public Category(@NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable String dateCreated, boolean isFavorite) {
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
@@ -54,14 +42,6 @@ public class Category {
 
     public Category(@NonNull String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @NonNull

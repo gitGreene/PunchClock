@@ -54,6 +54,20 @@ public class Repository {
         return allCategories;
     }
 
+    public LiveData<Category> getCategoryByName(String name) {
+        currentCategory = categoryDao.getCategoryByName(name);
+        return currentCategory;
+    }
+
+    public LiveData<List<Goal>> getAllGoals() {
+        return allGoals;
+    }
+
+//    public LiveData<List<Goal>> getAllCategoryGoals(String categoryName) {
+//        allCategoryGoals = goalDao.getAllCategoryGoals(categoryName);
+//        return allCategoryGoals;
+//    }
+
     public void insertCategory(Category category) {
         new InsertCategoryAsync(categoryDao).execute(category);
     }

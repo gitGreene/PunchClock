@@ -11,8 +11,8 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "goal_table",
-        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "category_id", onDelete = CASCADE),
-        indices = @Index("category_id"))
+        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "category_name", childColumns = "parent_category_name", onDelete = CASCADE),
+        indices = @Index("parent_category_name"))
 
 public class Goal {
 
@@ -21,8 +21,8 @@ public class Goal {
     @ColumnInfo(name = "goal_id")
     private int goalId;
 
-    @ColumnInfo(name = "category_id")
-    private int categoryId;
+    @ColumnInfo(name = "parent_category_name")
+    private String parentCategoryName;
 
     @ColumnInfo(name = "goal_name")
     private String goalName;
@@ -43,9 +43,9 @@ public class Goal {
     private int timesGoalMet;
 
     @Ignore
-    public Goal(int goalId, int categoryId, String goalName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
+    public Goal(int goalId, String parentCategoryName, String goalName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
         this.goalId = goalId;
-        this.categoryId = categoryId;
+        this.parentCategoryName = parentCategoryName;
         this.goalName = goalName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -69,12 +69,12 @@ public class Goal {
         this.goalId = goalId;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getParentCategoryName() {
+        return parentCategoryName;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setParentCategoryName(String parentCategoryName) {
+        this.parentCategoryName = parentCategoryName;
     }
 
     public String getGoalName() {

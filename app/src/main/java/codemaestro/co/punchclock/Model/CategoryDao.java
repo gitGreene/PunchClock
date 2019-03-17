@@ -20,8 +20,8 @@ public interface CategoryDao {
     @Query("SELECT * from category_table")
     LiveData<List<Category>> getAllCategories();
 
-    @Query("SELECT * from category_table WHERE id = :categoryId")
-    LiveData<Category> getCategoryById(int categoryId);
+//    @Query("SELECT * from category_table WHERE id = :categoryId")
+//    LiveData<Category> getCategoryById(int categoryId);
 
     @Query("SELECT * from category_table WHERE category_name = :categoryName")
     LiveData<Category> getCategoryByName(String categoryName);

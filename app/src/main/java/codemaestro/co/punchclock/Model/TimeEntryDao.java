@@ -20,8 +20,8 @@ public interface TimeEntryDao {
     @Query("SELECT * from time_entry_table")
     LiveData<List<TimeEntry>> getAllTimeEntries();
 
-    @Query("SELECT * from time_entry_table WHERE category_id =:categoryId")
-    LiveData<List<TimeEntry>> getCategoryTimeEntries(int categoryId);
+//    @Query("SELECT * from time_entry_table WHERE category_id =:categoryId")
+//    LiveData<List<TimeEntry>> getCategoryTimeEntries(int categoryId);
 
 
 }
