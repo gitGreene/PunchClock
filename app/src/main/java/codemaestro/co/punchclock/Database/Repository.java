@@ -40,10 +40,12 @@ public class Repository {
 
     public Repository(Application application) {
         Database database = Database.getDatabase(application);
+
         categoryDao = database.categoryDao();
         goalDao = database.goalDao();
         timeEntryDao = database.timeEntryDao();
         timerDataDao = database.timerDataDao();
+
         allCategories = categoryDao.getAllCategories();
         allGoals = goalDao.getAllGoals();
     }
@@ -59,15 +61,6 @@ public class Repository {
         return currentCategory;
     }
 
-    public LiveData<List<Goal>> getAllGoals() {
-        return allGoals;
-    }
-
-//    public LiveData<List<Goal>> getAllCategoryGoals(String categoryName) {
-//        allCategoryGoals = goalDao.getAllCategoryGoals(categoryName);
-//        return allCategoryGoals;
-//    }
-
     public void insertCategory(Category category) {
         new InsertCategoryAsync(categoryDao).execute(category);
     }
@@ -82,12 +75,30 @@ public class Repository {
     }
 
 
+    // Goal Methods
+    public LiveData<List<Goal>> getAllGoals() {
+        return allGoals;
+    }
+
+    public void insertGoal(Goal goal) {
+        new InsertGoalAsync(goalDao).execute(goal);
+    }
+
+    public LiveData<List<Goal>> getGoalsByCategoryName(String parentCategoryName) {
+        allCategoryGoals = goalDao.getAllCategoryGoals(parentCategoryName);
+        return allCategoryGoals;
+    }
+
+    public LiveData<Goal> getCurrentGoal(String goalName, String parentCategoryName){
+        currentGoal = goalDao.getSpecificGoal(goalName, parentCategoryName);
+        return currentGoal;
+    }
+
 
 
 
 
     // Asynchronous database operations
-
     private static class InsertCategoryAsync extends AsyncTask<Category, Void, Void> {
         private CategoryDao categoryDao;
 
@@ -102,6 +113,7 @@ public class Repository {
         }
     }
 
+
     private static class UpdateCategoryAsync extends  AsyncTask<Category, Void, Void> {
         private CategoryDao categoryDao;
 
@@ -112,6 +124,21 @@ public class Repository {
         @Override
         protected Void doInBackground(Category... categories) {
             categoryDao.updateCategory(categories[0]);
+            return null;
+        }
+    }
+
+
+    private static class InsertGoalAsync extends AsyncTask<Goal, Void, Void> {
+        private GoalDao goalDao;
+
+        public InsertGoalAsync(GoalDao goalDao) {
+            this.goalDao = goalDao;
+        }
+
+        @Override
+        protected Void doInBackground(Goal... goals) {
+            goalDao.insertGoal(goals[0]);
             return null;
         }
     }

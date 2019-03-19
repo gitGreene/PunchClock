@@ -54,11 +54,14 @@ public class Goal {
         this.timesGoalMet = timesGoalMet;
     }
 
-    public Goal(String goalName, String startDate, String endDate, long goalCycleValue) {
+    public Goal(String goalName, String parentCategoryName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
+        this.parentCategoryName = parentCategoryName;
         this.goalName = goalName;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.timeCommittedThisCycle = timeCommittedThisCycle;
         this.goalCycleValue = goalCycleValue;
+        this.timesGoalMet = timesGoalMet;
     }
 
     public int getGoalId() {

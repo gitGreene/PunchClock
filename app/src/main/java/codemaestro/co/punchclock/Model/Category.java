@@ -12,7 +12,7 @@ import android.support.annotation.Nullable;
 @Entity(tableName = "category_table")
 public class Category {
 
-    @PrimaryKey()
+    @PrimaryKey
     @NonNull
     @ColumnInfo(name = "category_name")
     private String categoryName;
@@ -43,6 +43,7 @@ public class Category {
     public Category(@NonNull String categoryName) {
         this.categoryName = categoryName;
     }
+
 
     @NonNull
     public String getCategoryName() {
