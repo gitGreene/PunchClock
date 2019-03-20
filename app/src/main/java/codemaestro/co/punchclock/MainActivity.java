@@ -14,6 +14,7 @@ import java.util.List;
 
 import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.Model.Goal;
+import codemaestro.co.punchclock.Model.TimeEntry;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
@@ -38,11 +39,10 @@ public class MainActivity extends AppCompatActivity {
 //        categoryViewModel.getCategoryByName(name).observe(this, new Observer<Category>() {
 //            @Override
 //            public void onChanged(@Nullable Category category) {
-//
 //                if(category != null) {
 //                    textView.setText(category.getCategoryName());
 //                } else {
-//                    Toast.makeText(getApplicationContext(), "FUCK YOU IDIOT", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "There is no category created", Toast.LENGTH_LONG).show();
 //                }
 //            }
 //        });
@@ -51,29 +51,65 @@ public class MainActivity extends AppCompatActivity {
 //        categoryViewModel.getAllCategories().observe(this, new Observer<List<Category>>() {
 //            @Override
 //            public void onChanged(@Nullable List<Category> categories) {
-//                if(categories !=null) {
+//                if(categories != null) {
 //                    Category category = categories.get(0);
 //                    String name = category.getCategoryName();
 //                    textView.setText(name);
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "There is no category created", Toast.LENGTH_LONG).show();
 //                }
 //            }
 //        });
 
 
-        // How to Create a Goal
-//        Goal goal = new Goal("30DayChallenge", "Gym", "Start Date", "End Date", 0, 24, 0);
+        // How to create a goal
+//        Goal goal = new Goal(1, "30DayChallenge", "Start Date", "End Date", 0, 24, 0);
 //        goalViewModel.insertNewGoal(goal);
-
 
         // Get Specific Goal Data Stream
         // Need to search by goalName and parentCategoryName
-//        goalViewModel.getCurrentGoal("30DayChallenge", "Gym").observe(this, new Observer<Goal>() {
+//        goalViewModel.getCurrentGoal("30DayChallenge", 1).observe(this, new Observer<Goal>() {
 //            @Override
 //            public void onChanged(@Nullable Goal goal) {
+//                Goal usableGoal = null;
 //                if(goal != null) {
-//                    textView.setText(goal.getGoalName());
+//                    usableGoal = goal;
+//                    textView.setText(usableGoal.getGoalName());
 //                } else {
 //                    Toast.makeText(getApplicationContext(), "There is no goal created", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+
+        // Get All Goals of a specific Category
+//        goalViewModel.getGoalsByCategoryId(1).observe(this, new Observer<List<Goal>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Goal> goals) {
+//                Goal goal = null;
+//                if(goals != null) {
+//                    goal = goals.get(0);
+//                    textView.setText(goal.getGoalName());
+//                }
+//            }
+//        });
+
+
+
+
+        //TODO: Fix fetching the Time Entries for specific Categories
+
+        //How to create a Time Entry
+//        TimeEntry timeEntry = new TimeEntry(1, 0, "Start Date", "End Date", "Date of Entry");
+//        categoryViewModel.insertNewTimeEntry(timeEntry);
+
+        // How to get all Time Entries by Category ID
+//        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
+//            @Override
+//            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
+//                TimeEntry usableTimeEntry = null;
+//                if(timeEntries != null) {
+//                    usableTimeEntry = timeEntries.get(0);
+//                    textView.setText(usableTimeEntry.getDateOfEntry());
 //                }
 //            }
 //        });

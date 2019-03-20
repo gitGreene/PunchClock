@@ -11,14 +11,18 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "time_entry_table",
-        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "category_name", childColumns = "parent_category_name", onDelete = CASCADE),
-        indices = @Index("parent_category_name"))
+        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "parent_category_id", onDelete = CASCADE, onUpdate = CASCADE),
+        indices = @Index("parent_category_id"))
+
 public class TimeEntry{
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "time_bank_id")
     private int timeBankId;
+
+    @ColumnInfo(name = "parent_category_id")
+    private int parentCategoryId;
 
     @ColumnInfo(name = "time_committed")
     private long timeCommitted;
@@ -32,26 +36,23 @@ public class TimeEntry{
     @ColumnInfo(name = "date_of_entry")
     private String dateOfEntry;
 
-    @ColumnInfo(name = "parent_category_name")
-    private String parentCategoryName;
-
     @Ignore
-    public TimeEntry(int timeBankId, long timeCommitted, String startDate, String endDate, String dateOfEntry, String parentCategoryName) {
+    public TimeEntry(int timeBankId, int parentCategoryId, long timeCommitted, String startDate, String endDate, String dateOfEntry) {
         this.timeBankId = timeBankId;
-        this.timeCommitted = timeCommitted;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.dateOfEntry = dateOfEntry;
-        this.parentCategoryName = parentCategoryName;
-    }
-
-    public TimeEntry(long timeCommitted, String startDate, String endDate, String dateOfEntry) {
+        this.parentCategoryId = parentCategoryId;
         this.timeCommitted = timeCommitted;
         this.startDate = startDate;
         this.endDate = endDate;
         this.dateOfEntry = dateOfEntry;
     }
 
+    public TimeEntry(int parentCategoryId, long timeCommitted, String startDate, String endDate, String dateOfEntry) {
+        this.parentCategoryId = parentCategoryId;
+        this.timeCommitted = timeCommitted;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.dateOfEntry = dateOfEntry;
+    }
 
     public int getTimeBankId() {
         return timeBankId;
@@ -59,6 +60,14 @@ public class TimeEntry{
 
     public void setTimeBankId(int timeBankId) {
         this.timeBankId = timeBankId;
+    }
+
+    public int getParentCategoryId() {
+        return parentCategoryId;
+    }
+
+    public void setParentCategoryId(int parentCategoryId) {
+        this.parentCategoryId = parentCategoryId;
     }
 
     public long getTimeCommitted() {
@@ -91,13 +100,5 @@ public class TimeEntry{
 
     public void setDateOfEntry(String dateOfEntry) {
         this.dateOfEntry = dateOfEntry;
-    }
-
-    public String getParentCategoryName() {
-        return parentCategoryName;
-    }
-
-    public void setParentCategoryName(String parentCategoryName) {
-        this.parentCategoryName = parentCategoryName;
     }
 }

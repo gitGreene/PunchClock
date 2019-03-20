@@ -31,13 +31,13 @@ public class GoalViewModel extends AndroidViewModel {
         repository.insertGoal(goal);
     }
 
-    public LiveData<List<Goal>> getGoalsByCategoryName(String categoryName) {
-        allCategoryGoals = repository.getGoalsByCategoryName(categoryName);
+    public LiveData<List<Goal>> getGoalsByCategoryId(int parentCategoryId) {
+        allCategoryGoals = repository.getGoalsByCategoryId(parentCategoryId);
         return allCategoryGoals;
     }
 
-    public LiveData<Goal> getCurrentGoal(String goalName, String parentCategoryName){
-        currentGoal = repository.getCurrentGoal(goalName, parentCategoryName);
+    public LiveData<Goal> getCurrentGoal(String goalName, int parentCategoryId){
+        currentGoal = repository.getCurrentGoal(goalName, parentCategoryId);
         return currentGoal;
     }
 }

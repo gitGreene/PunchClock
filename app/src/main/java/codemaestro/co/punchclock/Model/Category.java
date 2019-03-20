@@ -12,7 +12,11 @@ import android.support.annotation.Nullable;
 @Entity(tableName = "category_table")
 public class Category {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "id")
+    private int id;
+
     @NonNull
     @ColumnInfo(name = "category_name")
     private String categoryName;
@@ -32,6 +36,15 @@ public class Category {
     private boolean isFavorite;
 
     @Ignore
+    public Category(int id, @NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable String dateCreated, boolean isFavorite) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.categoryDescription = categoryDescription;
+        this.categoryTotalTime = categoryTotalTime;
+        this.dateCreated = dateCreated;
+        this.isFavorite = isFavorite;
+    }
+
     public Category(@NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable String dateCreated, boolean isFavorite) {
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
@@ -40,10 +53,13 @@ public class Category {
         this.isFavorite = isFavorite;
     }
 
-    public Category(@NonNull String categoryName) {
-        this.categoryName = categoryName;
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @NonNull
     public String getCategoryName() {

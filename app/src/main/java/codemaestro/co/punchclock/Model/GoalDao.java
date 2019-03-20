@@ -11,8 +11,6 @@ import java.util.List;
 @Dao
 public interface GoalDao {
 
-
-    // New Goal must include goalName, startDate, endDate, goalCycleValue
     @Insert
     void insertGoal(Goal goal);
 
@@ -22,10 +20,10 @@ public interface GoalDao {
     @Query("SELECT * from goal_table")
     LiveData<List<Goal>> getAllGoals();
 
-    @Query("SELECT * from goal_table WHERE parent_category_name =:parentCategoryName")
-    LiveData<List<Goal>> getAllCategoryGoals(String parentCategoryName);
+    @Query("SELECT * from goal_table WHERE parent_category_id =:parentCategoryId")
+    LiveData<List<Goal>> getAllCategoryGoals(int parentCategoryId);
 
-    @Query("SELECT * from goal_table WHERE goal_name =:goalName AND parent_category_name =:parentCategoryName")
-    LiveData<Goal> getSpecificGoal(String goalName, String parentCategoryName);
+    @Query("SELECT * from goal_table WHERE goal_name =:goalName AND parent_category_id =:parentCategoryId")
+    LiveData<Goal> getSpecificGoal(String goalName, int parentCategoryId);
 
 }
