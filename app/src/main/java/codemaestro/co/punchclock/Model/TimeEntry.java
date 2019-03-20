@@ -27,30 +27,30 @@ public class TimeEntry{
     @ColumnInfo(name = "time_committed")
     private long timeCommitted;
 
-    @ColumnInfo(name = "start_date")
-    private String startDate;
+    @ColumnInfo(name = "start_time")
+    private String startTime;
 
     @ColumnInfo(name = "end_time")
-    private String endDate;
+    private String endTime;
 
     @ColumnInfo(name = "date_of_entry")
     private String dateOfEntry;
 
     @Ignore
-    public TimeEntry(int timeBankId, int parentCategoryId, long timeCommitted, String startDate, String endDate, String dateOfEntry) {
+    public TimeEntry(int timeBankId, int parentCategoryId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
         this.timeBankId = timeBankId;
         this.parentCategoryId = parentCategoryId;
         this.timeCommitted = timeCommitted;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.dateOfEntry = dateOfEntry;
     }
 
-    public TimeEntry(int parentCategoryId, long timeCommitted, String startDate, String endDate, String dateOfEntry) {
+    public TimeEntry(int parentCategoryId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
         this.parentCategoryId = parentCategoryId;
         this.timeCommitted = timeCommitted;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.dateOfEntry = dateOfEntry;
     }
 
@@ -78,20 +78,20 @@ public class TimeEntry{
         this.timeCommitted = timeCommitted;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getDateOfEntry() {

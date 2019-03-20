@@ -5,6 +5,10 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,15 +27,45 @@ public class MainActivity extends AppCompatActivity {
     private CategoryViewModel categoryViewModel;
     private GoalViewModel goalViewModel;
     private TextView textView;
+    private RecViewAdapter adapter;
+    private RecyclerView recView;
+    private Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         textView = findViewById(R.id.text);
+        addButton = findViewById(R.id.addButton);
 
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
+
+        recView = findViewById(R.id.recyclerViewTimer);
+        recView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new RecViewAdapter(this);
+        recView.setAdapter(adapter);
+
+        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
+            @Override
+            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
+                if(timeEntries != null) {
+                    adapter.setTimeEntries(timeEntries);
+                    Toast.makeText(MainActivity.this, "This happened", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 1 is Gym's ID
+                TimeEntry newEntry = new TimeEntry(1, 0, "00:00:00", "23:59:59", "06/26/91");
+                categoryViewModel.insertNewTimeEntry(newEntry);
+            }
+        });
+
 
 
         // Get Category by Name Data Stream
@@ -98,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: Fix fetching the Time Entries for specific Categories
 
-        //How to create a Time Entry
+//        How to create a Time Entry
 //        TimeEntry timeEntry = new TimeEntry(1, 0, "Start Date", "End Date", "Date of Entry");
 //        categoryViewModel.insertNewTimeEntry(timeEntry);
-
-        // How to get all Time Entries by Category ID
+//
+//         How to get all Time Entries by Category ID
 //        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
 //            @Override
 //            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
