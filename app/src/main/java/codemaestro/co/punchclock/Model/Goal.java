@@ -11,8 +11,8 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "goal_table",
-        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "category_name", childColumns = "parent_category_name", onDelete = CASCADE),
-        indices = @Index("parent_category_name"))
+        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "parent_category_id", onDelete = CASCADE, onUpdate = CASCADE),
+        indices = @Index("parent_category_id"))
 
 public class Goal {
 
@@ -21,8 +21,9 @@ public class Goal {
     @ColumnInfo(name = "goal_id")
     private int goalId;
 
-    @ColumnInfo(name = "parent_category_name")
-    private String parentCategoryName;
+    @NonNull
+    @ColumnInfo(name = "parent_category_id")
+    private int parentCategoryId;
 
     @ColumnInfo(name = "goal_name")
     private String goalName;
@@ -43,9 +44,9 @@ public class Goal {
     private int timesGoalMet;
 
     @Ignore
-    public Goal(int goalId, String parentCategoryName, String goalName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
+    public Goal(int goalId, int parentCategoryId, String goalName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
         this.goalId = goalId;
-        this.parentCategoryName = parentCategoryName;
+        this.parentCategoryId = parentCategoryId;
         this.goalName = goalName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -54,8 +55,8 @@ public class Goal {
         this.timesGoalMet = timesGoalMet;
     }
 
-    public Goal(String goalName, String parentCategoryName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
-        this.parentCategoryName = parentCategoryName;
+    public Goal(int parentCategoryId, String goalName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
+        this.parentCategoryId = parentCategoryId;
         this.goalName = goalName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -72,12 +73,12 @@ public class Goal {
         this.goalId = goalId;
     }
 
-    public String getParentCategoryName() {
-        return parentCategoryName;
+    public int getParentCategoryId() {
+        return parentCategoryId;
     }
 
-    public void setParentCategoryName(String parentCategoryName) {
-        this.parentCategoryName = parentCategoryName;
+    public void setParentCategoryId(int parentCategoryId) {
+        this.parentCategoryId = parentCategoryId;
     }
 
     public String getGoalName() {

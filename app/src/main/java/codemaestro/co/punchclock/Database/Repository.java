@@ -84,17 +84,25 @@ public class Repository {
         new InsertGoalAsync(goalDao).execute(goal);
     }
 
-    public LiveData<List<Goal>> getGoalsByCategoryName(String parentCategoryName) {
-        allCategoryGoals = goalDao.getAllCategoryGoals(parentCategoryName);
+    public LiveData<List<Goal>> getGoalsByCategoryId(int parentCategoryId) {
+        allCategoryGoals = goalDao.getAllCategoryGoals(parentCategoryId);
         return allCategoryGoals;
     }
 
-    public LiveData<Goal> getCurrentGoal(String goalName, String parentCategoryName){
-        currentGoal = goalDao.getSpecificGoal(goalName, parentCategoryName);
+    public LiveData<Goal> getCurrentGoal(String goalName, int parentCategoryId){
+        currentGoal = goalDao.getSpecificGoal(goalName, parentCategoryId);
         return currentGoal;
     }
 
+    // Time Entry Methods
+    public LiveData<List<TimeEntry>> getEntriesByCategoryId(int parentCategoryId) {
+        allCategoryEntries = timeEntryDao.getEntriesByCategoryId(parentCategoryId);
+        return allCategoryEntries;
+    }
 
+    public void insertNewTimeEntry(TimeEntry timeEntry) {
+        new InsertTimeEntryAsync(timeEntryDao).execute(timeEntry);
+    }
 
 
 
@@ -139,6 +147,20 @@ public class Repository {
         @Override
         protected Void doInBackground(Goal... goals) {
             goalDao.insertGoal(goals[0]);
+            return null;
+        }
+    }
+
+    private static class InsertTimeEntryAsync extends AsyncTask<TimeEntry, Void, Void> {
+        private TimeEntryDao timeEntryDao;
+
+        public InsertTimeEntryAsync(TimeEntryDao timeEntryDao) {
+            this.timeEntryDao = timeEntryDao;
+        }
+
+        @Override
+        protected Void doInBackground(TimeEntry... timeEntries) {
+            timeEntryDao.insertTimeEntry(timeEntries[0]);
             return null;
         }
     }
