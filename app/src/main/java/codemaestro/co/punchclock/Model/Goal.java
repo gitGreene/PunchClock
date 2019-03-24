@@ -14,7 +14,8 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "parent_category_id", onDelete = CASCADE, onUpdate = CASCADE),
         indices = @Index("parent_category_id"))
 
-public class Goal {
+public class
+Goal {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
