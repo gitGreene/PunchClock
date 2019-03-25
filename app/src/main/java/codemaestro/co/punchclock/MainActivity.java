@@ -1,24 +1,11 @@
 package codemaestro.co.punchclock;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.List;
-
-import codemaestro.co.punchclock.Model.Category;
-import codemaestro.co.punchclock.Model.Goal;
-import codemaestro.co.punchclock.Model.TimeEntry;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
@@ -36,35 +23,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView = findViewById(R.id.text);
-        addButton = findViewById(R.id.addButton);
-
-        categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
-        goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
-
-        recView = findViewById(R.id.recyclerViewTimer);
-        recView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecViewAdapter(this);
-        recView.setAdapter(adapter);
-
-        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
-            @Override
-            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
-                if(timeEntries != null) {
-                    adapter.setTimeEntries(timeEntries);
-                    Toast.makeText(MainActivity.this, "This happened", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 1 is Gym's ID
-                TimeEntry newEntry = new TimeEntry(1, 0, "00:00:00", "23:59:59", "06/26/91");
-                categoryViewModel.insertNewTimeEntry(newEntry);
-            }
-        });
+//        textView = findViewById(R.id.text);
+//        addButton = findViewById(R.id.addButton);
+//
+//        categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
+//        goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
+//
+//        recView = findViewById(R.id.recyclerViewTimer);
+//        recView.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new RecViewAdapter(this);
+//        recView.setAdapter(adapter);
+//
+//        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
+//            @Override
+//            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
+//                if(timeEntries != null) {
+//                    adapter.setTimeEntries(timeEntries);
+//                    Toast.makeText(MainActivity.this, "This happened", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//
+//        addButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // 1 is Gym's ID
+//                TimeEntry newEntry = new TimeEntry(1, 0, "00:00:00", "23:59:59", "06/26/91");
+//                categoryViewModel.insertNewTimeEntry(newEntry);
+//            }
+//        });
 
 
 

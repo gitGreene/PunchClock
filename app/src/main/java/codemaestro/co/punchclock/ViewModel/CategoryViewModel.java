@@ -5,7 +5,6 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
-import java.sql.Time;
 import java.util.List;
 
 import codemaestro.co.punchclock.Database.Repository;
@@ -19,7 +18,7 @@ public class CategoryViewModel extends AndroidViewModel {
     private LiveData<List<Category>> allCategories;
     private LiveData<List<Category>> allFavoriteCategories;
 
-    private LiveData<List<TimeEntry>> allCategoryEntries;
+    private LiveData<List<TimeEntry>> allMilestoneTimeEntries;
 
     // Individual LiveData holders
     private LiveData<Category> currentCategory;
@@ -53,14 +52,14 @@ public class CategoryViewModel extends AndroidViewModel {
 //        return allCategoryEntries;
 //    }
 
-    public LiveData<List<TimeEntry>> getEntriesByCategoryId(int parentCategoryId) {
-        allCategoryEntries = repository.getEntriesByCategoryId(parentCategoryId);
-        return allCategoryEntries;
-    }
-
-    public void insertNewTimeEntry(TimeEntry timeEntry) {
-        repository.insertNewTimeEntry(timeEntry);
-    }
+//    public LiveData<List<TimeEntry>> getEntriesByCategoryId(int parentCategoryId) {
+//        allCategoryEntries = repository.getEntriesByCategoryId(parentCategoryId);
+//        return allCategoryEntries;
+//    }
+//
+//    public void insertNewTimeEntry(TimeEntry timeEntry) {
+//        repository.insertNewTimeEntry(timeEntry);
+//    }
 
 
 
