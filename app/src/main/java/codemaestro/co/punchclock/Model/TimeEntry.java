@@ -11,8 +11,8 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "time_entry_table",
-        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "parent_category_id", onDelete = CASCADE, onUpdate = CASCADE),
-        indices = @Index("parent_category_id"))
+        foreignKeys = @ForeignKey(entity = Milestone.class, parentColumns = "milestone_id", childColumns = "parent_milestone_id", onDelete = CASCADE, onUpdate = CASCADE),
+        indices = @Index("parent_milestone_id"))
 
 public class TimeEntry{
 
@@ -21,8 +21,8 @@ public class TimeEntry{
     @ColumnInfo(name = "time_bank_id")
     private int timeBankId;
 
-    @ColumnInfo(name = "parent_category_id")
-    private int parentCategoryId;
+    @ColumnInfo(name = "parent_milestone_id")
+    private int parentMilestoneId;
 
     @ColumnInfo(name = "time_committed")
     private long timeCommitted;
@@ -37,17 +37,17 @@ public class TimeEntry{
     private String dateOfEntry;
 
     @Ignore
-    public TimeEntry(int timeBankId, int parentCategoryId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
+    public TimeEntry(int timeBankId, int parentMilestoneId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
         this.timeBankId = timeBankId;
-        this.parentCategoryId = parentCategoryId;
+        this.parentMilestoneId = parentMilestoneId;
         this.timeCommitted = timeCommitted;
         this.startTime = startTime;
         this.endTime = endTime;
         this.dateOfEntry = dateOfEntry;
     }
 
-    public TimeEntry(int parentCategoryId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
-        this.parentCategoryId = parentCategoryId;
+    public TimeEntry(int parentMilestoneId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
+        this.parentMilestoneId = parentMilestoneId;
         this.timeCommitted = timeCommitted;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -62,12 +62,12 @@ public class TimeEntry{
         this.timeBankId = timeBankId;
     }
 
-    public int getParentCategoryId() {
-        return parentCategoryId;
+    public int getParentMilestoneId() {
+        return parentMilestoneId;
     }
 
-    public void setParentCategoryId(int parentCategoryId) {
-        this.parentCategoryId = parentCategoryId;
+    public void setParentMilestoneId(int parentMilestoneId) {
+        this.parentMilestoneId = parentMilestoneId;
     }
 
     public long getTimeCommitted() {
