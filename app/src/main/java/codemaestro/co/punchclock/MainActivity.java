@@ -2,11 +2,14 @@ package codemaestro.co.punchclock;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CategoryViewModel categoryViewModel;
     private GoalViewModel goalViewModel;
+    private BottomNavigationView bottomNav;
     private TextView textView;
     private RecViewAdapter adapter;
     private RecyclerView recView;
@@ -65,6 +69,42 @@ public class MainActivity extends AppCompatActivity {
                 categoryViewModel.insertNewTimeEntry(newEntry);
             }
         });
+
+        // Bottom Nav
+        bottomNav = findViewById(R.id.bottomNavView);
+        bottomNav.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                        int newPosition = 0;
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.bottom_nav_home:
+                                getSupportActionBar().setTitle(R.string.home_string);
+                                Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            case R.id.bottom_nav_goals:
+                                getSupportActionBar().setTitle(R.string.goals_string);
+                                break;
+
+                            case R.id.bottom_nav_milestones:
+                                getSupportActionBar().setTitle(R.string.milestones_string);
+                                break;
+
+                            case R.id.bottom_nav_timer:
+                                getSupportActionBar().setTitle(R.string.timer_string);
+                                newPosition = 4;
+                                break;
+
+                            default:
+                                //return loadFragment(newPosition);
+                        }
+                        // Placeholder
+                        return true;
+                    }
+                }
+        );
 
 
 

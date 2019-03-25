@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Punch Clock</string>
+    <string name="home_string">Home</string>
+    <string name="goals_string">Goals</string>
+    <string name="milestones_string">Milestones</string>
+    <string name="timer_string">Timer</string>
 </resources>
