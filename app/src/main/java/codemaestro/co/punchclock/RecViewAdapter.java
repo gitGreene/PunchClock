@@ -20,17 +20,17 @@ import codemaestro.co.punchclock.Model.TimeEntry;
 public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.CustomViewHolder> {
 
     private LayoutInflater inflater;
-    List<TimeEntry> timeEntries;
-    Context context;
+    private List<TimeEntry> timeEntries;
+    private Context context;
 
-    RecViewAdapter(Context context) {
+    public RecViewAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.timeEntries = new ArrayList<>();
     }
 
     // Passes the list of categories we received from the Observer
-    void setTimeEntries(final List<TimeEntry> timeEntries) {
+    public void setTimeEntries(final List<TimeEntry> timeEntries) {
         this.timeEntries = timeEntries;
         notifyDataSetChanged();
     }
@@ -63,7 +63,7 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.CustomVi
         CustomViewHolder(View itemView) {
             super(itemView);
             textViewTimeCommitted = itemView.findViewById(R.id.textViewTimeCommitted);
-            textViewStartTime = itemView.findViewById(R.id.textViewTimeCommitted);
+            textViewStartTime = itemView.findViewById(R.id.textViewStartTime);
             textViewEndTime = itemView.findViewById(R.id.textViewEndTime);
             textViewDate = itemView.findViewById(R.id.textViewDate);
         }
