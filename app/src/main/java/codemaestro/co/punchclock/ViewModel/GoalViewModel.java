@@ -23,21 +23,21 @@ public class GoalViewModel extends AndroidViewModel {
 //        allGoals = repository.getAllGoals();
     }
 
-    public LiveData<List<Goal>> getAllGoals() {
-        return allGoals;
-    }
-
-    public void insertNewGoal(Goal goal) {
-        repository.insertGoal(goal);
-    }
-
-    public LiveData<List<Goal>> getGoalsByCategoryId(int parentCategoryId) {
-        allCategoryGoals = repository.getGoalsByCategoryId(parentCategoryId);
-        return allCategoryGoals;
-    }
-
-    public LiveData<Goal> getCurrentGoal(String goalName, int parentCategoryId){
-        currentGoal = repository.getCurrentGoal(goalName, parentCategoryId);
-        return currentGoal;
-    }
+//    public LiveData<List<Goal>> getAllGoals() {
+//        return allGoals;
+//    }
+//
+//    public void insertNewGoal(Goal goal) {
+//        repository.insertGoal(goal);
+//    }
+//
+//    public LiveData<List<Goal>> getGoalsByCategoryId(int parentCategoryId) {
+//        allCategoryGoals = repository.getGoalsByCategoryId(parentCategoryId);
+//        return allCategoryGoals;
+//    }
+//
+//    public LiveData<Goal> getCurrentGoal(String goalName, int parentCategoryId){
+//        currentGoal = repository.getCurrentGoal(goalName, parentCategoryId);
+//        return currentGoal;
+//    }
 }
