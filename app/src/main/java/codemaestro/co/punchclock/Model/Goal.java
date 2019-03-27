@@ -7,6 +7,7 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -17,11 +18,9 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 public class Goal {
 
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     @ColumnInfo(name = "goal_id")
     private int goalId;
 
-    @NonNull
     @ColumnInfo(name = "parent_category_id")
     private int parentCategoryId;
 
@@ -31,38 +30,48 @@ public class Goal {
     @ColumnInfo(name = "start_date")
     private String startDate;
 
-    @ColumnInfo(name = "end_date")
-    private String endDate;
+    @ColumnInfo(name = "target_date")
+    private String goalTargetDate;
 
-    @ColumnInfo(name = "time_committed_this_cycle")
-    private long timeCommittedThisCycle;
+    @ColumnInfo(name = "is_goal_recurring")
+    private boolean isGoalRecurring;
 
-    @ColumnInfo(name = "goal_cycle_value")
-    private long goalCycleValue;
+    @ColumnInfo(name = "is_time_based")
+    private boolean isGoalTimeBased;
 
-    @ColumnInfo(name = "times_goal_was_met")
+    @ColumnInfo(name = "goal_goal_time")
+    private long goalGoalTime;
+
+    @ColumnInfo(name = "times_goal_met")
     private int timesGoalMet;
 
+    @Nullable
+    @ColumnInfo(name = "description")
+    private String goalDescription;
+
     @Ignore
-    public Goal(int goalId, int parentCategoryId, String goalName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
+    public Goal(int goalId, int parentCategoryId, String goalName, String startDate, String goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime, int timesGoalMet, @Nullable String goalDescription) {
         this.goalId = goalId;
         this.parentCategoryId = parentCategoryId;
         this.goalName = goalName;
         this.startDate = startDate;
-        this.endDate = endDate;
-        this.timeCommittedThisCycle = timeCommittedThisCycle;
-        this.goalCycleValue = goalCycleValue;
+        this.goalTargetDate = goalTargetDate;
+        this.isGoalRecurring = isGoalRecurring;
+        this.isGoalTimeBased = isGoalTimeBased;
+        this.goalGoalTime = goalGoalTime;
         this.timesGoalMet = timesGoalMet;
+        this.goalDescription = goalDescription;
     }
 
-    public Goal(int parentCategoryId, String goalName, String startDate, String endDate, long timeCommittedThisCycle, long goalCycleValue, int timesGoalMet) {
+
+    public Goal(int parentCategoryId, String goalName, String startDate, String goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime) {
         this.parentCategoryId = parentCategoryId;
         this.goalName = goalName;
         this.startDate = startDate;
-        this.endDate = endDate;
-        this.timeCommittedThisCycle = timeCommittedThisCycle;
-        this.goalCycleValue = goalCycleValue;
-        this.timesGoalMet = timesGoalMet;
+        this.goalTargetDate = goalTargetDate;
+        this.isGoalRecurring = isGoalRecurring;
+        this.isGoalTimeBased = isGoalTimeBased;
+        this.goalGoalTime = goalGoalTime;
     }
 
     public int getGoalId() {
@@ -97,28 +106,36 @@ public class Goal {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getGoalTargetDate() {
+        return goalTargetDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setGoalTargetDate(String goalTargetDate) {
+        this.goalTargetDate = goalTargetDate;
     }
 
-    public long getTimeCommittedThisCycle() {
-        return timeCommittedThisCycle;
+    public boolean isGoalRecurring() {
+        return isGoalRecurring;
     }
 
-    public void setTimeCommittedThisCycle(long timeCommittedThisCycle) {
-        this.timeCommittedThisCycle = timeCommittedThisCycle;
+    public void setGoalRecurring(boolean goalRecurring) {
+        isGoalRecurring = goalRecurring;
     }
 
-    public long getGoalCycleValue() {
-        return goalCycleValue;
+    public boolean isGoalTimeBased() {
+        return isGoalTimeBased;
     }
 
-    public void setGoalCycleValue(long goalCycleValue) {
-        this.goalCycleValue = goalCycleValue;
+    public void setGoalTimeBased(boolean goalTimeBased) {
+        isGoalTimeBased = goalTimeBased;
+    }
+
+    public long getGoalGoalTime() {
+        return goalGoalTime;
+    }
+
+    public void setGoalGoalTime(long goalGoalTime) {
+        this.goalGoalTime = goalGoalTime;
     }
 
     public int getTimesGoalMet() {
@@ -127,5 +144,14 @@ public class Goal {
 
     public void setTimesGoalMet(int timesGoalMet) {
         this.timesGoalMet = timesGoalMet;
+    }
+
+    @Nullable
+    public String getGoalDescription() {
+        return goalDescription;
+    }
+
+    public void setGoalDescription(@Nullable String goalDescription) {
+        this.goalDescription = goalDescription;
     }
 }

@@ -29,7 +29,7 @@ public class Repository {
     private LiveData<List<Goal>> allGoals;
     private LiveData<List<Goal>> allCategoryGoals;
 
-    private LiveData<List<TimeEntry>> allCategoryEntries;
+    private LiveData<List<TimeEntry>> allMilestoneTimeEntries;
 
     // Individual LiveData holders
     private LiveData<Category> currentCategory;
@@ -95,14 +95,14 @@ public class Repository {
     }
 
     // Time Entry Methods
-    public LiveData<List<TimeEntry>> getEntriesByCategoryId(int parentCategoryId) {
-        allCategoryEntries = timeEntryDao.getEntriesByCategoryId(parentCategoryId);
-        return allCategoryEntries;
-    }
-
-    public void insertNewTimeEntry(TimeEntry timeEntry) {
-        new InsertTimeEntryAsync(timeEntryDao).execute(timeEntry);
-    }
+//    public LiveData<List<TimeEntry>> getEntriesByCategoryId(int parentCategoryId) {
+//        allCategoryEntries = timeEntryDao.getEntriesByCategoryId(parentCategoryId);
+//        return allCategoryEntries;
+//    }
+//
+//    public void insertNewTimeEntry(TimeEntry timeEntry) {
+//        new InsertTimeEntryAsync(timeEntryDao).execute(timeEntry);
+//    }
 
 
 
@@ -151,19 +151,19 @@ public class Repository {
         }
     }
 
-    private static class InsertTimeEntryAsync extends AsyncTask<TimeEntry, Void, Void> {
-        private TimeEntryDao timeEntryDao;
-
-        public InsertTimeEntryAsync(TimeEntryDao timeEntryDao) {
-            this.timeEntryDao = timeEntryDao;
-        }
-
-        @Override
-        protected Void doInBackground(TimeEntry... timeEntries) {
-            timeEntryDao.insertTimeEntry(timeEntries[0]);
-            return null;
-        }
-    }
+//    private static class InsertTimeEntryAsync extends AsyncTask<TimeEntry, Void, Void> {
+//        private TimeEntryDao timeEntryDao;
+//
+//        public InsertTimeEntryAsync(TimeEntryDao timeEntryDao) {
+//            this.timeEntryDao = timeEntryDao;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(TimeEntry... timeEntries) {
+//            timeEntryDao.insertTimeEntry(timeEntries[0]);
+//            return null;
+//        }
+//    }
 }
 
 
