@@ -5,55 +5,61 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
-
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    private CategoryViewModel categoryViewModel;
-    private GoalViewModel goalViewModel;
-    private TextView textView;
-    private RecViewAdapter adapter;
-    private RecyclerView recView;
-    private Button addButton;
+    final Fragment fragmentHome = new HomeFragment();
+    final Fragment fragmentGoals = new GoalsFragment();
+    final Fragment fragmentMilestones = new MilestonesFragment();
+    final Fragment fragmentTimer = new TimerFragment();
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment activeFragment = fragmentHome;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener onNavItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            switch (menuItem.getItemId()) {
+                case R.id.bottom_nav_home:
+                    fm.beginTransaction().hide(activeFragment).show(fragmentHome).commit();
+                    activeFragment = fragmentHome;
+                    return true;
+
+                case R.id.bottom_nav_goals:
+                    fm.beginTransaction().hide(activeFragment).show(fragmentGoals).commit();
+                    activeFragment = fragmentGoals;
+                    return true;
+
+                case R.id.bottom_nav_milestones:
+                    fm.beginTransaction().hide(activeFragment).show(fragmentMilestones).commit();
+                    activeFragment = fragmentMilestones;
+                    return true;
+
+                case R.id.bottom_nav_timer:
+                    fm.beginTransaction().hide(activeFragment).show(fragmentTimer).commit();
+                    activeFragment = fragmentTimer;
+                    return true;
+            }
+            return false;
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        textView = findViewById(R.id.text);
-//        addButton = findViewById(R.id.addButton);
-//
-//        categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
-//        goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
-//
-//        recView = findViewById(R.id.recyclerViewTimer);
-//        recView.setLayoutManager(new LinearLayoutManager(this));
-//        adapter = new RecViewAdapter(this);
-//        recView.setAdapter(adapter);
-//
-//        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
-//            @Override
-//            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
-//                if(timeEntries != null) {
-//                    adapter.setTimeEntries(timeEntries);
-//                    Toast.makeText(MainActivity.this, "This happened", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // 1 is Gym's ID
-//                TimeEntry newEntry = new TimeEntry(1, 0, "00:00:00", "23:59:59", "06/26/91");
-//                categoryViewModel.insertNewTimeEntry(newEntry);
-//            }
-//        });
+        // Bottom Nav
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavView);
+        bottomNav.setOnNavigationItemSelectedListener(onNavItemSelectedListener);
 
-
+        fm.beginTransaction().add(R.id.main_container, fragmentTimer, "4").hide(fragmentTimer).commit();
+        fm.beginTransaction().add(R.id.main_container, fragmentMilestones, "3").hide(fragmentMilestones).commit();
+        fm.beginTransaction().add(R.id.main_container, fragmentGoals, "2").hide(fragmentGoals).commit();
+        fm.beginTransaction().add(R.id.main_container, fragmentHome, "1").commit();
 
         // Get Category by Name Data Stream
 //        String name = "Gym";
@@ -113,12 +119,7 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-
-
-
-
-        //TODO: Fix fetching the Time Entries for specific Categories
-
+//        TODO: Fix fetching the Time Entries for specific Categories
 //        How to create a Time Entry
 //        TimeEntry timeEntry = new TimeEntry(1, 0, "Start Date", "End Date", "Date of Entry");
 //        categoryViewModel.insertNewTimeEntry(timeEntry);
@@ -134,7 +135,5 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-
-
-    }
+    } // End onCreate
 }
