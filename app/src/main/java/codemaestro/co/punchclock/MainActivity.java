@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     final FragmentManager fm = getSupportFragmentManager();
     Fragment activeFragment = fragmentHome;
 
+
+    //TODO: Add animations
     private BottomNavigationView.OnNavigationItemSelectedListener onNavItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
