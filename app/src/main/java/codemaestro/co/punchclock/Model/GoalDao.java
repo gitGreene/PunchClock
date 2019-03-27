@@ -17,13 +17,29 @@ public interface GoalDao {
     @Update
     void updateGoal(Goal goal);
 
+    // Get all Goals
     @Query("SELECT * from goal_table")
     LiveData<List<Goal>> getAllGoals();
 
+    // Get all of a Category's Goals
     @Query("SELECT * from goal_table WHERE parent_category_id =:parentCategoryId")
     LiveData<List<Goal>> getAllCategoryGoals(int parentCategoryId);
 
+    // Get specific goal by Name and Parent Category Id
     @Query("SELECT * from goal_table WHERE goal_name =:goalName AND parent_category_id =:parentCategoryId")
     LiveData<Goal> getSpecificGoal(String goalName, int parentCategoryId);
+
+    // TODO: Get all goals On or Before specific Start Date
+    // TODO: Get all goals After specific Start Date
+    // TODO: Get all goals On or Before specific Target Date
+    // TODO: Get all goals After specific Target Date
+
+    // Get all Recurring Goals
+    @Query("SELECT * from goal_table WHERE is_goal_recurring = 1")
+    LiveData<List<Goal>> getAllRecurringGoals();
+
+    // Get all recurring Goals for a specific Category
+    @Query("SELECT * from goal_table WHERE is_goal_recurring = 1 AND parent_category_id =:parentCategoryId")
+    LiveData<List<Goal>> getCategoryRecurringGoals(int parentCategoryId);
 
 }

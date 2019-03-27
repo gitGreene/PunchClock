@@ -29,22 +29,22 @@ public class CategoryViewModel extends AndroidViewModel {
         allCategories = repository.getAllCategories();
     }
 
-    public LiveData<List<Category>> getAllCategories() {
-        return allCategories;
-    }
-
-    public LiveData<Category> getCategoryByName(String name) {
-        currentCategory = repository.getCategoryByName(name);
-        return currentCategory;
-    }
-
-    public void insertNewCategory(Category category) {
-        repository.insertCategory(category);
-    }
-
-    public void updateExistingCategory(Category category) {
-        repository.updateCategory(category);
-    }
+//    public LiveData<List<Category>> getAllCategories() {
+//        return allCategories;
+//    }
+//
+//    public LiveData<Category> getCategoryByName(String name) {
+//        currentCategory = repository.getCategoryByName(name);
+//        return currentCategory;
+//    }
+//
+//    public void insertNewCategory(Category category) {
+//        repository.insertCategory(category);
+//    }
+//
+//    public void updateExistingCategory(Category category) {
+//        repository.updateCategory(category);
+//    }
 
 
 //    public LiveData<List<TimeEntry>> getAllCategoryEntries(String parentCategoryName) {
