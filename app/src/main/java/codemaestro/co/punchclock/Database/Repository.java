@@ -41,7 +41,6 @@ public class Repository {
     private LiveData<List<TimeEntry>> allGoalTimeEntries;
     private LiveData<List<TimeEntry>> allMilestoneTimeEntries;
 
-    // Individual LiveData holders
 
 
     public Repository(Application application) {
@@ -67,7 +66,6 @@ public class Repository {
     }
 
     public LiveData<List<Category>> getAllCategories() {
-//        return allCategories;
         return categoryDao.getAllCategories();
     }
 
@@ -241,7 +239,7 @@ public class Repository {
     private static class UpdateMilestoneAsync extends AsyncTask<Milestone, Void, Void> {
         MilestoneDao milestoneDao;
 
-        public UpdateMilestoneAsync(MilestoneDao milestoneDao) {
+        UpdateMilestoneAsync(MilestoneDao milestoneDao) {
             this.milestoneDao = milestoneDao;
         }
 
@@ -269,7 +267,7 @@ public class Repository {
     private static class UpdateTimeEntryAsync extends AsyncTask<TimeEntry, Void, Void> {
         TimeEntryDao timeEntryDao;
 
-        public UpdateTimeEntryAsync(TimeEntryDao timeEntryDao) {
+        UpdateTimeEntryAsync(TimeEntryDao timeEntryDao) {
             this.timeEntryDao = timeEntryDao;
         }
 
