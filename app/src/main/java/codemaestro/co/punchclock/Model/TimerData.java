@@ -16,7 +16,6 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 public class TimerData {
 
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     @ColumnInfo(name = "timer_id")
     private int timerId;
 

@@ -13,31 +13,39 @@ import codemaestro.co.punchclock.Model.Goal;
 public class GoalViewModel extends AndroidViewModel {
     private Repository repository;
 
-    private LiveData<List<Goal>> allGoals;
-    private LiveData<List<Goal>> allCategoryGoals;
-    private LiveData<Goal> currentGoal;
-
     public GoalViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository(application);
-//        allGoals = repository.getAllGoals();
     }
 
-//    public LiveData<List<Goal>> getAllGoals() {
-//        return allGoals;
-//    }
-//
-//    public void insertNewGoal(Goal goal) {
-//        repository.insertGoal(goal);
-//    }
-//
-//    public LiveData<List<Goal>> getGoalsByCategoryId(int parentCategoryId) {
-//        allCategoryGoals = repository.getGoalsByCategoryId(parentCategoryId);
-//        return allCategoryGoals;
-//    }
-//
-//    public LiveData<Goal> getCurrentGoal(String goalName, int parentCategoryId){
-//        currentGoal = repository.getCurrentGoal(goalName, parentCategoryId);
-//        return currentGoal;
-//    }
+    // TODO: Goal ViewModel Methods
+    public LiveData<List<Goal>> getAllGoals() {
+        return repository.getAllGoals();
+    }
+
+    public void insertNewGoal(Goal goal) {
+        repository.insertGoal(goal);
+    }
+
+    public void updateNewGoal(Goal goal) {
+        repository.updateGoal(goal);
+    }
+
+    public LiveData<List<Goal>> getGoalsByCategoryId(int parentCategoryId) {
+        return repository.getAllCategoryGoals(parentCategoryId);
+    }
+
+    public LiveData<Goal> getCurrentGoal(String goalName, int parentCategoryId){
+        return repository.getSpecificGoal(goalName, parentCategoryId);
+    }
+
+    public LiveData<List<Goal>> getAllRecurringGoals() {
+        return repository.getAllRecurringGoals();
+    }
+
+    public LiveData<List<Goal>> getCategoryRecurringGoals(int parentGoalId) {
+        return repository.getCategoryRecurringGoals(parentGoalId);
+    }
+
+
 }

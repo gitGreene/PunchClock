@@ -14,52 +14,56 @@ import codemaestro.co.punchclock.Model.TimeEntry;
 public class CategoryViewModel extends AndroidViewModel {
     private Repository repository;
 
-    // Lists of LiveData
-    private LiveData<List<Category>> allCategories;
-    private LiveData<List<Category>> allFavoriteCategories;
-
-    private LiveData<List<TimeEntry>> allMilestoneTimeEntries;
-
-    // Individual LiveData holders
-    private LiveData<Category> currentCategory;
-
     public CategoryViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository(application);
-        allCategories = repository.getAllCategories();
     }
 
-//    public LiveData<List<Category>> getAllCategories() {
-//        return allCategories;
-//    }
-//
-//    public LiveData<Category> getCategoryByName(String name) {
-//        currentCategory = repository.getCategoryByName(name);
-//        return currentCategory;
-//    }
-//
-//    public void insertNewCategory(Category category) {
-//        repository.insertCategory(category);
-//    }
-//
-//    public void updateExistingCategory(Category category) {
-//        repository.updateCategory(category);
-//    }
+    // TODO: Category ViewModel Methods
+    public void insertCategory(Category category) {
+        repository.insertCategory(category);
+    }
+
+    public void updateCategory(Category category) {
+        repository.updateCategory(category);
+    }
+
+    public LiveData<List<Category>> getAllCategories() {
+        return repository.getAllCategories();
+    }
+
+    public LiveData<Category> getCurrentCategory(String categoryName) {
+        return repository.getCurrentCategory(categoryName);
+    }
+
+    public LiveData<List<Category>> getFavoriteCategories() {
+        return repository.getFavoriteCategories();
+    }
+
+    //TODO: TimeEntry ViewModel Methods
+    public void insertTimeEntryChildOfGoal(TimeEntry timeEntry) {
+        repository.insertTimeEntryChildOfGoal(timeEntry);
+    }
+
+    public void insertTimeEntryChildOfMilestone(TimeEntry timeEntry) {
+        repository.insertTimeEntryChildOfMilestone(timeEntry);
+    }
+
+    public void updateTimeEntry(TimeEntry timeEntry) {
+        repository.updateTimeEntry(timeEntry);
+    }
+
+    public LiveData<List<TimeEntry>> getEntriesByGoalId(int parentGoalId) {
+        return repository.getEntriesByGoalId(parentGoalId);
+    }
+
+    public LiveData<List<TimeEntry>> getEntriesByMilestoneId(int parentMilestoneId) {
+        return repository.getEntriesByMilestoneId(parentMilestoneId);
+    }
+
+    // TODO: TimerData ViewModel Methods
 
 
-//    public LiveData<List<TimeEntry>> getAllCategoryEntries(String parentCategoryName) {
-//        allCategoryEntries = repository.getAllCategoryEntries(parentCategoryName);
-//        return allCategoryEntries;
-//    }
-
-//    public LiveData<List<TimeEntry>> getEntriesByCategoryId(int parentCategoryId) {
-//        allCategoryEntries = repository.getEntriesByCategoryId(parentCategoryId);
-//        return allCategoryEntries;
-//    }
-//
-//    public void insertNewTimeEntry(TimeEntry timeEntry) {
-//        repository.insertNewTimeEntry(timeEntry);
-//    }
 
 
 
