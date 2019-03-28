@@ -1,10 +1,22 @@
 package codemaestro.co.punchclock;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+
+import codemaestro.co.punchclock.Fragments.GoalsFragment;
+import codemaestro.co.punchclock.Fragments.HomeFragment;
+import codemaestro.co.punchclock.Fragments.MilestonesFragment;
+import codemaestro.co.punchclock.Fragments.TimerFragment;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
@@ -63,79 +75,23 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.main_container, fragmentGoals, "2").hide(fragmentGoals).commit();
         fm.beginTransaction().add(R.id.main_container, fragmentHome, "1").commit();
 
-        // Get Category by Name Data Stream
-//        String name = "Gym";
-//        categoryViewModel.getCategoryByName(name).observe(this, new Observer<Category>() {
+
+        // TODO: Pull-to-refresh
+//        SwipeRefreshLayout swipeRefreshLayout =
+//                (SwipeRefreshLayout) root.findViewById(R.id.refresh_layout);
+//        swipeRefreshLayout.setColorSchemeColors(
+//                ContextCompat.getColor(getActivity(), R.color.colorPrimary),
+//                ContextCompat.getColor(getActivity(), R.color.colorAccent),
+//                ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
-//            public void onChanged(@Nullable Category category) {
-//                if(category != null) {
-//                    textView.setText(category.getCategoryName());
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "There is no category created", Toast.LENGTH_LONG).show();
-//                }
+//            public void onRefresh() {
+//                
 //            }
 //        });
 
-        // Get All Categories Data Stream
-//        categoryViewModel.getAllCategories().observe(this, new Observer<List<Category>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Category> categories) {
-//                if(categories != null) {
-//                    Category category = categories.get(0);
-//                    String name = category.getCategoryName();
-//                    textView.setText(name);
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "There is no category created", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-
-
-        // How to create a goal
-//        Goal goal = new Goal(1, "30DayChallenge", "Start Date", "End Date", 0, 24, 0);
-//        goalViewModel.insertNewGoal(goal);
-
-        // Get Specific Goal Data Stream
-        // Need to search by goalName and parentCategoryName
-//        goalViewModel.getCurrentGoal("30DayChallenge", 1).observe(this, new Observer<Goal>() {
-//            @Override
-//            public void onChanged(@Nullable Goal goal) {
-//                Goal usableGoal = null;
-//                if(goal != null) {
-//                    usableGoal = goal;
-//                    textView.setText(usableGoal.getGoalName());
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "There is no goal created", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-
-        // Get All Goals of a specific Category
-//        goalViewModel.getGoalsByCategoryId(1).observe(this, new Observer<List<Goal>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Goal> goals) {
-//                Goal goal = null;
-//                if(goals != null) {
-//                    goal = goals.get(0);
-//                    textView.setText(goal.getGoalName());
-//                }
-//            }
-//        });
-//        TODO: Fix fetching the Time Entries for specific Categories
-//        How to create a Time Entry
-//        TimeEntry timeEntry = new TimeEntry(1, 0, "Start Date", "End Date", "Date of Entry");
-//        categoryViewModel.insertNewTimeEntry(timeEntry);
-//
-//         How to get all Time Entries by Category ID
-//        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
-//            @Override
-//            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
-//                TimeEntry usableTimeEntry = null;
-//                if(timeEntries != null) {
-//                    usableTimeEntry = timeEntries.get(0);
-//                    textView.setText(usableTimeEntry.getDateOfEntry());
-//                }
-//            }
-//        });
     } // End onCreate
+
+
+
 }
