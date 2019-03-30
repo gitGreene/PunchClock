@@ -42,7 +42,9 @@ public class Repository {
     private LiveData<List<TimeEntry>> allMilestoneTimeEntries;
 
 
-
+    // TODO: We pass the application parameter to the Repository class to get an instance of the database
+    // TODO: This can be done another way
+    // TODO: Mediator Live Data object for observables?
     public Repository(Application application) {
         Database database = Database.getDatabase(application);
         categoryDao = database.categoryDao();
