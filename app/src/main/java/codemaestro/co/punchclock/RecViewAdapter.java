@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import codemaestro.co.punchclock.Model.TimeEntry;
+
 
 public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.CustomViewHolder> {
 
