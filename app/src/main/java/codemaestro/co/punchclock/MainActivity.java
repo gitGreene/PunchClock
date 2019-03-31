@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
     } // End onCreate
 
+    public String getHelloWorldString() {
+        String test = "Hello World";
+        return test;
+    }
+
 
 
 }

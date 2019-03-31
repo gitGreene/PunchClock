@@ -52,23 +52,23 @@ public class HomeFragment extends Fragment {
         adapter = new RecViewAdapter(getContext());
         recView.setAdapter(adapter);
 
-        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
-            @Override
-            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
-                if(timeEntries != null) {
-                    adapter.setTimeEntries(timeEntries);
-                }
-            }
-        });
+//        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
+//            @Override
+//            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
+//                if(timeEntries != null) {
+//                    adapter.setTimeEntries(timeEntries);
+//                }
+//            }
+//        });
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 1 is Gym's ID
-                TimeEntry newEntry = new TimeEntry(1, 0, "00:00:00", "23:59:59", "06/26/91");
-                categoryViewModel.insertNewTimeEntry(newEntry);
-            }
-        });
+//        addButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // 1 is Gym's ID
+//                TimeEntry newEntry = new TimeEntry(1, 0, "00:00:00", "23:59:59", "06/26/91");
+//                categoryViewModel.insertNewTimeEntry(newEntry);
+//            }
+//        });
 
         return view;
     }
