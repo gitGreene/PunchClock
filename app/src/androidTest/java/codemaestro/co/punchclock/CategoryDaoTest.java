@@ -42,7 +42,7 @@ public class CategoryDaoTest {
 
     // First instrumented test!!!
     @Test
-    public void onFetchingNotes_shouldGetEmptyList_IfTable_IsEmpty() throws InterruptedException {
+    public void onFetchingCategories_shouldGetEmptyList_IfTable_IsEmpty() throws InterruptedException {
         List<Category> allCategories = LiveDataTestUtil.getValue(categoryDao.getAllCategories());
         assertTrue(allCategories.isEmpty());
     }
