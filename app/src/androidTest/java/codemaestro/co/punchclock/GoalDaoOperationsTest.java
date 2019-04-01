@@ -47,6 +47,7 @@ public class GoalDaoOperationsTest {
     private static final boolean CATEGORY_2_ISFAVORITE = true;
 
     private static final String GOAL_1_NAME = "Goal 1";
+    private static final String GOAL_1_UPDATEDNAME = "Goal 1 Updated";
     private static final String GOAL_1_STARTDATE = "Goal 1 Start Date";
     private static final String GOAL_1_TARGETDATE = "goal 1 Target Date";
     private static final boolean GOAL_1_RECURRING = false;
@@ -65,6 +66,7 @@ public class GoalDaoOperationsTest {
     public void initDb() throws Exception {
         database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), Database.class).allowMainThreadQueries().build();
 
+        // TODO: Create Fake Categories and Fake Goals Creator Classes
         categoryDao = database.categoryDao();
         Category testCategory = new Category(CATEGORY_1_NAME, CATEGORY_1_DESC, CATEGORY_1_TOTALTIME, CATEGORY_1_DATECREATED, CATEGORY_1_ISFAVORITE);
         categoryDao.insertCategory(testCategory);
@@ -87,6 +89,14 @@ public class GoalDaoOperationsTest {
     public void confirmGoalInsertion() throws InterruptedException {
         List<Goal> allGoals = LiveDataTestUtil.getValue(goalDao.getAllGoals());
         assertEquals(GOAL_1_NAME, allGoals.get(0).getGoalName());
+    }
+
+    @Test
+    public void confirmGoalUpdated() throws InterruptedException {
+        Goal goal = LiveDataTestUtil.getValue(goalDao.getSpecificGoal(GOAL_1_NAME, CATEGORY_1_ID));
+        goal.setGoalName(GOAL_1_UPDATEDNAME);
+        goalDao.updateGoal(goal);
+        assertEquals(GOAL_1_UPDATEDNAME, LiveDataTestUtil.getValue(goalDao.getAllGoals()).get(0).getGoalName());
     }
 
     @Test

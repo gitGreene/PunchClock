@@ -33,6 +33,7 @@ public class CategoryDaoOperationsTest {
 
     private static final int CATEGORY_1_ID = 1;
     private static final String CATEGORY_1_NAME = "Category 1";
+    private static final String CATEGORY_1_UPDATEDNAME = "Updated Category 1";
     private static final String CATEGORY_1_DESC = "Category 1 Description";
     private static final long CATEGORY_1_TOTALTIME = 0L;
     private static final String CATEGORY_1_DATECREATED = "Category 1 Date Created";
@@ -50,6 +51,7 @@ public class CategoryDaoOperationsTest {
     public void initDb() throws Exception {
         database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), Database.class).allowMainThreadQueries().build();
 
+        // TODO: Create Fake Categories Creator Class
         categoryDao = database.categoryDao();
         Category testCategory = new Category(CATEGORY_1_NAME, CATEGORY_1_DESC, CATEGORY_1_TOTALTIME, CATEGORY_1_DATECREATED, CATEGORY_1_ISFAVORITE);
         categoryDao.insertCategory(testCategory);
@@ -66,6 +68,14 @@ public class CategoryDaoOperationsTest {
     public void confirmCategoryInsertion() throws InterruptedException {
         List<Category> allCategories = LiveDataTestUtil.getValue(categoryDao.getAllCategories());
         assertEquals(CATEGORY_1_NAME, allCategories.get(0).getCategoryName());
+    }
+
+    @Test
+    public void confirmCategoryUpdated() throws InterruptedException {
+        Category category = LiveDataTestUtil.getValue(categoryDao.getCategoryByName(CATEGORY_1_NAME));
+        category.setCategoryName(CATEGORY_1_UPDATEDNAME);
+        categoryDao.updateCategory(category);
+        assertEquals(CATEGORY_1_UPDATEDNAME, LiveDataTestUtil.getValue(categoryDao.getAllCategories()).get(0).getCategoryName());
     }
 
     @Test
