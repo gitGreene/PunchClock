@@ -13,14 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-import codemaestro.co.punchclock.MainActivity;
-import codemaestro.co.punchclock.Model.TimeEntry;
+import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.R;
-import codemaestro.co.punchclock.RecViewAdapter;
+import codemaestro.co.punchclock.HomeRecAdapter;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
@@ -29,7 +27,7 @@ public class HomeFragment extends Fragment {
     private CategoryViewModel categoryViewModel;
     private GoalViewModel goalViewModel;
     private TextView textView;
-    private RecViewAdapter adapter;
+    private HomeRecAdapter homeAdapter;
 
     String TAG = "HomeFragment";
 
@@ -46,11 +44,19 @@ public class HomeFragment extends Fragment {
 
         textView = view.findViewById(R.id.text);
         Button addButton = view.findViewById(R.id.addButton);
-        RecyclerView recView = view.findViewById(R.id.recyclerViewTimer);
+        RecyclerView recView = view.findViewById(R.id.homeRecyclerView);
 
         recView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new RecViewAdapter(getContext());
-        recView.setAdapter(adapter);
+        homeAdapter = new HomeRecAdapter(getContext());
+        recView.setAdapter(homeAdapter);
+
+        categoryViewModel.getAllCategories().observe(this, new Observer<List<Category>>() {
+            @Override
+            public void onChanged(@Nullable List<Category> categories) {
+                homeAdapter.setCategories(categories);
+
+            }
+        });
 
 //        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
 //            @Override

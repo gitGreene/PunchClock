@@ -28,7 +28,7 @@ public class CategoryDatabaseInteractionTest {
     @Before
     public void setUp() {
         database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
-        Database.class).allowMainThreadQueries().build();
+                Database.class).allowMainThreadQueries().build();
 
         categoryDao = database.categoryDao();
     }

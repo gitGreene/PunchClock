@@ -21,7 +21,7 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void ensureListViewIsPresent() throws Exception {
+    public void ensureBottomNavIsPresent() throws Exception {
         MainActivity activity = rule.getActivity();
         BottomNavigationView navigationView = activity.findViewById(R.id.bottomNavView);
         assertThat(navigationView, notNullValue());
