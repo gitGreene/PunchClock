@@ -26,7 +26,7 @@ public class MilestonesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_milestones, container, false);
 
-        RecyclerView recView = view.findViewById(R.id.milestonesRecyclerView);
+        RecyclerView recView = view.findViewById(R.id.recyclerViewMilestones);
         recView.setLayoutManager(new LinearLayoutManager(getActivity()));
         milestonesAdapter = new HomeRecAdapter(getContext());
         recView.setAdapter(milestonesAdapter);

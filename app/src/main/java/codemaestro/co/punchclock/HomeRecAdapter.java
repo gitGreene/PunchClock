@@ -33,8 +33,6 @@ public class HomeRecAdapter extends RecyclerView.Adapter<HomeRecAdapter.CustomVi
         notifyDataSetChanged();
     }
 
-
-
     @NonNull
     @Override
     public HomeRecAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

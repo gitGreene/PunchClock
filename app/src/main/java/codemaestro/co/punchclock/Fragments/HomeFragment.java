@@ -12,11 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
 
 import codemaestro.co.punchclock.Model.Category;
+import codemaestro.co.punchclock.Model.TimeEntry;
 import codemaestro.co.punchclock.R;
 import codemaestro.co.punchclock.HomeRecAdapter;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
@@ -39,42 +41,33 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // VM setup and View references
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
-        goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
-
-        textView = view.findViewById(R.id.text);
-        Button addButton = view.findViewById(R.id.addButton);
+        final EditText addCategoryEditText = view.findViewById(R.id.addCategoryEditText);
+        Button addCategoryButton = view.findViewById(R.id.addCategoryButton);
         RecyclerView recView = view.findViewById(R.id.homeRecyclerView);
 
+        // Setup RecView/Adapter
         recView.setLayoutManager(new LinearLayoutManager(getActivity()));
         homeAdapter = new HomeRecAdapter(getContext());
         recView.setAdapter(homeAdapter);
 
+        // Observe AllCategories
         categoryViewModel.getAllCategories().observe(this, new Observer<List<Category>>() {
             @Override
             public void onChanged(@Nullable List<Category> categories) {
                 homeAdapter.setCategories(categories);
-
             }
         });
 
-//        categoryViewModel.getEntriesByCategoryId(1).observe(this, new Observer<List<TimeEntry>>() {
-//            @Override
-//            public void onChanged(@Nullable List<TimeEntry> timeEntries) {
-//                if(timeEntries != null) {
-//                    adapter.setTimeEntries(timeEntries);
-//                }
-//            }
-//        });
-
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // 1 is Gym's ID
-//                TimeEntry newEntry = new TimeEntry(1, 0, "00:00:00", "23:59:59", "06/26/91");
-//                categoryViewModel.insertNewTimeEntry(newEntry);
-//            }
-//        });
+        // onClick for adding new category
+        addCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Category newCategory = new Category(addCategoryEditText.getText().toString(), "blank", 0, "12/31/99", false);
+                categoryViewModel.insertCategory(newCategory);
+            }
+        });
 
         return view;
     }
