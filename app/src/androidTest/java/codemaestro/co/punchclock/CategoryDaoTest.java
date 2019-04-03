@@ -32,7 +32,6 @@ public class CategoryDaoTest {
     @Before
     public void initDb() throws Exception {
         database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), Database.class).allowMainThreadQueries().build();
-
         categoryDao = database.categoryDao();
     }
 
@@ -45,6 +44,6 @@ public class CategoryDaoTest {
     @Test
     public void onFetchingCategories_shouldGetEmptyList_IfTable_IsEmpty() throws InterruptedException {
         List<Category> allCategories = LiveDataTestUtil.getValue(categoryDao.getAllCategories());
-        assertFalse(allCategories.isEmpty());
+        assertTrue(allCategories.isEmpty());
     }
 }
