@@ -19,7 +19,7 @@ import codemaestro.co.punchclock.Model.TimerData;
 import codemaestro.co.punchclock.Model.TimerDataDao;
 
 
-@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, Milestone.class, TimeEntry.class, TimerData.class}, version = 24, exportSchema = false)
+@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, Milestone.class, TimeEntry.class, TimerData.class}, version = 25, exportSchema = false)
 public abstract class Database extends RoomDatabase {
 
     public abstract CategoryDao categoryDao();

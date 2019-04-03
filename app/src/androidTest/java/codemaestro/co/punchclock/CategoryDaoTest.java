@@ -18,6 +18,7 @@ import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.Model.CategoryDao;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(AndroidJUnit4.class)
 public class CategoryDaoTest {
@@ -40,10 +41,10 @@ public class CategoryDaoTest {
         database.close();
     }
 
-    // First instrumented test!!!
+    // First instrumented test!!!  GET HYPE
     @Test
     public void onFetchingCategories_shouldGetEmptyList_IfTable_IsEmpty() throws InterruptedException {
         List<Category> allCategories = LiveDataTestUtil.getValue(categoryDao.getAllCategories());
-        assertTrue(allCategories.isEmpty());
+        assertFalse(allCategories.isEmpty());
     }
 }
