@@ -3,6 +3,7 @@ package codemaestro.co.punchclock.Database;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import codemaestro.co.punchclock.Model.TimerDataDao;
 
 
 @android.arch.persistence.room.Database(entities = {Category.class, Goal.class, Milestone.class, TimeEntry.class, TimerData.class}, version = 25, exportSchema = false)
+@TypeConverters({DateUtils.class})
 public abstract class Database extends RoomDatabase {
 
     public abstract CategoryDao categoryDao();

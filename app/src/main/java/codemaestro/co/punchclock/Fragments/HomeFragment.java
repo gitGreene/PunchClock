@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.List;
 
 import codemaestro.co.punchclock.Model.Category;
@@ -64,7 +65,7 @@ public class HomeFragment extends Fragment {
         addCategoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Category newCategory = new Category(addCategoryEditText.getText().toString(), "blank", 0, "12/31/99", false);
+                Category newCategory = new Category(addCategoryEditText.getText().toString(), "blank", 0, Calendar.getInstance().getTime(), false);
                 categoryViewModel.insertCategory(newCategory);
             }
         });

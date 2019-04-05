@@ -9,6 +9,8 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.Date;
+
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "goal_table",
@@ -28,10 +30,10 @@ public class Goal {
     private String goalName;
 
     @ColumnInfo(name = "start_date")
-    private String startDate;
+    private Date startDate;
 
     @ColumnInfo(name = "target_date")
-    private String goalTargetDate;
+    private Date goalTargetDate;
 
     @ColumnInfo(name = "is_goal_recurring")
     private boolean isGoalRecurring;
@@ -50,7 +52,7 @@ public class Goal {
     private String goalDescription;
 
     @Ignore
-    public Goal(int goalId, int parentCategoryId, String goalName, String startDate, String goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime, int timesGoalMet, @Nullable String goalDescription) {
+    public Goal(int goalId, int parentCategoryId, String goalName, Date startDate, Date goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime, int timesGoalMet, @Nullable String goalDescription) {
         this.goalId = goalId;
         this.parentCategoryId = parentCategoryId;
         this.goalName = goalName;
@@ -64,7 +66,7 @@ public class Goal {
     }
 
 
-    public Goal(int parentCategoryId, String goalName, String startDate, String goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime) {
+    public Goal(int parentCategoryId, String goalName, Date startDate, Date goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime) {
         this.parentCategoryId = parentCategoryId;
         this.goalName = goalName;
         this.startDate = startDate;
@@ -98,19 +100,19 @@ public class Goal {
         this.goalName = goalName;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getGoalTargetDate() {
+    public Date getGoalTargetDate() {
         return goalTargetDate;
     }
 
-    public void setGoalTargetDate(String goalTargetDate) {
+    public void setGoalTargetDate(Date goalTargetDate) {
         this.goalTargetDate = goalTargetDate;
     }
 

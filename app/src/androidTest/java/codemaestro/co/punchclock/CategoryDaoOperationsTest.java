@@ -19,8 +19,6 @@ import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.Model.CategoryDao;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class CategoryDaoOperationsTest {
@@ -31,32 +29,25 @@ public class CategoryDaoOperationsTest {
     private Database database;
     private CategoryDao categoryDao;
 
-    private static final int CATEGORY_1_ID = 1;
-    private static final String CATEGORY_1_NAME = "Category 1";
-    private static final String CATEGORY_1_UPDATEDNAME = "Updated Category 1";
-    private static final String CATEGORY_1_DESC = "Category 1 Description";
-    private static final long CATEGORY_1_TOTALTIME = 0L;
-    private static final String CATEGORY_1_DATECREATED = "Category 1 Date Created";
-    private static final boolean CATEGORY_1_ISFAVORITE = false;
+    // To experiment with different amounts of fake categories, increment/decrement these variables
+    static final int FAKE_CATEGORIES = 5;
+    static final int FAKE_FAVORITES = 5;
 
-
-    private static final int CATEGORY_2_ID = 2;
-    private static final String CATEGORY_2_NAME = "Category 2";
-    private static final String CATEGORY_2_DESC = "Category 2 Description";
-    private static final long CATEGORY_2_TOTALTIME = 1000L;
-    private static final String CATEGORY_2_DATECREATED = "Category 2 Date Created";
-    private static final boolean CATEGORY_2_ISFAVORITE = true;
+    private static final int TOTAL_FAKE_CATEGORIES = FAKE_CATEGORIES + FAKE_FAVORITES;
 
     @Before
     public void initDb() throws Exception {
         database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), Database.class).allowMainThreadQueries().build();
 
-        // TODO: Create Fake Categories Creator Class
         categoryDao = database.categoryDao();
-        Category testCategory = new Category(CATEGORY_1_NAME, CATEGORY_1_DESC, CATEGORY_1_TOTALTIME, CATEGORY_1_DATECREATED, CATEGORY_1_ISFAVORITE);
-        categoryDao.insertCategory(testCategory);
-        Category favoriteTestCategory = new Category(CATEGORY_2_NAME, CATEGORY_2_DESC, CATEGORY_2_TOTALTIME, CATEGORY_2_DATECREATED, CATEGORY_2_ISFAVORITE);
-        categoryDao.insertCategory(favoriteTestCategory);
+        List<Category> fakeCategories = FakeEntityCreator.getFakeCategories(FAKE_CATEGORIES);
+        for(int i = 0; i < fakeCategories.size(); i++) {
+            categoryDao.insertCategory(fakeCategories.get(i));
+        }
+        List<Category> fakeFavoriteCategories = FakeEntityCreator.getFakeFavoriteCategories(FAKE_FAVORITES);
+        for(int i = 0; i < fakeFavoriteCategories.size(); i++) {
+            categoryDao.insertCategory(fakeFavoriteCategories.get(i));
+        }
     }
 
     @After
@@ -67,33 +58,36 @@ public class CategoryDaoOperationsTest {
     @Test
     public void confirmCategoryInsertion() throws InterruptedException {
         List<Category> allCategories = LiveDataTestUtil.getValue(categoryDao.getAllCategories());
-        assertEquals(CATEGORY_1_NAME, allCategories.get(0).getCategoryName());
+        assertEquals(FakeEntityCreator.ALL_FAKE_CATEGORIES.get(0).getCategoryName(), allCategories.get(0).getCategoryName());
+        assertEquals(FakeEntityCreator.ALL_FAKE_FAVORITE_CATEGORIES.get(0).getCategoryName(), allCategories.get(FAKE_CATEGORIES).getCategoryName());
     }
 
     @Test
     public void confirmCategoryUpdated() throws InterruptedException {
-        Category category = LiveDataTestUtil.getValue(categoryDao.getCategoryByName(CATEGORY_1_NAME));
-        category.setCategoryName(CATEGORY_1_UPDATEDNAME);
+        Category category = LiveDataTestUtil.getValue(categoryDao.getCategoryByName(FakeEntityCreator.ALL_FAKE_CATEGORIES.get(0).getCategoryName()));
+        category.setCategoryName("Fake Category 1 Updated");
         categoryDao.updateCategory(category);
-        assertEquals(CATEGORY_1_UPDATEDNAME, LiveDataTestUtil.getValue(categoryDao.getAllCategories()).get(0).getCategoryName());
+        assertEquals("Fake Category 1 Updated", LiveDataTestUtil.getValue(categoryDao.getAllCategories()).get(0).getCategoryName());
     }
 
     @Test
-    public void getAllCategories_SizeExpected_2() throws InterruptedException {
+    public void getAllCategories_ConfirmListSizeIsCorrect_AllFakeCategoriesEntered() throws InterruptedException {
         List<Category> allCategories = LiveDataTestUtil.getValue(categoryDao.getAllCategories());
-        assertEquals(2, allCategories.size());
+        assertEquals(TOTAL_FAKE_CATEGORIES, allCategories.size());
     }
 
     @Test
     public void getCategoryByName() throws InterruptedException {
-        Category testCategory = LiveDataTestUtil.getValue(categoryDao.getCategoryByName(CATEGORY_1_NAME));
-        assertEquals(CATEGORY_1_NAME, testCategory.getCategoryName());
+        Category testCategory = LiveDataTestUtil.getValue(categoryDao.getCategoryByName(FakeEntityCreator.ALL_FAKE_CATEGORIES.get(0).getCategoryName()));
+        assertEquals(FakeEntityCreator.ALL_FAKE_CATEGORIES.get(0).getCategoryName(), testCategory.getCategoryName());
     }
 
     @Test
-    public void getAllFavoriteCategories_SizeExpected_1() throws InterruptedException {
+    public void getAllFavoriteCategories_SizeExpected() throws InterruptedException {
         List<Category> favoriteCategories = LiveDataTestUtil.getValue(categoryDao.getFavorites());
-        assertEquals(1, favoriteCategories.size());
+        assertEquals(FAKE_CATEGORIES, favoriteCategories.size());
+
+//        Log.d("Cat Dao Test Get All Favorites", favoriteCategories.get(0).getCategoryName());
     }
 
 }
