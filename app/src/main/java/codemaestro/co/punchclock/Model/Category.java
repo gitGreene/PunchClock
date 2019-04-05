@@ -9,6 +9,8 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.Date;
+
 @Entity(tableName = "category_table")
 public class Category {
 
@@ -30,13 +32,13 @@ public class Category {
 
     @Nullable
     @ColumnInfo(name = "date_started")
-    private String dateCreated;
+    private Date dateCreated;
 
     @ColumnInfo(name = "is_favorite")
     private boolean isFavorite;
 
     @Ignore
-    public Category(int id, @NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable String dateCreated, boolean isFavorite) {
+    public Category(int id, @NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable Date dateCreated, boolean isFavorite) {
         this.id = id;
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
@@ -45,7 +47,7 @@ public class Category {
         this.isFavorite = isFavorite;
     }
 
-    public Category(@NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable String dateCreated, boolean isFavorite) {
+    public Category(@NonNull String categoryName, @Nullable String categoryDescription, long categoryTotalTime, @Nullable Date dateCreated, boolean isFavorite) {
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
         this.categoryTotalTime = categoryTotalTime;
@@ -88,11 +90,11 @@ public class Category {
     }
 
     @Nullable
-    public String getDateCreated() {
+    public Date getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(@Nullable String dateCreated) {
+    public void setDateCreated(@Nullable Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 
