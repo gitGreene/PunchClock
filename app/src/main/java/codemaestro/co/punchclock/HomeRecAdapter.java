@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import codemaestro.co.punchclock.Model.Category;
-import codemaestro.co.punchclock.Model.TimeEntry;
 
 
 public class HomeRecAdapter extends RecyclerView.Adapter<HomeRecAdapter.CustomViewHolder> {
@@ -36,7 +35,7 @@ public class HomeRecAdapter extends RecyclerView.Adapter<HomeRecAdapter.CustomVi
     @NonNull
     @Override
     public HomeRecAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.recycler_view_row_home, viewGroup, false);
+        View view = inflater.inflate(R.layout.category_card_home, viewGroup, false);
         return new CustomViewHolder(view);
     }
 
