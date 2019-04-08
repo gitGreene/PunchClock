@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import codemaestro.co.punchclock.Fragments.GoalsFragment;
 import codemaestro.co.punchclock.Fragments.HomeFragment;
-import codemaestro.co.punchclock.Fragments.MilestonesFragment;
+import codemaestro.co.punchclock.Fragments.HabitsFragment;
 import codemaestro.co.punchclock.Fragments.TimerFragment;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     final Fragment fragmentHome = new HomeFragment();
     final Fragment fragmentGoals = new GoalsFragment();
-    final Fragment fragmentMilestones = new MilestonesFragment();
+    final Fragment fragmentHabits = new HabitsFragment();
     final Fragment fragmentTimer = new TimerFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment activeFragment = fragmentHome;
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
                     activeFragment = fragmentGoals;
                     return true;
 
-                case R.id.bottom_nav_milestones:
-                    fm.beginTransaction().hide(activeFragment).show(fragmentMilestones).commit();
-                    activeFragment = fragmentMilestones;
+                case R.id.bottom_nav_habits:
+                    fm.beginTransaction().hide(activeFragment).show(fragmentHabits).commit();
+                    activeFragment = fragmentHabits;
                     return true;
 
                 case R.id.bottom_nav_timer:
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(onNavItemSelectedListener);
 
         fm.beginTransaction().add(R.id.main_container, fragmentTimer, "4").hide(fragmentTimer).commit();
-        fm.beginTransaction().add(R.id.main_container, fragmentMilestones, "3").hide(fragmentMilestones).commit();
+        fm.beginTransaction().add(R.id.main_container, fragmentHabits, "3").hide(fragmentHabits).commit();
         fm.beginTransaction().add(R.id.main_container, fragmentGoals, "2").hide(fragmentGoals).commit();
         fm.beginTransaction().add(R.id.main_container, fragmentHome, "1").commit();
 

@@ -20,8 +20,8 @@ public interface TimeEntryDao {
     @Query("SELECT * from time_entry_table WHERE parent_goal_id =:parentGoalId")
     LiveData<List<TimeEntry>> getEntriesByGoalId(int parentGoalId);
 
-    @Query("SELECT * from time_entry_table WHERE parent_milestone_id =:parentMilestoneId")
-    LiveData<List<TimeEntry>> getEntriesByMilestoneId(int parentMilestoneId);
+    @Query("SELECT * from time_entry_table WHERE parent_habit_id =:parentHabitId")
+    LiveData<List<TimeEntry>> getEntriesByHabitId(int parentHabitId);
 
-    // TODO: Create DAO methods that get Time Entries by parent Milestone or parent Goal
+    // TODO: Create DAO methods that get Time Entries by parent Habit or parent Goal
 }

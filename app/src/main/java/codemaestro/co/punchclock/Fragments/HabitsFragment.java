@@ -10,26 +10,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import codemaestro.co.punchclock.R;
 import codemaestro.co.punchclock.HomeRecAdapter;
+import codemaestro.co.punchclock.R;
 
-public class MilestonesFragment extends Fragment {
+public class HabitsFragment extends Fragment {
+    private HomeRecAdapter habitsAdapter;
+    String TAG = "HabitsFragment";
 
-    private HomeRecAdapter milestonesAdapter;
-    String TAG = "MilestonesFragment";
-
-    public MilestonesFragment() {
+    public HabitsFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_milestones, container, false);
+        final View view = inflater.inflate(R.layout.fragment_habits, container, false);
 
-        RecyclerView recView = view.findViewById(R.id.recyclerViewMilestones);
+        RecyclerView recView = view.findViewById(R.id.recyclerViewHabits);
         recView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        milestonesAdapter = new HomeRecAdapter(getContext());
-        recView.setAdapter(milestonesAdapter);
+        habitsAdapter = new HomeRecAdapter(getContext());
+        recView.setAdapter(habitsAdapter);
         return view;
     }
 }
