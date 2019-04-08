@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/main_activity">
+
+    <fragment android:id="@+id/main_activity" >
+        <action
+            android:id="@+id/action_main_activity_to_category_detail"
+            app:destination="@id/category_detail" />
+        <action
+            android:id="@+id/action_main_activity_to_habit_detail"
+            app:destination="@id/habit_detail" />
+        <action
+            android:id="@+id/action_main_activity_to_add_category_dialog"
+            app:destination="@id/add_category_dialog" />
+        <action
+            android:id="@+id/action_main_activity_to_add_habit_dialog"
+            app:destination="@id/add_habit_dialog" />
+    </fragment>
+    <fragment android:id="@+id/category_detail" />
+    <fragment android:id="@+id/habit_detail" />
+    <fragment android:id="@+id/add_category_dialog" >
+        <action
+            android:id="@+id/action_add_category_dialog_to_category_detail"
+            app:destination="@id/category_detail" />
+    </fragment>
+    <fragment android:id="@+id/add_habit_dialog" >
+        <action
+            android:id="@+id/add_habit_dialog_to_habit_detail"
+            app:destination="@id/habit_detail" />
+    </fragment>
+</navigation>
