@@ -11,15 +11,15 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "time_entry_table",
-        foreignKeys = {@ForeignKey(entity = Milestone.class,
-                                   parentColumns = "milestone_id",
-                                   childColumns = "parent_milestone_id",
+        foreignKeys = {@ForeignKey(entity = Habit.class,
+                                   parentColumns = "habit_id",
+                                   childColumns = "parent_habit_id",
                                    onDelete = CASCADE, onUpdate = CASCADE),
                        @ForeignKey(entity = Goal.class,
                                    parentColumns = "goal_id",
                                    childColumns = "parent_goal_id",
                                    onDelete = CASCADE, onUpdate = CASCADE)},
-        indices = {@Index("parent_milestone_id"),
+        indices = {@Index("parent_habit_id"),
                    @Index("parent_goal_id")})
 
 
@@ -30,8 +30,8 @@ public class TimeEntry{
     @ColumnInfo(name = "time_bank_id")
     private int timeBankId;
 
-    @ColumnInfo(name = "parent_milestone_id")
-    private int parentMilestoneId;
+    @ColumnInfo(name = "parent_habit_id")
+    private int parentHabitId;
 
     @ColumnInfo(name = "parent_goal_id")
     private int parentGoalId;
@@ -48,9 +48,9 @@ public class TimeEntry{
     @ColumnInfo(name = "date_of_entry")
     private String dateOfEntry;
 
-    public TimeEntry(int timeBankId, int parentMilestoneId, int parentGoalId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
+    public TimeEntry(int timeBankId, int parentHabitId, int parentGoalId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
         this.timeBankId = timeBankId;
-        this.parentMilestoneId = parentMilestoneId;
+        this.parentHabitId = parentHabitId;
         this.parentGoalId = parentGoalId;
         this.timeCommitted = timeCommitted;
         this.startTime = startTime;
@@ -58,11 +58,11 @@ public class TimeEntry{
         this.dateOfEntry = dateOfEntry;
     }
 
-    // TODO: Test if we can create a TimeEntry with both a Milestone Id and Goal Id seperately
+    // TODO: Test if we can create a TimeEntry with both a Habit Id and Goal Id seperately
     @Ignore
-    // TimeEntry Constructor when Creating a TimeEntry for a Milestone
-    public TimeEntry(int parentMilestoneId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
-        this.parentMilestoneId = parentMilestoneId;
+    // TimeEntry Constructor when Creating a TimeEntry for a Habit
+    public TimeEntry(int parentHabitId, long timeCommitted, String startTime, String endTime, String dateOfEntry) {
+        this.parentHabitId = parentHabitId;
         this.timeCommitted = timeCommitted;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -87,12 +87,12 @@ public class TimeEntry{
         this.timeBankId = timeBankId;
     }
 
-    public int getParentMilestoneId() {
-        return parentMilestoneId;
+    public int getParentHabitId() {
+        return parentHabitId;
     }
 
-    public void setParentMilestoneId(int parentMilestoneId) {
-        this.parentMilestoneId = parentMilestoneId;
+    public void setParentHabitId(int parentHabitId) {
+        this.parentHabitId = parentHabitId;
     }
 
     public int getParentGoalId() {

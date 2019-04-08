@@ -45,8 +45,8 @@ public class CategoryViewModel extends AndroidViewModel {
         repository.insertTimeEntryChildOfGoal(timeEntry);
     }
 
-    public void insertTimeEntryChildOfMilestone(TimeEntry timeEntry) {
-        repository.insertTimeEntryChildOfMilestone(timeEntry);
+    public void insertTimeEntryChildOfHabit(TimeEntry timeEntry) {
+        repository.insertTimeEntryChildOfHabit(timeEntry);
     }
 
     public void updateTimeEntry(TimeEntry timeEntry) {
@@ -57,8 +57,8 @@ public class CategoryViewModel extends AndroidViewModel {
         return repository.getEntriesByGoalId(parentGoalId);
     }
 
-    public LiveData<List<TimeEntry>> getEntriesByMilestoneId(int parentMilestoneId) {
-        return repository.getEntriesByMilestoneId(parentMilestoneId);
+    public LiveData<List<TimeEntry>> getEntriesByHabitId(int parentHabitId) {
+        return repository.getEntriesByHabitId(parentHabitId);
     }
 
     // TODO: TimerData ViewModel Methods

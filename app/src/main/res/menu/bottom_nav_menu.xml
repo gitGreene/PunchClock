@@ -12,9 +12,9 @@
         android:title="@string/goals_string"/>
 
     <item
-        android:id="@+id/bottom_nav_milestones"
-        android:icon="@drawable/ic_bottom_nav_milestones"
-        android:title="@string/milestones_string"/>
+        android:id="@+id/bottom_nav_habits"
+        android:icon="@drawable/ic_bottom_nav_habits"
+        android:title="@string/habits_string"/>
 
     <item
         android:id="@+id/bottom_nav_timer"

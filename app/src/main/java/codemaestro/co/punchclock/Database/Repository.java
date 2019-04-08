@@ -10,8 +10,8 @@ import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.Model.CategoryDao;
 import codemaestro.co.punchclock.Model.Goal;
 import codemaestro.co.punchclock.Model.GoalDao;
-import codemaestro.co.punchclock.Model.Milestone;
-import codemaestro.co.punchclock.Model.MilestoneDao;
+import codemaestro.co.punchclock.Model.Habit;
+import codemaestro.co.punchclock.Model.HabitDao;
 import codemaestro.co.punchclock.Model.TimeEntry;
 import codemaestro.co.punchclock.Model.TimeEntryDao;
 import codemaestro.co.punchclock.Model.TimerDataDao;
@@ -21,7 +21,7 @@ public class Repository {
     // References to the DAOs
     private CategoryDao categoryDao;
     private GoalDao goalDao;
-    private MilestoneDao milestoneDao;
+    private HabitDao habitDao;
     private TimeEntryDao timeEntryDao;
     private TimerDataDao timerDataDao;
 
@@ -29,17 +29,16 @@ public class Repository {
     private LiveData<Category> currentCategory;
     private LiveData<List<Category>> allCategories;
 
-
     private LiveData<Goal> currentGoal;
     private LiveData<List<Goal>> allGoals;
     private LiveData<List<Goal>> allCategoryGoals;
 
-    private LiveData<Milestone> currentMilestone;
-    private LiveData<List<Milestone>> allMilestones;
-    private LiveData<List<Milestone>> allGoalMilestones;
+    private LiveData<Habit> currentHabit;
+    private LiveData<List<Habit>> allHabits;
+    private LiveData<List<Habit>> allCategoryHabits;
 
     private LiveData<List<TimeEntry>> allGoalTimeEntries;
-    private LiveData<List<TimeEntry>> allMilestoneTimeEntries;
+    private LiveData<List<TimeEntry>> allHabitTimeEntries;
 
 
     // TODO: We pass the application parameter to the Repository class to get an instance of the database
@@ -49,13 +48,13 @@ public class Repository {
         Database database = Database.getDatabase(application);
         categoryDao = database.categoryDao();
         goalDao = database.goalDao();
-        milestoneDao = database.milestoneDao();
+        habitDao = database.habitDao();
         timeEntryDao = database.timeEntryDao();
         timerDataDao = database.timerDataDao();
 
         allCategories = categoryDao.getAllCategories();
         allGoals = goalDao.getAllGoals();
-        allMilestones = milestoneDao.getAllMilestones();
+        allHabits = habitDao.getAllHabits();
     }
 
     // TODO: Category Repository Methods
@@ -90,7 +89,6 @@ public class Repository {
     }
 
     public LiveData<List<Goal>> getAllGoals() {
-//        return allGoals;
         return goalDao.getAllGoals();
     }
 
@@ -111,44 +109,39 @@ public class Repository {
     }
 
 
-    // TODO: Milestone Repository Methods
-    public void insertMilestone(Milestone milestone) {
-        new InsertMilestoneAsync(milestoneDao).execute(milestone);
+    // TODO: Habit Repository Methods
+    public void createHabit(Habit habit) {
+        new CreateHabitAsync(habitDao).execute(habit);
     }
 
-    public void updateMilestone(Milestone milestone) {
-        new UpdateMilestoneAsync(milestoneDao).execute(milestone);
+    public void updateHabit(Habit habit) {
+        new UpdateHabitAsync(habitDao).execute(habit);
     }
 
-    public LiveData<List<Milestone>> getAllMilestones() {
-        return milestoneDao.getAllMilestones();
+    public LiveData<List<Habit>> getAllHabits() {
+        return habitDao.getAllHabits();
     }
 
-    public LiveData<List<Milestone>> getMilestonesByGoalId(int parentGoalId) {
-        return milestoneDao.getMilestonesByGoalId(parentGoalId);
-    }
+    //TODO: Get all Habits due today
+//    public LiveData<List<Habit>> getHabitsDueToday() {
+//        return habitDao.getAllHabitsDueToday();
+//    }
 
-    public LiveData<Milestone> getMilestoneByName(String milestoneName, int parentGoalId) {
-        return milestoneDao.getMilestoneByName(milestoneName, parentGoalId);
+    public LiveData<List<Habit>> getHabitsByCategoryId(int parentCategoryId) {
+        return habitDao.getHabitsByCategoryId(parentCategoryId);
     }
-
-    public LiveData<List<Milestone>> getAllRecurringMilestones() {
-        return milestoneDao.getAllRecurringMilestones();
+    public LiveData<Habit> getHabitByName(String habitName, int parentGoalId) {
+        return habitDao.getHabitByName(habitName, parentGoalId);
     }
-
-    public LiveData<List<Milestone>> getAGoalsRecurringMilestones(int parentGoalId) {
-        return milestoneDao.getAGoalsRecurringMilestones(parentGoalId);
-    }
-
 
 
     // TODO: TimeEntry Repository Methods
-    // TODO: Discriminate TimeEntry by Parent Goal or Parent Milestone
+    // TODO: Discriminate TimeEntry by Parent Goal or Parent Habit
     public void insertTimeEntryChildOfGoal(TimeEntry timeEntry) {
         new InsertTimeEntryAsync(timeEntryDao).execute(timeEntry);
     }
 
-    public void insertTimeEntryChildOfMilestone(TimeEntry timeEntry) {
+    public void insertTimeEntryChildOfHabit(TimeEntry timeEntry) {
         new InsertTimeEntryAsync(timeEntryDao).execute(timeEntry);
     }
 
@@ -160,8 +153,8 @@ public class Repository {
         return timeEntryDao.getEntriesByGoalId(parentGoalId);
     }
 
-    public LiveData<List<TimeEntry>> getEntriesByMilestoneId(int parentMilestoneId) {
-        return timeEntryDao.getEntriesByMilestoneId(parentMilestoneId);
+    public LiveData<List<TimeEntry>> getEntriesByHabitId(int parentHabitId) {
+        return timeEntryDao.getEntriesByHabitId(parentHabitId);
     }
 
 
@@ -224,30 +217,30 @@ public class Repository {
         }
     }
 
-    private static class InsertMilestoneAsync extends AsyncTask<Milestone, Void, Void> {
-        MilestoneDao milestoneDao;
+    private static class CreateHabitAsync extends AsyncTask<Habit, Void, Void> {
+        HabitDao habitDao;
 
-        InsertMilestoneAsync(MilestoneDao milestoneDao) {
-            this.milestoneDao = milestoneDao;
+        CreateHabitAsync(HabitDao habitDao) {
+            this.habitDao = habitDao;
         }
 
         @Override
-        protected Void doInBackground(Milestone... milestones) {
-            milestoneDao.insertMilestone(milestones[0]);
+        protected Void doInBackground(Habit... habits) {
+            habitDao.createHabit(habits[0]);
             return null;
         }
     }
 
-    private static class UpdateMilestoneAsync extends AsyncTask<Milestone, Void, Void> {
-        MilestoneDao milestoneDao;
+    private static class UpdateHabitAsync extends AsyncTask<Habit, Void, Void> {
+        HabitDao habitDao;
 
-        UpdateMilestoneAsync(MilestoneDao milestoneDao) {
-            this.milestoneDao = milestoneDao;
+        UpdateHabitAsync(HabitDao habitDao) {
+            this.habitDao = habitDao;
         }
 
         @Override
-        protected Void doInBackground(Milestone... milestones) {
-            milestoneDao.updateMilestone(milestones[0]);
+        protected Void doInBackground(Habit... habits) {
+            habitDao.updateHabit(habits[0]);
             return null;
         }
     }
