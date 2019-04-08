@@ -58,8 +58,7 @@ public class CategoryDaoOperationsTest {
     @Test
     public void confirmCategoryInsertion() throws InterruptedException {
         List<Category> allCategories = LiveDataTestUtil.getValue(categoryDao.getAllCategories());
-        assertEquals(FakeEntityCreator.ALL_FAKE_CATEGORIES.get(0).getCategoryName(), allCategories.get(0).getCategoryName());
-        assertEquals(FakeEntityCreator.ALL_FAKE_FAVORITE_CATEGORIES.get(0).getCategoryName(), allCategories.get(FAKE_CATEGORIES).getCategoryName());
+        assertEquals(TOTAL_FAKE_CATEGORIES, allCategories.size());
     }
 
     @Test

@@ -12,21 +12,21 @@ import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.Model.CategoryDao;
 import codemaestro.co.punchclock.Model.Goal;
 import codemaestro.co.punchclock.Model.GoalDao;
-import codemaestro.co.punchclock.Model.Milestone;
-import codemaestro.co.punchclock.Model.MilestoneDao;
+import codemaestro.co.punchclock.Model.Habit;
+import codemaestro.co.punchclock.Model.HabitDao;
 import codemaestro.co.punchclock.Model.TimeEntry;
 import codemaestro.co.punchclock.Model.TimeEntryDao;
 import codemaestro.co.punchclock.Model.TimerData;
 import codemaestro.co.punchclock.Model.TimerDataDao;
 
 
-@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, Milestone.class, TimeEntry.class, TimerData.class}, version = 25, exportSchema = false)
+@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, Habit.class, TimeEntry.class, TimerData.class}, version = 25, exportSchema = false)
 @TypeConverters({DateUtils.class})
 public abstract class Database extends RoomDatabase {
 
     public abstract CategoryDao categoryDao();
     public abstract GoalDao goalDao();
-    public abstract MilestoneDao milestoneDao();
+    public abstract HabitDao habitDao();
     public abstract TimeEntryDao timeEntryDao();
     public abstract TimerDataDao timerDataDao();
 
