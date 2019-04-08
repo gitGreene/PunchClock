@@ -57,6 +57,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/recycler_view_row_home" />
+        tools:listitem="@layout/category_card_home" />
 
 </android.support.constraint.ConstraintLayout>
