@@ -52,6 +52,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:listitem="@layout/recycler_view_row_home" />
+        tools:listitem="@layout/category_card_home" />
 
 </LinearLayout>
