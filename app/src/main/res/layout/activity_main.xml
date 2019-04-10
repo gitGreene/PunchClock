@@ -8,17 +8,17 @@
     tools:context=".MainActivity"
     >
 
-    <fragment
-        android:id="@+id/navigation_host"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation"/>
+    <!--<fragment-->
+        <!--android:id="@+id/navigation_host"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:name="androidx.navigation.fragment.NavHostFragment"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:defaultNavHost="true"-->
+        <!--app:navGraph="@navigation/navigation"/>-->
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavView"

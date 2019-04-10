@@ -2,7 +2,7 @@ package codemaestro.co.punchclock;
 
 import android.support.design.widget.BottomNavigationView;
 import android.support.test.filters.MediumTest;
-import androidx.test.rule.ActivityTestRule;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Rule;
