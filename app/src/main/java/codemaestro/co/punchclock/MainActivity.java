@@ -70,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavView);
         bottomNav.setOnNavigationItemSelectedListener(onNavItemSelectedListener);
 
-        fm.beginTransaction().add(R.id.main_container, fragmentTimer, "4").hide(fragmentTimer).commit();
-        fm.beginTransaction().add(R.id.main_container, fragmentHabits, "3").hide(fragmentHabits).commit();
-        fm.beginTransaction().add(R.id.main_container, fragmentGoals, "2").hide(fragmentGoals).commit();
-        fm.beginTransaction().add(R.id.main_container, fragmentHome, "1").commit();
+//        fm.beginTransaction().add(R.id.main_container, fragmentTimer, "4").hide(fragmentTimer).commit();
+//        fm.beginTransaction().add(R.id.main_container, fragmentHabits, "3").hide(fragmentHabits).commit();
+//        fm.beginTransaction().add(R.id.main_container, fragmentGoals, "2").hide(fragmentGoals).commit();
+//        fm.beginTransaction().add(R.id.main_container, fragmentHome, "1").commit();
 
 
         // TODO: Pull-to-refresh
