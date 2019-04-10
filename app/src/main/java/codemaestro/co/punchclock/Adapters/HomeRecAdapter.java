@@ -1,4 +1,4 @@
-package codemaestro.co.punchclock;
+package codemaestro.co.punchclock.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import codemaestro.co.punchclock.Model.Category;
+import codemaestro.co.punchclock.R;
 
 
 public class HomeRecAdapter extends RecyclerView.Adapter<HomeRecAdapter.CustomViewHolder> {
