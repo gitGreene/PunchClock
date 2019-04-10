@@ -4,4 +4,31 @@
     <string name="goals_string">Goals</string>
     <string name="habits_string">Habits</string>
     <string name="timer_string">Timer</string>
+
+    <string-array name="category_template_names">
+        <item>Health</item>
+        <item>Family</item>
+        <item>Career</item>
+        <item>Hobbies</item>
+        <item>Skills</item>
+        <item>Custom</item>
+    </string-array>
+
+    <string-array name="category_template_desc_labels">
+        <item>Create Health Category</item>
+        <item>Create Family Category</item>
+        <item>Create Career Category</item>
+        <item>Create Hobbies Category</item>
+        <item>Create Skills Category</item>
+        <item>Create a Custom Category</item>
+    </string-array>
+
+    <string-array name="category_template_descriptions">
+        <item>Health. Clicking create will walk you through a wizard to set up Goals and Habits for your new Category.</item>
+        <item>Family. Clicking create will walk you through a wizard to set up Goals and Habits for your new Category.</item>
+        <item>Career. Clicking create will walk you through a wizard to set up Goals and Habits for your new Category.</item>
+        <item>Hobbies. Clicking create will walk you through a wizard to set up Goals and Habits for your new Category.</item>
+        <item>Skills. Clicking create will walk you through a wizard to set up Goals and Habits for your new Category.</item>
+        <item>Custom. Clicking create will walk you through a wizard to set up Goals and Habits for your new Category.</item>
+    </string-array>
 </resources>

@@ -1,4 +1,4 @@
-package codemaestro.co.punchclock;
+package codemaestro.co.punchclock.Adapters;
 
 
 //Todo: do it

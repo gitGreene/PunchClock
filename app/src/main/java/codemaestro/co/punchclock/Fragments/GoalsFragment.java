@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import codemaestro.co.punchclock.R;
-import codemaestro.co.punchclock.HomeRecAdapter;
+import codemaestro.co.punchclock.Adapters.HomeRecAdapter;
 
 public class GoalsFragment extends Fragment {
 

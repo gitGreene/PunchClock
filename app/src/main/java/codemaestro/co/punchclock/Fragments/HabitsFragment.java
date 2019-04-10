@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import codemaestro.co.punchclock.HomeRecAdapter;
+import codemaestro.co.punchclock.Adapters.HomeRecAdapter;
 import codemaestro.co.punchclock.R;
 
 public class HabitsFragment extends Fragment {

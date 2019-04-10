@@ -19,9 +19,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import codemaestro.co.punchclock.Model.Category;
-import codemaestro.co.punchclock.Model.TimeEntry;
 import codemaestro.co.punchclock.R;
-import codemaestro.co.punchclock.HomeRecAdapter;
+import codemaestro.co.punchclock.Adapters.HomeRecAdapter;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
