@@ -56,6 +56,7 @@
             app:destination="@id/timerFragment" />
     </fragment>
     <fragment
+
         android:id="@+id/timerFragment"
         android:name="codemaestro.co.punchclock.Fragments.TimerFragment"
         android:label="fragment_timer"
@@ -70,4 +71,12 @@
             android:id="@+id/action_timerFragment_to_habitsFragment"
             app:destination="@id/habitsFragment" />
     </fragment>
+
+        android:id="@+id/categoryDetail_fragment"
+        android:name="codemaestro.co.punchclock.Fragments.CategoryDetailFragment"
+        android:label="categoryDetail_fragment"
+        tools:layout="@layout/fragment_category_detail"/>
+
+
+
 </navigation>

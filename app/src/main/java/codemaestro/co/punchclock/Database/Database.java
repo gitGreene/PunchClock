@@ -67,7 +67,7 @@ public abstract class Database extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            if(categoryDao.getAllCategories() != null) {
+            if(categoryDao.getAllCategories() == null) {
                 Category category = new Category(defaultCategoryName, null, 0L, null, false);
                 categoryDao.insertCategory(category);
             }

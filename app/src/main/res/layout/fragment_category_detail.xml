@@ -6,6 +6,7 @@
     tools:context=".Fragments.CategoryDetailFragment">
 
     <TextView
+        android:id="@+id/categoryId"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Category Id"
