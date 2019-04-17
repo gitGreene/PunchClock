@@ -19,4 +19,5 @@
         android:label="categoryDetail_fragment"
         tools:layout="@layout/fragment_category_detail"/>
 
+
 </navigation>
