@@ -23,7 +23,7 @@
         android:layout_gravity="bottom"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        android:background="@color/colorPrimary"
+        android:background="@color/category_title_container_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -14,8 +14,6 @@ public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
     private TextView categoryHeaderText, categoryDescLabel, categoryDescription;
     private Button createButton;
 
-
-
     public CategoryTemplateViewHolder(@NonNull View itemView) {
         super(itemView);
         categoryHeaderText = itemView.findViewById(R.id.category_template_card_header);
@@ -39,9 +37,6 @@ public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
-
-
-
 
     }
 }
