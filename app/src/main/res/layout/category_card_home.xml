@@ -9,7 +9,7 @@
     android:layout_margin="5dp"
     app:cardCornerRadius="3dp"
     android:elevation="5dp"
-    app:cardBackgroundColor="@color/category_card_background">
+    app:cardBackgroundColor="@color/category_title_container_background">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.List;
 
+import codemaestro.co.punchclock.Adapters.CategoryAdapter;
 import codemaestro.co.punchclock.Adapters.CreateCategoryAdapter;
 import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.R;
@@ -48,14 +49,14 @@ public class HomeFragment extends Fragment {
 
         // Setup RecView/Adapter
         recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        final CreateCategoryAdapter adapter = new CreateCategoryAdapter(getActivity(), getResources());
+        final CategoryAdapter adapter = new CategoryAdapter(getActivity());
         recView.setAdapter(adapter);
 
         // Observe AllCategories
         categoryViewModel.getAllCategories().observe(this, new Observer<List<Category>>() {
             @Override
             public void onChanged(@Nullable List<Category> categories) {
-                adapter.showDefaultCategories();
+                adapter.setUserCategories(categories);
             }
         });
         // onClick for adding new category
