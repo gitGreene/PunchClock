@@ -11,11 +11,15 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import codemaestro.co.punchclock.Fragments.CreateCategoryFormFragment;
 import codemaestro.co.punchclock.Fragments.GoalsFragment;
 import codemaestro.co.punchclock.Fragments.HomeFragment;
@@ -25,45 +29,8 @@ import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
 public class MainActivity extends FragmentActivity {
-
-    final Fragment fragmentHome = new HomeFragment();
-    final Fragment fragmentGoals = new GoalsFragment();
-    final Fragment fragmentHabits = new HabitsFragment();
-    final Fragment fragmentTimer = new TimerFragment();
-    final Fragment createCategoryForm = new CreateCategoryFormFragment();
-    final FragmentManager fm = getSupportFragmentManager();
-    Fragment activeFragment = fragmentHome;
-
-
-    //TODO: Add animations
-    private BottomNavigationView.OnNavigationItemSelectedListener onNavItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.bottom_nav_home:
-                    fm.beginTransaction().hide(activeFragment).show(fragmentHome).commit();
-                    activeFragment = fragmentHome;
-                    return true;
-
-                case R.id.bottom_nav_goals:
-                    fm.beginTransaction().hide(activeFragment).show(fragmentGoals).commit();
-                    activeFragment = fragmentGoals;
-                    return true;
-
-                case R.id.bottom_nav_habits:
-                    fm.beginTransaction().hide(activeFragment).show(fragmentHabits).commit();
-                    activeFragment = fragmentHabits;
-                    return true;
-
-                case R.id.bottom_nav_timer:
-                    fm.beginTransaction().hide(activeFragment).show(fragmentTimer).commit();
-                    activeFragment = fragmentTimer;
-                    return true;
-            }
-            return false;
-        }
-    };
+    private NavController navController;
+    private BottomNavigationView bottomNav;
 
 
     @Override
@@ -71,8 +38,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CreateCategoryFormFragment fragment = new CreateCategoryFormFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, fragment).commit();
+        bottomNav = findViewById(R.id.bottom_nav_view);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(bottomNav, navController);
+
 
 
     }
