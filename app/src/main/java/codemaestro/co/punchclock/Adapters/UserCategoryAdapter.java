@@ -13,13 +13,13 @@ import java.util.List;
 import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.R;
 
-public class CategoryAdapter extends RecyclerView.Adapter {
+public class UserCategoryAdapter extends RecyclerView.Adapter {
 
     private List<Category> userCategories;
     private Context context;
     private LayoutInflater inflater;
 
-    public CategoryAdapter(Context context) {
+    public UserCategoryAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.userCategories = new ArrayList<>();

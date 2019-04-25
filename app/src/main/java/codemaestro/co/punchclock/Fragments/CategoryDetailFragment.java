@@ -16,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import java.util.List;
 
 import codemaestro.co.punchclock.Adapters.GoalsSmallAdapter;
@@ -28,6 +31,7 @@ public class CategoryDetailFragment extends Fragment {
     private TextView categoryTitle;
     private GoalViewModel goalViewModel;
     private static final String TAG = "CategoryDetailFragment";
+    private NavController navController;
 
     public CategoryDetailFragment() {
         // Required empty public constructor
@@ -43,7 +47,11 @@ public class CategoryDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_detail, container, false);
         goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
         final GoalsSmallAdapter goalsAdpater = new GoalsSmallAdapter(getActivity());
+
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         categoryTitle = view.findViewById(R.id.categoryTitle);
+        categoryTitle.setText(getArguments().getString("Category Title"));
+
         final RecyclerView goalsRecyclerView = view.findViewById(R.id.goalsRecyclerView);
         goalsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         goalsRecyclerView.setAdapter(goalsAdpater);
