@@ -28,7 +28,7 @@
                 android:textSize="40sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/health_card_background_image"/>
+                android:background="@drawable/placeholder"/>
         </LinearLayout>
 
         <LinearLayout
