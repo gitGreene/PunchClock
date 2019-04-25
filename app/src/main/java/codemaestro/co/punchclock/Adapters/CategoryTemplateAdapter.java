@@ -10,13 +10,15 @@ import android.view.ViewGroup;
 
 import codemaestro.co.punchclock.R;
 
-public class CreateCategoryAdapter extends RecyclerView.Adapter {
+public class CategoryTemplateAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private Resources resources;
+    private Context context;
 
-    public CreateCategoryAdapter(Context context, Resources resources) {
+    public CategoryTemplateAdapter(Context context, Resources resources) {
         this.inflater = LayoutInflater.from(context);
         this.resources = resources;
+        this.context = context;
 
     }
 
@@ -28,7 +30,7 @@ public class CreateCategoryAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         View view1 = inflater.inflate(R.layout.category_template_card, viewGroup, false);
-        return new CategoryTemplateViewHolder(view1);
+        return new CategoryTemplateViewHolder(view1, context);
     }
 
     @Override
