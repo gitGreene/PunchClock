@@ -44,7 +44,9 @@ public class GoalsSmallAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return goals.size();
+        if(goals != null) {
+            return goals.size();
+        } else return 0;
     }
 
 

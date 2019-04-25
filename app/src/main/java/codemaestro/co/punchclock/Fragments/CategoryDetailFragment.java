@@ -43,19 +43,18 @@ public class CategoryDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_detail, container, false);
         goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
         final GoalsSmallAdapter goalsAdpater = new GoalsSmallAdapter(getActivity());
+        categoryTitle = view.findViewById(R.id.categoryTitle);
+        final RecyclerView goalsRecyclerView = view.findViewById(R.id.goalsRecyclerView);
+        goalsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        goalsRecyclerView.setAdapter(goalsAdpater);
 
-        goalViewModel.getGoalsByCategoryId(1).observe(this, new Observer<List<Goal>>() {
+        goalViewModel.getAllCategoryGoals(1).observe(this, new Observer<List<Goal>>() {
             @Override
             public void onChanged(@Nullable List<Goal> goals) {
                 goalsAdpater.setCategoryGoals(goals);
                 Log.e(TAG, "goals observers");
             }
         });
-
-        categoryTitle = view.findViewById(R.id.categoryTitle);
-        final RecyclerView goalsRecyclerView = view.findViewById(R.id.goalsRecyclerView);
-        goalsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        goalsRecyclerView.setAdapter(goalsAdpater);
 
 //        final RecyclerView habitsRecyclerView = view.findViewById(R.id.habitsRecyclerView);
 
