@@ -39,15 +39,9 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         fab = findViewById(R.id.floatingActionButton);
 
-        NavigationUI.setupWithNavController(bottomNav, navController);
         //Todo: Add animations
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                NavigationUI.onNavDestinationSelected(menuItem, navController);
-                return true;
-            }
-        });
+        NavigationUI.setupWithNavController(bottomNav, navController);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,53 +51,54 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+}
 
 
-    private void navigateToFragment(MenuItem menuItem) {
-
-        if (selectedItem == -1) {
-            navController.navigate(menuItem.getItemId());
-        } else {
-            switch (menuItem.getItemId()) {
-                case R.id.homeFragment:
-                    if (selectedItem == R.id.goalsFragment) {
-                        navController.navigate(R.id.action_goalsFragment_to_homeFragment);
-                    } else if (selectedItem == R.id.habitsFragment) {
-                        navController.navigate(R.id.action_habitsFragment_to_homeFragment);
-                    } else if (selectedItem == R.id.timerFragment) {
-                        navController.navigate(R.id.action_timerFragment_to_homeFragment);
-                    }
-                    break;
-                case R.id.goalsFragment:
-                    if (selectedItem == R.id.homeFragment) {
-                        navController.navigate(R.id.action_homeFragment_to_goalsFragment);
-                    } else if (selectedItem == R.id.habitsFragment) {
-                        navController.navigate(R.id.action_habitsFragment_to_goalsFragment);
-                    } else if (selectedItem == R.id.timerFragment) {
-                        navController.navigate(R.id.action_timerFragment_to_goalsFragment);
-                    }
-                    break;
-                case R.id.habitsFragment:
-                    if (selectedItem == R.id.homeFragment) {
-                        navController.navigate(R.id.action_homeFragment_to_habitsFragment);
-                    } else if (selectedItem == R.id.goalsFragment) {
-                        navController.navigate(R.id.action_goalsFragment_to_habitsFragment);
-                    } else if (selectedItem == R.id.timerFragment) {
-                        navController.navigate(R.id.action_timerFragment_to_habitsFragment);
-                    }
-                    break;
-                case R.id.timerFragment:
-                    if (selectedItem == R.id.homeFragment) {
-                        navController.navigate(R.id.action_homeFragment_to_timerFragment);
-                    } else if (selectedItem == R.id.goalsFragment) {
-                        navController.navigate(R.id.action_goalsFragment_to_timerFragment);
-                    } else if (selectedItem == R.id.habitsFragment) {
-                        navController.navigate(R.id.action_habitsFragment_to_timerFragment);
-                    }
-                    break;
-            }
-        }
-        selectedItem = menuItem.getItemId();
+//    private void navigateToFragment(MenuItem menuItem) {
+//
+//        if (selectedItem == -1) {
+//            navController.navigate(menuItem.getItemId());
+//        } else {
+//            switch (menuItem.getItemId()) {
+//                case R.id.homeFragment:
+//                    if (selectedItem == R.id.goalsFragment) {
+//                        navController.navigate(R.id.action_goalsFragment_to_homeFragment);
+//                    } else if (selectedItem == R.id.habitsFragment) {
+//                        navController.navigate(R.id.action_habitsFragment_to_homeFragment);
+//                    } else if (selectedItem == R.id.timerFragment) {
+//                        navController.navigate(R.id.action_timerFragment_to_homeFragment);
+//                    }
+//                    break;
+//                case R.id.goalsFragment:
+//                    if (selectedItem == R.id.homeFragment) {
+//                        navController.navigate(R.id.action_homeFragment_to_goalsFragment);
+//                    } else if (selectedItem == R.id.habitsFragment) {
+//                        navController.navigate(R.id.action_habitsFragment_to_goalsFragment);
+//                    } else if (selectedItem == R.id.timerFragment) {
+//                        navController.navigate(R.id.action_timerFragment_to_goalsFragment);
+//                    }
+//                    break;
+//                case R.id.habitsFragment:
+//                    if (selectedItem == R.id.homeFragment) {
+//                        navController.navigate(R.id.action_homeFragment_to_habitsFragment);
+//                    } else if (selectedItem == R.id.goalsFragment) {
+//                        navController.navigate(R.id.action_goalsFragment_to_habitsFragment);
+//                    } else if (selectedItem == R.id.timerFragment) {
+//                        navController.navigate(R.id.action_timerFragment_to_habitsFragment);
+//                    }
+//                    break;
+//                case R.id.timerFragment:
+//                    if (selectedItem == R.id.homeFragment) {
+//                        navController.navigate(R.id.action_homeFragment_to_timerFragment);
+//                    } else if (selectedItem == R.id.goalsFragment) {
+//                        navController.navigate(R.id.action_goalsFragment_to_timerFragment);
+//                    } else if (selectedItem == R.id.habitsFragment) {
+//                        navController.navigate(R.id.action_habitsFragment_to_timerFragment);
+//                    }
+//                    break;
+//            }
+//        }
+//        selectedItem = menuItem.getItemId();
 
 
         //TODO: Fix the bottom nav item selected not changing on navigation
@@ -114,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
 //                item.isChecked();
 //            }
 //        }
-    }
-}
+//    }
+//}
 
 //// uncheck the other items.
 //    for (i in 0 until bottomNav!!.menu.size()) {

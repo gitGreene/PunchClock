@@ -19,7 +19,7 @@ import androidx.navigation.Navigation;
 
 import java.util.List;
 
-import codemaestro.co.punchclock.Adapters.CategoryAdapter;
+import codemaestro.co.punchclock.Adapters.UserCategoryAdapter;
 import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.R;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
 
         // Setup RecView/Adapter
         recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        final CategoryAdapter adapter = new CategoryAdapter(getActivity());
+        final UserCategoryAdapter adapter = new UserCategoryAdapter(getActivity());
         recView.setAdapter(adapter);
 
         // Observe AllCategories

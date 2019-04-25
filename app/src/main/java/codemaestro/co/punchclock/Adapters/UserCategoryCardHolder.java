@@ -26,19 +26,19 @@ public class UserCategoryCardHolder extends RecyclerView.ViewHolder {
         super(itemView);
         this.context = context;
         this.categoryName = itemView.findViewById(R.id.category_card_title);
-
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt(CATEGORY_ID, userCategory.getId());
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_categoryDetail_fragment, bundle);
-            }
-        });
     }
 
     public void setUserCategoryCard(final Category userCategory) {
         this.userCategory = userCategory;
         categoryName.setText(userCategory.getCategoryName());
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("Category Title", userCategory.getCategoryName());
+                Navigation.findNavController(view).navigate(R.id.homeFragment_to_categoryDetail_fragment, bundle);
+            }
+        });
     }
 }
