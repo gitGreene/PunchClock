@@ -113,7 +113,28 @@
         android:id="@+id/categoryDetail_fragment"
         android:name="codemaestro.co.punchclock.Fragments.CategoryDetailFragment"
         android:label="categoryDetail_fragment"
-        tools:layout="@layout/fragment_category_detail"/>
+        tools:layout="@layout/fragment_category_detail">
+        <action
+            android:id="@+id/categoryDetailFragment_toGoalDetailFragment"
+            app:destination="@+id/goalDetail_Fragment">
+        </action>
+        <action
+            android:id="@+id/categoryDetailFragment_toHabitDetailFragment"
+            app:destination="@+id/habitDetail_Fragment">
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/goalDetail_Fragment"
+        android:name="codemaestro.co.punchclock.Fragments.GoalDetailFragment"
+        android:label="goalDetail_Fragment"
+        tools:layout="@layout/fragment_goal_detail"/>
+
+    <fragment
+        android:id="@+id/habitDetail_Fragment"
+        android:name="codemaestro.co.punchclock.Fragments.HabitDetailFragment"
+        android:label="habitDetail_Fragment"
+        tools:layout="@layout/fragment_habit_detail"/>
 
 
 

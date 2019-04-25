@@ -1,6 +1,7 @@
 package codemaestro.co.punchclock.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.navigation.Navigation;
+
 import java.util.List;
 
+import codemaestro.co.punchclock.Fragments.CategoryDetailFragmentDirections;
 import codemaestro.co.punchclock.Model.Goal;
 import codemaestro.co.punchclock.R;
 
@@ -53,14 +57,27 @@ public class GoalsSmallAdapter extends RecyclerView.Adapter {
     private static class GoalsSmallViewHolder extends RecyclerView.ViewHolder {
 
         private TextView goalName;
+        private static final String GOAL_NAME_TAG = "GOAL_NAME";
 
         public GoalsSmallViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
             goalName = itemView.findViewById(R.id.goalName);
+
         }
 
-        public void setSmallGoalCard(Goal goal) {
+        public void setSmallGoalCard(final Goal goal) {
             goalName.setText(goal.getGoalName());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(GOAL_NAME_TAG, goal.getGoalName());
+                    Navigation.findNavController(view).navigate(R.id.categoryDetailFragment_toGoalDetailFragment, bundle);
+                }
+            });
+
+
         }
     }
 }
