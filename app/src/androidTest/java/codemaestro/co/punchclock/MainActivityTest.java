@@ -23,7 +23,7 @@ public class MainActivityTest {
     @Test
     public void ensureBottomNavIsPresent() throws Exception {
         MainActivity activity = rule.getActivity();
-        BottomNavigationView navigationView = activity.findViewById(R.id.bottomNavView);
+        BottomNavigationView navigationView = activity.findViewById(R.id.bottom_nav_view);
         assertThat(navigationView, notNullValue());
     }
 }

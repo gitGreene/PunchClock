@@ -3,13 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.CategoryDetailFragment">
 
-    <TextView
-        android:id="@+id/categoryId"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Category Id"
-        android:textSize="50sp"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/categoryId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category Id"
+            android:textSize="50sp"
+            android:textAlignment="viewStart"
+            android:background="@drawable/schedule_circle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
 
 </FrameLayout>

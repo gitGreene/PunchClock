@@ -29,7 +29,7 @@ public class CategoryDetailFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_category_detail, container, false);
         TextView categoryIdText = view.findViewById(R.id.categoryId);
-        categoryIdText.setText(getArguments().getInt("CATEGORY_ID") + "");
+//        categoryIdText.setText(getArguments().getInt("CATEGORY_ID") + "");
         return view;
     }
 

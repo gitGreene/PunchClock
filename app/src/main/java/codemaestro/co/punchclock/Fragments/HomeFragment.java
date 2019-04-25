@@ -5,25 +5,23 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Calendar;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import java.util.List;
 
 import codemaestro.co.punchclock.Adapters.CategoryAdapter;
-import codemaestro.co.punchclock.Adapters.CreateCategoryAdapter;
 import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.R;
-import codemaestro.co.punchclock.Adapters.HomeRecAdapter;
 import codemaestro.co.punchclock.ViewModel.CategoryViewModel;
 import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 
@@ -32,6 +30,8 @@ public class HomeFragment extends Fragment {
     private CategoryViewModel categoryViewModel;
     private GoalViewModel goalViewModel;
     private TextView textView;
+    private FloatingActionButton fab;
+    private NavController navController;
 
     String TAG = "HomeFragment";
 
@@ -45,7 +45,10 @@ public class HomeFragment extends Fragment {
 
         // VM setup and View references
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
         RecyclerView recView = view.findViewById(R.id.category_recycler_view);
+
 
         // Setup RecView/Adapter
         recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));

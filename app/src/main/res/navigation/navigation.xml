@@ -15,6 +15,7 @@
             app:destination="@id/goalsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"/>
+
         <action
             android:id="@+id/action_homeFragment_to_habitsFragment"
             app:destination="@id/habitsFragment"
@@ -28,7 +29,11 @@
         <action
             android:id="@+id/action_homeFragment_to_categoryDetail_fragment"
             app:destination="@id/categoryDetail_fragment" />
+        <action
+            android:id="@+id/homeFragment_createCategoryForm"
+            app:destination="@+id/defaultCategories_fragment"/>
     </fragment>
+
 
     <fragment
         android:id="@+id/goalsFragment"
@@ -94,11 +99,23 @@
             app:exitAnim="@anim/slide_out_right"/>
     </fragment>
 
-        <fragment
-            android:id="@+id/categoryDetail_fragment"
+    <fragment
+        android:id="@+id/defaultCategories_fragment"
+        android:name="codemaestro.co.punchclock.Fragments.CreateCategoryFormFragment"
+        android:label="defaultCategories_fragment"
+        tools:layout="@layout/fragment_create_category_form">
+        <action
+            android:id="@+id/defaultCategoriesFragment_toCategoryDetail"
+            app:destination="@+id/categoryDetail_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryDetail_fragment"
         android:name="codemaestro.co.punchclock.Fragments.CategoryDetailFragment"
         android:label="categoryDetail_fragment"
         tools:layout="@layout/fragment_category_detail"/>
+
+
 
 
 

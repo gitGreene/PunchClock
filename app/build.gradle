@@ -18,6 +18,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding {
         enabled = true
     }
@@ -67,5 +68,6 @@ dependencies {
 
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+
 
 }
