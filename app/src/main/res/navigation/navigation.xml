@@ -136,8 +136,4 @@
         android:label="habitDetail_Fragment"
         tools:layout="@layout/fragment_habit_detail"/>
 
-
-
-
-
 </navigation>

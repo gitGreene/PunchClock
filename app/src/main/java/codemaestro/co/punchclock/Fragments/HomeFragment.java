@@ -28,11 +28,6 @@ import codemaestro.co.punchclock.ViewModel.GoalViewModel;
 public class HomeFragment extends Fragment {
 
     private CategoryViewModel categoryViewModel;
-    private GoalViewModel goalViewModel;
-    private TextView textView;
-    private FloatingActionButton fab;
-    private NavController navController;
-
     String TAG = "HomeFragment";
 
     public HomeFragment() {
@@ -45,10 +40,7 @@ public class HomeFragment extends Fragment {
 
         // VM setup and View references
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
         RecyclerView recView = view.findViewById(R.id.category_recycler_view);
-
 
         // Setup RecView/Adapter
         recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
