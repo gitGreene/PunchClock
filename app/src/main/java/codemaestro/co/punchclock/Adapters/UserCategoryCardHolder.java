@@ -17,14 +17,14 @@ import codemaestro.co.punchclock.R;
 
 public class UserCategoryCardHolder extends RecyclerView.ViewHolder {
 
-    private Context context;
+   // private Context context;
     private Category userCategory;
     private TextView categoryName;
     public static final String CATEGORY_ID = "CATEGORY_ID";
 
     public UserCategoryCardHolder(@NonNull View itemView, Context context) {
         super(itemView);
-        this.context = context;
+        //this.context = context;
         this.categoryName = itemView.findViewById(R.id.category_card_title);
     }
 

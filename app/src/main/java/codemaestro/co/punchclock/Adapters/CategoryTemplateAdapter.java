@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import codemaestro.co.punchclock.R;
 
+// This goes in the home fragment
+
 public class CategoryTemplateAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private Resources resources;
