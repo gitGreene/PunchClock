@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import codemaestro.co.punchclock.R;
-import codemaestro.co.punchclock.Adapters.HomeRecAdapter;
 
 public class GoalsFragment extends Fragment {
-
-    private HomeRecAdapter goalsAdapter;
     String TAG = "GoalsFragment";
 
     public GoalsFragment() {
@@ -26,10 +23,10 @@ public class GoalsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_goals, container, false);
 
-        RecyclerView recView = view.findViewById(R.id.goalsRecyclerView);
-        recView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        goalsAdapter = new HomeRecAdapter(getContext());
-        recView.setAdapter(goalsAdapter);
+//        RecyclerView recView = view.findViewById(R.id.goalsRecyclerView);
+//        recView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        goalsAdapter = new HomeRecAdapter(getContext());
+//        recView.setAdapter(goalsAdapter);
         return view;
     }
 }

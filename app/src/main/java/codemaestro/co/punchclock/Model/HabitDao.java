@@ -39,6 +39,9 @@ public interface HabitDao {
     @Query("SELECT * from habit_table WHERE parent_category_id =:parentCategoryId")
     LiveData<List<Habit>> getHabitsByCategoryId(int parentCategoryId);
 
+    @Query("SELECT * from habit_table WHERE parent_category_id =:parentCategoryId")
+    List<Habit> getHabitsByCategoryIdForDB(int parentCategoryId);
+
     // Get a Habit by name
     @Query("SELECT * from habit_table WHERE habit_name =:habitName AND parent_category_id =:parentCategoryId")
     LiveData<Habit> getHabitByName(String habitName, int parentCategoryId);

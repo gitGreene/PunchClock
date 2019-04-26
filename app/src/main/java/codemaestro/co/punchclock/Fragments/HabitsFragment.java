@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import codemaestro.co.punchclock.Adapters.HomeRecAdapter;
 import codemaestro.co.punchclock.R;
 
 public class HabitsFragment extends Fragment {
-    private HomeRecAdapter habitsAdapter;
     String TAG = "HabitsFragment";
 
     public HabitsFragment() {
@@ -27,8 +25,8 @@ public class HabitsFragment extends Fragment {
 
         RecyclerView recView = view.findViewById(R.id.recyclerViewHabits);
         recView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        habitsAdapter = new HomeRecAdapter(getContext());
-        recView.setAdapter(habitsAdapter);
+//        habitsAdapter = new HomeRecAdapter(getContext());
+//        recView.setAdapter(habitsAdapter);
         return view;
     }
 }
