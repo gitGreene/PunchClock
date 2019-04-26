@@ -17,6 +17,9 @@ public interface CategoryDao {
     @Update
     void updateCategory(Category category);
 
+    @Query("SELECT * from category_table")
+    List<Category> getCategoriesForDB();
+
     // Get all Categories
     @Query("SELECT * from category_table")
     LiveData<List<Category>> getAllCategories();

@@ -25,6 +25,9 @@ public interface GoalDao {
     @Query("SELECT * from goal_table WHERE parent_category_id =:parentCategoryId")
     LiveData<List<Goal>> getAllCategoryGoals(int parentCategoryId);
 
+    @Query("SELECT * from goal_table WHERE parent_category_id =:parentCategoryId")
+    List<Goal> getAllCategoryGoalsForDB(int parentCategoryId);
+
     // Get specific goal by Name and Parent Category Id
     @Query("SELECT * from goal_table WHERE goal_name =:goalName AND parent_category_id =:parentCategoryId")
     LiveData<Goal> getSpecificGoal(String goalName, int parentCategoryId);

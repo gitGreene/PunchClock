@@ -77,7 +77,7 @@ public class Habit {
         this.habitDescription = habitDescription;
     }
 
-    public Habit(int parentCategoryId, String habitName, long habitCycleValueInMillis) {
+    public Habit(int parentCategoryId, String habitName, long habitCycleValueInMillis, Date startDate, boolean isTimeBased, long timeScheduledInMillis, @Nullable Date targetDate) {
         this.parentCategoryId = parentCategoryId;
         this.habitName = habitName;
         this.habitCycleValueInMillis = habitCycleValueInMillis;
