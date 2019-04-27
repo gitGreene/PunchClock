@@ -47,7 +47,7 @@ public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("Category Title", categoryTitles[position]);
-                Navigation.findNavController(itemView).navigate(R.id.defaultCategoriesFragment_toCategoryDetail, bundle);
+                Navigation.findNavController(itemView).navigate(R.id.action_createCategoryFormFragment_to_categoryDetailFragment, bundle);
             }
         });
     }
