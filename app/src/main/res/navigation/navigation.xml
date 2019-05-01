@@ -11,27 +11,11 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/homeFragment_to_goalsFragment"
-            app:destination="@id/goalsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
-
+            android:id="@+id/action_homeFragment_to_createCategoryFormFragment"
+            app:destination="@id/createCategoryFormFragment" />
         <action
-            android:id="@+id/homeFragment_to_habitsFragment"
-            app:destination="@id/habitsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
-        <action
-            android:id="@+id/homeFragment_to_timerFragment"
-            app:destination="@id/timerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
-        <action
-            android:id="@+id/homeFragment_to_categoryDetail_fragment"
-            app:destination="@id/categoryDetail_fragment" />
-        <action
-            android:id="@+id/homeFragment_createCategoryForm"
-            app:destination="@+id/defaultCategories_fragment"/>
+            android:id="@+id/action_homeFragment_to_categoryDetailFragment"
+            app:destination="@id/categoryDetailFragment" />
     </fragment>
 
 
@@ -40,100 +24,54 @@
         android:name="codemaestro.co.punchclock.Fragments.GoalsFragment"
         android:label="fragment_goals"
         tools:layout="@layout/fragment_goals" >
-        <action
-            android:id="@+id/goalsFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/goalsFragment_to_habitsFragment"
-            app:destination="@id/habitsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
-        <action
-            android:id="@+id/goalsFragment_to_timerFragment"
-            app:destination="@id/timerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/habitsFragment"
         android:name="codemaestro.co.punchclock.Fragments.HabitsFragment"
         android:label="fragment_habits"
         tools:layout="@layout/fragment_habits" >
-        <action
-            android:id="@+id/habitsFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/habitsFragment_to_goalsFragment"
-            app:destination="@id/goalsFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/habitsFragment_to_timerFragment"
-            app:destination="@id/timerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
+
     <fragment
         android:id="@+id/timerFragment"
         android:name="codemaestro.co.punchclock.Fragments.TimerFragment"
         android:label="fragment_timer"
-        tools:layout="@layout/fragment_timer" >
-        <action
-            android:id="@+id/timerFragment_to_goalsFragment"
-            app:destination="@id/goalsFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/timerFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/timerFragment_to_habitsFragment"
-            app:destination="@id/habitsFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
-    </fragment>
+        tools:layout="@layout/fragment_timer" />
 
     <fragment
-        android:id="@+id/defaultCategories_fragment"
+        android:id="@+id/createCategoryFormFragment"
         android:name="codemaestro.co.punchclock.Fragments.CreateCategoryFormFragment"
-        android:label="defaultCategories_fragment"
+        android:label="createCategoryFormFragment"
         tools:layout="@layout/fragment_create_category_form">
         <action
-            android:id="@+id/defaultCategoriesFragment_toCategoryDetail"
-            app:destination="@+id/categoryDetail_fragment"/>
+            android:id="@+id/action_createCategoryFormFragment_to_categoryDetailFragment"
+            app:destination="@id/categoryDetailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/categoryDetail_fragment"
+        android:id="@+id/categoryDetailFragment"
         android:name="codemaestro.co.punchclock.Fragments.CategoryDetailFragment"
-        android:label="categoryDetail_fragment"
+        android:label="categoryDetailFragment"
         tools:layout="@layout/fragment_category_detail">
         <action
-            android:id="@+id/categoryDetailFragment_toGoalDetailFragment"
-            app:destination="@+id/goalDetail_Fragment">
-        </action>
-        <action
-            android:id="@+id/categoryDetailFragment_toHabitDetailFragment"
-            app:destination="@+id/habitDetail_Fragment">
-        </action>
+            android:id="@+id/action_categoryDetailFragment_to_goalDetailFragment"
+            app:destination="@id/goalDetailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/goalDetail_Fragment"
+        android:id="@+id/goalDetailFragment"
         android:name="codemaestro.co.punchclock.Fragments.GoalDetailFragment"
-        android:label="goalDetail_Fragment"
-        tools:layout="@layout/fragment_goal_detail"/>
+        android:label="goalDetailFragment"
+        tools:layout="@layout/fragment_goal_detail" >
+        <action
+            android:id="@+id/action_goalDetailFragment_to_habitDetailFragment"
+            app:destination="@id/habitDetailFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/habitDetail_Fragment"
+        android:id="@+id/habitDetailFragment"
         android:name="codemaestro.co.punchclock.Fragments.HabitDetailFragment"
-        android:label="habitDetail_Fragment"
-        tools:layout="@layout/fragment_habit_detail"/>
+        android:label="habitDetailFragment"
+        tools:layout="@layout/fragment_habit_detail" />
 
 </navigation>
