@@ -12,6 +12,9 @@ public class TimerFragmentViewModel extends AndroidViewModel {
         super(application);
     }
 
+
+
+
     private LiveData<Long> observedTime = new MutableLiveData<>();
 
     // Method that returns liveData Object
@@ -22,6 +25,8 @@ public class TimerFragmentViewModel extends AndroidViewModel {
     public void setTimer(long displayTime) {
         ((MutableLiveData<Long>) observedTime).setValue(displayTime);
     }
+
+
 
 
 }

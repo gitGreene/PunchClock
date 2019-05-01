@@ -3,6 +3,8 @@ package codemaestro.co.punchclock.Fragments;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -21,17 +23,19 @@ import codemaestro.co.punchclock.R;
 import codemaestro.co.punchclock.Utils.FormatTimeUtil;
 import codemaestro.co.punchclock.ViewModel.TimerFragmentViewModel;
 
+
+//TODO: Make this better - especially about the lack of persistence. Maybe you can add pause time onto the initial system tier?
 public class TimerFragment extends Fragment {
     String TAG = "TimerFragment";
 
-    ToggleButton playPauseToggleButton;
-    Button stopButton;
+    Button playButton, pauseButton, stopButton;
     Button commitButton;
     long displayTime, initialTime;
     TimerFragmentViewModel timerFragmentViewModel;
     Handler handler;
     TextView timerView;
     FormatTimeUtil formatTimeUtil;
+    Boolean isRunning;
 
     public TimerFragment() {
     }
@@ -40,52 +44,78 @@ public class TimerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_timer, container, false);
-        playPauseToggleButton = view.findViewById(R.id.playPauseToggleButton);
+        playButton = view.findViewById(R.id.playButton);
+        pauseButton = view.findViewById(R.id.pauseButton);
         stopButton = view.findViewById(R.id.stopButton);
         commitButton = view.findViewById(R.id.commitButton);
         timerView = view.findViewById(R.id.timerView);
-
         handler = new Handler();
         formatTimeUtil = new FormatTimeUtil();
         timerFragmentViewModel = ViewModelProviders.of(this).get(TimerFragmentViewModel.class);
 
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPref.edit();
+
+        isRunning = sharedPref.getBoolean(getString(R.string.is_running_string_key), false);
+        displayTime = sharedPref.getLong(getString(R.string.timer_string_key), 0);
+        timerView.setText(formatTimeUtil.FormatMillisIntoHMS(displayTime));
+
+        if (isRunning) {
+            StartEnabledButtons();
+            if (displayTime > 0) {
+                initialTime = SystemClock.elapsedRealtime() - displayTime;
+            } else {
+                initialTime = SystemClock.elapsedRealtime();
+            }
+            handler.postDelayed(runTimer,  0);
+        }
+
         timerFragmentViewModel.getObservedTime().observe(this, new Observer<Long>() {
             @Override
-            public void onChanged(@Nullable Long aLong) {
-                if (aLong != null) {
-                    timerView.setText(formatTimeUtil.FormatMillisIntoHMS(aLong));
+            public void onChanged(@Nullable Long time) {
+                if (time != null) {
+                    editor.putLong(getString(R.string.timer_string_key), time);
+                    editor.apply();
+                    timerView.setText(formatTimeUtil.FormatMillisIntoHMS(time));
                 }
             }
         });
 
 
-        playPauseToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        playButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isRunning) {
-                if (isRunning) {
-                    if (displayTime > 0) {
-                        initialTime = SystemClock.elapsedRealtime() - displayTime;
-                    } else {
-                        initialTime = SystemClock.elapsedRealtime();
-                    }
-                    handler.postDelayed(runTimer,  0);
+            public void onClick(View view) {
+                editor.putBoolean(getString(R.string.is_running_string_key), true);
+                editor.apply();
+                StartEnabledButtons();
+                if (displayTime > 0) {
+                    initialTime = SystemClock.elapsedRealtime() - displayTime;
                 } else {
-                    handler.removeCallbacks(runTimer);
+                    initialTime = SystemClock.elapsedRealtime();
                 }
-
+                handler.postDelayed(runTimer,  0);
             }
         });
 
-//        stopButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                timerFragmentViewModel.setTimer(0);
-//                handler.removeCallbacks(runTimer);
-//            }
-//        });
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editor.putBoolean(getString(R.string.is_running_string_key), false);
+                editor.apply();
+                handler.removeCallbacks(runTimer);
+             }
+        });
 
-
-
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayTime = 0;
+                editor.putBoolean(getString(R.string.is_running_string_key), false);
+                editor.apply();
+                timerFragmentViewModel.setTimer(0);
+                handler.removeCallbacks(runTimer);
+            }
+        });
         return view;
     }
 
@@ -97,4 +127,29 @@ public class TimerFragment extends Fragment {
             handler.postDelayed(runTimer, 0);
         }
     };
+
+
+    public void StartEnabledButtons() {
+        // timer Started
+        playButton.setEnabled(false);
+        pauseButton.setEnabled(true);
+        stopButton.setEnabled(true);
+        commitButton.setEnabled(false);
+    }
+
+    public void PauseEnabledButtons() {
+        // timer Paused
+        playButton.setEnabled(true);
+        pauseButton.setEnabled(false);
+        stopButton.setEnabled(true);
+        commitButton.setEnabled(true);
+    }
+
+    public void DefaultEnabledButtons() {
+        // timer Reset
+        playButton.setEnabled(true);
+        pauseButton.setEnabled(false);
+        stopButton.setEnabled(false);
+        commitButton.setEnabled(false);
+    }
 }
