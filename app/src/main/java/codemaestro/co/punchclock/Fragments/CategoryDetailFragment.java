@@ -72,24 +72,22 @@ public class CategoryDetailFragment extends Fragment {
         final GoalsSmallAdapter goalsAdpater = new GoalsSmallAdapter(getActivity());
         final RecyclerView goalsRecyclerView = view.findViewById(R.id.goalsRecyclerView);
         goalsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        ViewCompat.setNestedScrollingEnabled(goalsRecyclerView, false);
         goalsRecyclerView.setHasFixedSize(true);
         goalsRecyclerView.setAdapter(goalsAdpater);
 
         ViewGroup.LayoutParams goalsParams = goalsRecyclerView.getLayoutParams();
-        goalsParams.height = 500;
+        goalsParams.height = 800;
         goalsParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
         goalsRecyclerView.setLayoutParams(goalsParams);
 
         final HabitsSmallAdapter habitsAdapter = new HabitsSmallAdapter(getActivity());
         final RecyclerView habitsRecyclerView = view.findViewById(R.id.habitsRecyclerView);
         habitsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        ViewCompat.setNestedScrollingEnabled(habitsRecyclerView, false);
         habitsRecyclerView.setHasFixedSize(true);
         habitsRecyclerView.setAdapter(habitsAdapter);
 
         ViewGroup.LayoutParams habitsParams = habitsRecyclerView.getLayoutParams();
-        habitsParams.height = 500;
+        habitsParams.height = 800;
         habitsParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
         habitsRecyclerView.setLayoutParams(habitsParams);
 
