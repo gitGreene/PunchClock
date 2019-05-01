@@ -13,9 +13,9 @@ import codemaestro.co.punchclock.Model.Habit;
 public class HabitViewModel extends AndroidViewModel {
     private Repository repository;
 
-    public HabitViewModel(@NonNull Application application, Repository repository) {
+    public HabitViewModel(@NonNull Application application) {
         super(application);
-        this.repository = repository;
+        this.repository = new Repository(application);
     }
 
     // TODO: Habit ViewModel Methods
