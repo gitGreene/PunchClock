@@ -9,12 +9,15 @@ import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.navigation.NavController;
@@ -37,6 +40,7 @@ public class CategoryDetailFragment extends Fragment {
     private TextView categoryTitle;
     private GoalViewModel goalViewModel;
     private HabitViewModel habitViewModel;
+    private FrameLayout goalsContainer, habitsContainer;
     private static final String TAG = "CategoryDetailFragment";
     private NavController navController;
 
@@ -68,13 +72,26 @@ public class CategoryDetailFragment extends Fragment {
         final GoalsSmallAdapter goalsAdpater = new GoalsSmallAdapter(getActivity());
         final RecyclerView goalsRecyclerView = view.findViewById(R.id.goalsRecyclerView);
         goalsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        ViewCompat.setNestedScrollingEnabled(goalsRecyclerView, false);
+        goalsRecyclerView.setHasFixedSize(true);
         goalsRecyclerView.setAdapter(goalsAdpater);
+
+        ViewGroup.LayoutParams goalsParams = goalsRecyclerView.getLayoutParams();
+        goalsParams.height = 500;
+        goalsParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        goalsRecyclerView.setLayoutParams(goalsParams);
 
         final HabitsSmallAdapter habitsAdapter = new HabitsSmallAdapter(getActivity());
         final RecyclerView habitsRecyclerView = view.findViewById(R.id.habitsRecyclerView);
         habitsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        ViewCompat.setNestedScrollingEnabled(habitsRecyclerView, false);
+        habitsRecyclerView.setHasFixedSize(true);
         habitsRecyclerView.setAdapter(habitsAdapter);
 
+        ViewGroup.LayoutParams habitsParams = habitsRecyclerView.getLayoutParams();
+        habitsParams.height = 500;
+        habitsParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        habitsRecyclerView.setLayoutParams(habitsParams);
 
         goalViewModel.getAllCategoryGoals(1).observe(this, new Observer<List<Goal>>() {
             @Override
@@ -91,6 +108,8 @@ public class CategoryDetailFragment extends Fragment {
                 Log.e(TAG, "habits observer");
             }
         });
+
+
 
         return view;
     }
