@@ -5,13 +5,22 @@
     android:layout_height="match_parent"
     android:background="@color/design_default_color_primary_dark">
 
-    <ToggleButton
-        android:id="@+id/playPauseToggleButton"
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pauseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/stopButton"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/playButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -20,7 +29,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/commitButton"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/playPauseToggleButton"
+        app:layout_constraintStart_toEndOf="@+id/pauseButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
