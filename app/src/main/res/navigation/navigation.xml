@@ -62,11 +62,7 @@
         android:id="@+id/goalDetailFragment"
         android:name="codemaestro.co.punchclock.Fragments.GoalDetailFragment"
         android:label="goalDetailFragment"
-        tools:layout="@layout/fragment_goal_detail" >
-        <action
-            android:id="@+id/action_goalDetailFragment_to_habitDetailFragment"
-            app:destination="@id/habitDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_goal_detail" />
 
     <fragment
         android:id="@+id/habitDetailFragment"

@@ -13,7 +13,6 @@ import androidx.navigation.Navigation;
 
 import java.util.List;
 
-import codemaestro.co.punchclock.Fragments.CategoryDetailFragmentDirections;
 import codemaestro.co.punchclock.Model.Goal;
 import codemaestro.co.punchclock.R;
 
@@ -73,7 +72,7 @@ public class GoalsSmallAdapter extends RecyclerView.Adapter {
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
                     bundle.putString(GOAL_NAME_TAG, goal.getGoalName());
-                    Navigation.findNavController(view).navigate(R.id.categoryDetailFragment_toGoalDetailFragment, bundle);
+                    Navigation.findNavController(view).navigate(R.id.action_categoryDetailFragment_to_goalDetailFragment, bundle);
                 }
             });
 
