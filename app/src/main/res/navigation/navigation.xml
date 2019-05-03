@@ -27,10 +27,18 @@
             android:label="createCategoryFormFragment"
             tools:layout="@layout/fragment_create_category_form">
             <action
-                android:id="@+id/action_createCategoryFormFragment_to_categoryDetailFragment"
-                app:destination="@id/categoryDetailFragment" />
+                android:id="@+id/action_createCategoryFormFragment_to_categoryCreatorFragment"
+                app:destination="@id/categoryCreatorFragment" />
         </fragment>
+
+        <fragment
+            android:id="@+id/categoryCreatorFragment"
+            android:name="codemaestro.co.punchclock.Fragments.CategoryCreatorFragment"
+            android:label="categoryCreatorFragment"
+            tools:layout="@layout/fragment_category_creator"/>
     </navigation>
+
+
 
 
     <fragment
