@@ -28,6 +28,9 @@ public interface CategoryDao {
     @Query("SELECT * from category_table WHERE category_name = :categoryName")
     LiveData<Category> getCategoryByName(String categoryName);
 
+    @Query("SELECT * from category_table WHERE category_name = :categoryName")
+    Category getCategoryByNameTest(String categoryName);
+
     // get all Favorite Categories
     @Query("SELECT * from category_table WHERE is_favorite")
     LiveData<List<Category>> getFavorites();

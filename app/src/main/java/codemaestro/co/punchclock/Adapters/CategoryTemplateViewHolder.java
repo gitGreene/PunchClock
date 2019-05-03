@@ -1,6 +1,7 @@
 package codemaestro.co.punchclock.Adapters;
 
 import android.app.Activity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import codemaestro.co.punchclock.R;
+import codemaestro.co.punchclock.ViewModel.CreateCategoryViewModel;
 
 public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
     private TextView categoryHeaderText, categoryDescLabel, categoryDescription;

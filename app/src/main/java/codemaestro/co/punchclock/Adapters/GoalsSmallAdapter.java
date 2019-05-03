@@ -25,10 +25,11 @@ public class GoalsSmallAdapter extends RecyclerView.Adapter {
     public GoalsSmallAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
+
     }
 
-    public void setCategoryGoals(List<Goal> goals) {
-        this.goals = goals;
+    public void setCategoryGoals(final List<Goal> allCategoryGoals) {
+        this.goals = allCategoryGoals;
         notifyDataSetChanged();
     }
 
@@ -47,9 +48,11 @@ public class GoalsSmallAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        if(goals != null) {
+        try {
             return goals.size();
-        } else return 0;
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
 

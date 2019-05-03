@@ -11,12 +11,26 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_createCategoryFormFragment"
-            app:destination="@id/createCategoryFormFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_categoryDetailFragment"
             app:destination="@id/categoryDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createCategoryGraph"
+            app:destination="@+id/createCategoryGraph"/>
     </fragment>
+
+    <navigation
+        android:id="@+id/createCategoryGraph"
+        app:startDestination="@id/createCategoryFormFragment">
+        <fragment
+            android:id="@+id/createCategoryFormFragment"
+            android:name="codemaestro.co.punchclock.Fragments.CreateCategoryFormFragment"
+            android:label="createCategoryFormFragment"
+            tools:layout="@layout/fragment_create_category_form">
+            <action
+                android:id="@+id/action_createCategoryFormFragment_to_categoryDetailFragment"
+                app:destination="@id/categoryDetailFragment" />
+        </fragment>
+    </navigation>
 
 
     <fragment
@@ -37,16 +51,6 @@
         android:name="codemaestro.co.punchclock.Fragments.TimerFragment"
         android:label="fragment_timer"
         tools:layout="@layout/fragment_timer" />
-
-    <fragment
-        android:id="@+id/createCategoryFormFragment"
-        android:name="codemaestro.co.punchclock.Fragments.CreateCategoryFormFragment"
-        android:label="createCategoryFormFragment"
-        tools:layout="@layout/fragment_create_category_form">
-        <action
-            android:id="@+id/action_createCategoryFormFragment_to_categoryDetailFragment"
-            app:destination="@id/categoryDetailFragment" />
-    </fragment>
 
     <fragment
         android:id="@+id/categoryDetailFragment"
