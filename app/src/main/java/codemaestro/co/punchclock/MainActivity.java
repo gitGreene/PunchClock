@@ -25,15 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.bottom_nav_view);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        fab = findViewById(R.id.floatingActionButton);
-
         NavigationUI.setupWithNavController(bottomNav, navController);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_homeFragment_to_createCategoryFormFragment);
-            }
-        });
     }
 }

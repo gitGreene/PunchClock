@@ -28,6 +28,7 @@ public class Repository {
     // Lists of LiveData
     private LiveData<Category> currentCategory;
     private LiveData<List<Category>> allCategories;
+    private Category createCategoryTest;
 
     private LiveData<Goal> currentGoal;
     private LiveData<List<Goal>> allGoals;
@@ -76,6 +77,10 @@ public class Repository {
 
     public LiveData<List<Category>> getFavoriteCategories() {
         return categoryDao.getFavorites();
+    }
+
+    public Category getCategoryByNameTest(String categoryName) {
+        return categoryDao.getCategoryByNameTest(categoryName);
     }
 
 

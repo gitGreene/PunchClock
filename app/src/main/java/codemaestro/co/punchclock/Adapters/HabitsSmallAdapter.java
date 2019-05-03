@@ -48,9 +48,11 @@ public class HabitsSmallAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        if(habits != null) {
+        try {
             return habits.size();
-        } else return 0;
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
 
