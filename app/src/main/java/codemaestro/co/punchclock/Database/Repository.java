@@ -28,7 +28,7 @@ public class Repository {
     // Lists of LiveData
     private LiveData<Category> currentCategory;
     private LiveData<List<Category>> allCategories;
-    private Category createCategoryTest;
+    private static Category createCategoryTest;
 
     private LiveData<Goal> currentGoal;
     private LiveData<List<Goal>> allGoals;
@@ -79,9 +79,45 @@ public class Repository {
         return categoryDao.getFavorites();
     }
 
+
+
+
+
+
     public Category getCategoryByNameTest(String categoryName) {
-        return categoryDao.getCategoryByNameTest(categoryName);
+        new TemplateCategoryTestAsync(categoryDao).execute(categoryName);
+        return createCategoryTest;
     }
+
+    private static void returnCategoryByNameTest(Category category) {
+        createCategoryTest = category;
+    }
+
+    private static class TemplateCategoryTestAsync extends AsyncTask<String, Void, Category> {
+        private CategoryDao categoryDao;
+
+        TemplateCategoryTestAsync(CategoryDao categoryDao) {
+            this.categoryDao = categoryDao;
+        }
+
+        @Override
+        protected Category doInBackground(String... strings) {
+            return categoryDao.getCategoryByNameTest(strings[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Category category) {
+            super.onPostExecute(category);
+            returnCategoryByNameTest(category);
+        }
+    }
+
+
+
+
+
+
+
 
 
     // TODO: Goal Respository Methods
