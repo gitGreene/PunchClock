@@ -28,7 +28,7 @@ public class CreateCategoryFormFragment extends Fragment implements CategoryTemp
     private static final String TAG = "CreateCategoryForm: ";
     private NavController navController;
     private CreateCategoryViewModel viewModel;
-    public static final String CATEGORY_TITLE_TAG = "CATEGORY_TITLE";
+    public static final String TEMPLATE_ID = "TEMPLATE_ID";
 
     public CreateCategoryFormFragment() {
     }
@@ -48,25 +48,25 @@ public class CreateCategoryFormFragment extends Fragment implements CategoryTemp
                 switch (categoryTemplate) {
                     case HEALTH:
                         Bundle bundleHealth = new Bundle();
-                        bundleHealth.putString(CATEGORY_TITLE_TAG, "Health");
+                        bundleHealth.putInt(TEMPLATE_ID, 1);
 //                        navController.navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleHealth);
                         Navigation.findNavController(view).navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleHealth);
                         break;
                     case FAMILY:
                         Bundle bundleFamily = new Bundle();
-                        bundleFamily.putString(CATEGORY_TITLE_TAG, "Health");
+                        bundleFamily.putInt(TEMPLATE_ID, 2);
 //                        navController.navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleFamily);
                         Navigation.findNavController(view).navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleFamily);
                         break;
                     case FRIENDS:
                         Bundle bundleFriends = new Bundle();
-                        bundleFriends.putString(CATEGORY_TITLE_TAG, "Health");
+                        bundleFriends.putInt(TEMPLATE_ID, 3);
 //                        navController.navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleFriends);
                         Navigation.findNavController(view).navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleFriends);
                         break;
                     case CAREER:
                         Bundle bundleCareer = new Bundle();
-                        bundleCareer.putString(CATEGORY_TITLE_TAG, "Health");
+                        bundleCareer.putInt(TEMPLATE_ID, 4);
 //                        navController.navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleCareer);
                         Navigation.findNavController(view).navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundleCareer);
                         break;
