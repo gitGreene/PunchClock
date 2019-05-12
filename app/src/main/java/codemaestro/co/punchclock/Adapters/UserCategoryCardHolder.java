@@ -18,18 +18,18 @@ import codemaestro.co.punchclock.R;
 public class UserCategoryCardHolder extends RecyclerView.ViewHolder {
 
    // private Context context;
-    private Category userCategory;
+    //private Category userCategory;
     private TextView categoryName;
     public static final String CATEGORY_ID = "CATEGORY_ID";
 
-    public UserCategoryCardHolder(@NonNull View itemView, Context context) {
+    UserCategoryCardHolder(@NonNull View itemView, Context context) {
         super(itemView);
         //this.context = context;
         this.categoryName = itemView.findViewById(R.id.category_card_title);
     }
 
-    public void setUserCategoryCard(final Category userCategory) {
-        this.userCategory = userCategory;
+    void setUserCategoryCard(final Category userCategory) {
+        //this.userCategory = userCategory;
         categoryName.setText(userCategory.getCategoryName());
 
         itemView.setOnClickListener(new View.OnClickListener() {
