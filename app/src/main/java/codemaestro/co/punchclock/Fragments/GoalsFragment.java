@@ -41,12 +41,6 @@ public class GoalsFragment extends Fragment {
         final UserGoalAdapter adapter = new UserGoalAdapter(getActivity());
         recView.setAdapter(adapter);
 
-//        // Recview setup
-//        RecyclerView recView = view.findViewById(R.id.category_recycler_view);
-//        recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-//        final UserCategoryAdapter adapter = new UserCategoryAdapter(getActivity());
-//        recView.setAdapter(adapter);
-
         goalViewModel.getAllGoals().observe(this, new Observer<List<Goal>>() {
             @Override
             public void onChanged(@Nullable List<Goal> goals) {
