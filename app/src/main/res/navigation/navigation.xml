@@ -23,12 +23,18 @@
         android:name="codemaestro.co.punchclock.Fragments.GoalsFragment"
         android:label="fragment_goals"
         tools:layout="@layout/fragment_goals" >
+        <action
+            android:id="@+id/action_goalsFragment_to_goalDetailFragment"
+            app:destination="@id/goalDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/habitsFragment"
         android:name="codemaestro.co.punchclock.Fragments.HabitsFragment"
         android:label="fragment_habits"
         tools:layout="@layout/fragment_habits" >
+        <action
+            android:id="@+id/action_habitsFragment_to_habitDetailFragment"
+            app:destination="@id/habitDetailFragment" />
     </fragment>
 
     <fragment

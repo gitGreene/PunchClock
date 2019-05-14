@@ -37,10 +37,12 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
-        userCategoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
 
+        // VM/button reference
+        userCategoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         addCategoryButton = view.findViewById(R.id.createCategoryButton);
 
+        // Recview setup
         RecyclerView recView = view.findViewById(R.id.category_recycler_view);
         recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         final UserCategoryAdapter adapter = new UserCategoryAdapter(getActivity());
