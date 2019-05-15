@@ -33,7 +33,7 @@ public class UserCategoryAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view = inflater.inflate(R.layout.user_category_card, viewGroup, false);
+        View view = inflater.inflate(R.layout.card_user_category, viewGroup, false);
         return new UserCategoryCardHolder(view, context);
     }
 

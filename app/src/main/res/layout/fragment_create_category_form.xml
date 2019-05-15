@@ -41,7 +41,7 @@
             android:id="@+id/default_categories_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/category_template_card"/>
+            tools:listitem="@layout/card_category_template"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

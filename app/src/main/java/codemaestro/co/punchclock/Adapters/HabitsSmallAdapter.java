@@ -13,7 +13,6 @@ import androidx.navigation.Navigation;
 
 import java.util.List;
 
-import codemaestro.co.punchclock.Model.Goal;
 import codemaestro.co.punchclock.Model.Habit;
 import codemaestro.co.punchclock.R;
 
@@ -36,7 +35,7 @@ public class HabitsSmallAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view = inflater.inflate(R.layout.habit_small_card, viewGroup, false);
+        View view = inflater.inflate(R.layout.card_small_habit, viewGroup, false);
         return new HabitSmallViewHolder(view);
     }
 

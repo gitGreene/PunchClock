@@ -25,6 +25,9 @@ public class Habit {
     @ColumnInfo(name = "parent_category_id")
     private int parentCategoryId;
 
+    @ColumnInfo(name = "category_name")
+    private String categoryName;
+
     @ColumnInfo(name = "habit_name")
     private String habitName;
 
@@ -61,9 +64,10 @@ public class Habit {
     private String habitDescription;
 
     @Ignore
-    public Habit(int habitId, int parentCategoryId, String habitName, Date startDate, boolean isTimeBased, long habitGoalTimeInMillis, long habitCycleValueInMillis, long timeScheduledInMillis, long timeCommittedInMillis, @Nullable Date targetDate, long habitValue, int timesHabitReached, @Nullable String habitDescription) {
+    public Habit(int habitId, int parentCategoryId, String categoryName, String habitName, Date startDate, boolean isTimeBased, long habitGoalTimeInMillis, long habitCycleValueInMillis, long timeScheduledInMillis, long timeCommittedInMillis, @Nullable Date targetDate, long habitValue, int timesHabitReached, @Nullable String habitDescription) {
         this.habitId = habitId;
         this.parentCategoryId = parentCategoryId;
+        this.categoryName = categoryName;
         this.habitName = habitName;
         this.startDate = startDate;
         this.isTimeBased = isTimeBased;
@@ -77,8 +81,9 @@ public class Habit {
         this.habitDescription = habitDescription;
     }
 
-    public Habit(int parentCategoryId, String habitName, long habitCycleValueInMillis, Date startDate, boolean isTimeBased, long timeScheduledInMillis, @Nullable Date targetDate) {
+    public Habit(int parentCategoryId, String categoryName, String habitName, long habitCycleValueInMillis, Date startDate, boolean isTimeBased, long timeScheduledInMillis, @Nullable Date targetDate) {
         this.parentCategoryId = parentCategoryId;
+        this.categoryName = categoryName;
         this.habitName = habitName;
         this.habitCycleValueInMillis = habitCycleValueInMillis;
     }
@@ -97,6 +102,14 @@ public class Habit {
 
     public void setParentCategoryId(int parentCategoryId) {
         this.parentCategoryId = parentCategoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getHabitName() {

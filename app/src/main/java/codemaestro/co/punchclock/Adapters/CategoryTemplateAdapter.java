@@ -30,7 +30,7 @@ public class CategoryTemplateAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view1 = inflater.inflate(R.layout.category_template_card, viewGroup, false);
+        View view1 = inflater.inflate(R.layout.card_category_template, viewGroup, false);
         return new CategoryTemplateViewHolder(view1, context);
     }
 

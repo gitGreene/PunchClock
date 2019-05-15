@@ -34,7 +34,7 @@ public class UserHabitAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.user_habit_card, viewGroup, false);
+        View view = inflater.inflate(R.layout.card_user_habit, viewGroup, false);
         return new UserHabitViewHolder(view);
     }
 

@@ -23,7 +23,7 @@ class UserGoalViewHolder extends RecyclerView.ViewHolder {
 
     void setUserGoalCard(final Goal goal) {
         goalCardTitle.setText(goal.getGoalName());
-        goalCardCategoryName.setText(""+goal.getParentCategoryId());
+        goalCardCategoryName.setText(goal.getCategoryName());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
