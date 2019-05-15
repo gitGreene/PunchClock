@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toTopOf="@+id/habitMoreInformationContainer">
 
             <TextView
-                android:id="@+id/habit_card_title"
+                android:id="@+id/habitCardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/habitTitleContainer">
 
             <TextView
-                android:id="@+id/habitInformationPlaceholder"
+                android:id="@+id/habitCardCategoryName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
