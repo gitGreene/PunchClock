@@ -16,8 +16,10 @@ import codemaestro.co.punchclock.ViewModel.CreateCategoryViewModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategoryCreatorFragment extends Fragment {
+public class CategoryCreatorFragment extends Fragment implements CreateHealthCategoryFragment.ContinueButtonClicked {
     private int templateId;
+    private CategoryWizardAdapter adapter;
+    private ViewPager viewPager;
 
 
     public CategoryCreatorFragment() {
@@ -31,11 +33,15 @@ public class CategoryCreatorFragment extends Fragment {
 
         int templateId = getArguments().getInt("TEMPLATE_ID");
 
-        ViewPager viewPager = view.findViewById(R.id.templateQuestionsViewPager);
-        CategoryWizardAdapter adapter = new CategoryWizardAdapter(getChildFragmentManager(), templateId);
+        viewPager = view.findViewById(R.id.templateQuestionsViewPager);
+        adapter = new CategoryWizardAdapter(getChildFragmentManager(), templateId, this);
         viewPager.setAdapter(adapter);
         viewPager.getCurrentItem();
         return view;
     }
 
+    @Override
+    public void continueButtonClicked() {
+        viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+    }
 }

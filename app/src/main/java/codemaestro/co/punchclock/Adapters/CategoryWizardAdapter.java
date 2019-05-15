@@ -13,12 +13,13 @@ import codemaestro.co.punchclock.Fragments.CreateHealthCategoryFragment;
 
 
 public class CategoryWizardAdapter extends FragmentPagerAdapter {
-    private static int NUM_OF_FRAMES = 20;
     private int templateId;
+    private CreateHealthCategoryFragment.ContinueButtonClicked listener;
 
-    public CategoryWizardAdapter(FragmentManager fragmentManager, int templateId) {
+    public CategoryWizardAdapter(FragmentManager fragmentManager, int templateId, CreateHealthCategoryFragment.ContinueButtonClicked listener) {
         super(fragmentManager);
         this.templateId = templateId;
+        this.listener = listener;
     }
 
 
@@ -28,7 +29,7 @@ public class CategoryWizardAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (templateId) {
             case 0:
-                fragment = CreateHealthCategoryFragment.newInstance(position);
+                fragment = CreateHealthCategoryFragment.newInstance(0, listener);
                 break;
             case 1:
                 fragment = CreateFamilyCategoryFragment.newInstance(position);
@@ -49,7 +50,7 @@ public class CategoryWizardAdapter extends FragmentPagerAdapter {
     public int getCount() {
         switch (templateId) {
             case 0:
-                return 5;
+                return 3;
             case 1:
                 return 4;
             case 2:

@@ -59,6 +59,11 @@ public class CategoryDetailFragment extends Fragment {
 //                Log.e(TAG, "habits observer");
 //            }
 //        });
+
+        //TODO: Code that checks to see whether this category has any Goals or Habits
+        //TODO: If not, then the create Goals Dialog will appear, then create Habits dialog will appear in that order
+
+
     }
 
     @Override

@@ -1,15 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.CreateHealthCategoryFragment">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Health Page 1"
-        android:textSize="100sp"/>
+        android:id="@+id/questionLabelOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question Label"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/questionLabelTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question Label 2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/questionWeightEditText"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/questionEditTextOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:hint="Hint"
+        app:layout_constraintTop_toBottomOf="@id/questionLabelOne"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"/>
+
+    <EditText
+        android:id="@+id/questionDescriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/questionEditTextOne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"/>
+
+
+    <Button
+        android:id="@+id/questionContinueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:text="Continue"
+        app:layout_constraintTop_toBottomOf="@+id/questionEditTextOne"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/questionWeightEditText"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionLabelOne"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/questionEnterHeightFeet"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:ems="30"
+        android:hint="Feet"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/questionLabelTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/questionEnterHeightInches"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/questionEnterHeightInches"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:ems="30"
+        android:hint="Inches"
+        android:textAlignment="center"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/questionLabelTwo"
+        app:layout_constraintStart_toEndOf="@id/questionEnterHeightFeet"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"/>
+
+
+
+</android.support.constraint.ConstraintLayout>
