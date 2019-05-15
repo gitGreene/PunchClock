@@ -24,7 +24,7 @@ class UserHabitViewHolder extends RecyclerView.ViewHolder {
 
     void setUserHabitCard(final Habit habit) {
         habitNameView.setText(habit.getHabitName());
-        categoryNameView.setText(""+habit.getParentCategoryId());
+        categoryNameView.setText(habit.getCategoryName());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

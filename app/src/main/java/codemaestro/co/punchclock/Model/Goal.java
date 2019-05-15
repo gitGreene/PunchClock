@@ -26,6 +26,9 @@ public class Goal {
     @ColumnInfo(name = "parent_category_id")
     private int parentCategoryId;
 
+    @ColumnInfo(name = "category_name")
+    private String categoryName;
+
     @ColumnInfo(name = "goal_name")
     private String goalName;
 
@@ -52,9 +55,10 @@ public class Goal {
     private String goalDescription;
 
     @Ignore
-    public Goal(int goalId, int parentCategoryId, String goalName, Date startDate, Date goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime, int timesGoalMet, @Nullable String goalDescription) {
+    public Goal(int goalId, int parentCategoryId, String categoryName, String goalName, Date startDate, Date goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime, int timesGoalMet, @Nullable String goalDescription) {
         this.goalId = goalId;
         this.parentCategoryId = parentCategoryId;
+        this.categoryName = categoryName;
         this.goalName = goalName;
         this.startDate = startDate;
         this.goalTargetDate = goalTargetDate;
@@ -66,8 +70,9 @@ public class Goal {
     }
 
 
-    public Goal(int parentCategoryId, String goalName, Date startDate, Date goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime) {
+    public Goal(int parentCategoryId, String categoryName, String goalName, Date startDate, Date goalTargetDate, boolean isGoalRecurring, boolean isGoalTimeBased, long goalGoalTime) {
         this.parentCategoryId = parentCategoryId;
+        this.categoryName = categoryName;
         this.goalName = goalName;
         this.startDate = startDate;
         this.goalTargetDate = goalTargetDate;
@@ -90,6 +95,14 @@ public class Goal {
 
     public void setParentCategoryId(int parentCategoryId) {
         this.parentCategoryId = parentCategoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getGoalName() {

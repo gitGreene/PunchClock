@@ -17,9 +17,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import codemaestro.co.punchclock.R;
-import codemaestro.co.punchclock.ViewModel.CreateCategoryViewModel;
-
-import static android.support.constraint.Constraints.TAG;
 
 public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
     private TextView categoryHeaderText, categoryDescLabel, categoryDescription;

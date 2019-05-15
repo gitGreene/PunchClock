@@ -37,7 +37,7 @@ public class GoalsFragment extends Fragment {
         GoalViewModel goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
 
         RecyclerView recView = view.findViewById(R.id.goal_recycler_view);
-        recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        recView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         final UserGoalAdapter adapter = new UserGoalAdapter(getActivity());
         recView.setAdapter(adapter);
 
