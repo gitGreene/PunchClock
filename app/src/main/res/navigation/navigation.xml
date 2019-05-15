@@ -47,7 +47,7 @@
         android:id="@+id/categoryDetailFragment"
         android:name="codemaestro.co.punchclock.Fragments.CategoryDetailFragment"
         android:label="categoryDetailFragment"
-        tools:layout="@layout/fragment_category_detail">
+        tools:layout="@layout/fragment_detail_category">
         <action
             android:id="@+id/action_categoryDetailFragment_to_goalDetailFragment"
             app:destination="@id/goalDetailFragment" />
@@ -60,13 +60,13 @@
         android:id="@+id/goalDetailFragment"
         android:name="codemaestro.co.punchclock.Fragments.GoalDetailFragment"
         android:label="goalDetailFragment"
-        tools:layout="@layout/fragment_goal_detail" />
+        tools:layout="@layout/fragment_detail_goal" />
 
     <fragment
         android:id="@+id/habitDetailFragment"
         android:name="codemaestro.co.punchclock.Fragments.HabitDetailFragment"
         android:label="habitDetailFragment"
-        tools:layout="@layout/fragment_habit_detail" />
+        tools:layout="@layout/fragment_detail_habit" />
 
 
 

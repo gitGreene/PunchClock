@@ -36,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:nestedScrollingEnabled="false"
-                tools:listitem="@layout/goal_small_card" />
+                tools:listitem="@layout/card_small_goal" />
 
             <TextView
                 android:id="@+id/habitsLabel"
@@ -54,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:nestedScrollingEnabled="false"
-                tools:listitem="@layout/habit_small_card" />
+                tools:listitem="@layout/card_small_habit" />
         </LinearLayout>
 
 

@@ -16,11 +16,14 @@ public class CategoryTemplateAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private Resources resources;
     private Context context;
+    private CategoryTemplateViewHolder.TemplateCardListener listener;
 
-    public CategoryTemplateAdapter(Context context, Resources resources) {
+    public CategoryTemplateAdapter(Context context, Resources resources, final CategoryTemplateViewHolder.TemplateCardListener listener) {
         this.inflater = LayoutInflater.from(context);
         this.resources = resources;
         this.context = context;
+        this.listener = listener;
+
     }
 
     public void showDefaultCategories(){
@@ -30,8 +33,8 @@ public class CategoryTemplateAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view1 = inflater.inflate(R.layout.category_template_card, viewGroup, false);
-        return new CategoryTemplateViewHolder(view1, context);
+        View view1 = inflater.inflate(R.layout.card_category_template, viewGroup, false);
+        return new CategoryTemplateViewHolder(view1, context, listener);
     }
 
     @Override

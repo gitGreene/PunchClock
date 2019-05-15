@@ -34,7 +34,7 @@ public class UserGoalAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.user_goal_card, viewGroup, false);
+        View view = inflater.inflate(R.layout.card_user_goal, viewGroup, false);
         return new UserGoalViewHolder(view);
     }
 
