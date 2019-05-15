@@ -26,24 +26,16 @@ public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
     private Button createButton;
     private Context context;
     private NavController navController;
-    private TemplateCardListener listener;
     public static final String TAG = "TemplateViewHolder: ";
+    public static final String TEMPLATE_ID = "TEMPLATE_ID";
 
-    public interface TemplateCardListener {
-        void onCreateButtonClicked(String categoryTitle);
-    }
-
-
-    public CategoryTemplateViewHolder(@NonNull final View itemView, Context context, TemplateCardListener listener) {
+    public CategoryTemplateViewHolder(@NonNull final View itemView, Context context) {
         super(itemView);
         categoryHeaderText = itemView.findViewById(R.id.category_template_card_header);
         categoryDescLabel = itemView.findViewById(R.id.template_description_label);
         categoryDescription = itemView.findViewById(R.id.template_description);
         createButton = itemView.findViewById(R.id.create_category_button);
         this.context = context;
-        this.listener = listener;
-
-
     }
 
     public void setCategoryTemplateData(final int position, Resources resources) {
@@ -58,7 +50,9 @@ public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onCreateButtonClicked(categoryTitles[position]);
+                Bundle bundle = new Bundle();
+                bundle.putInt(TEMPLATE_ID, position);
+                Navigation.findNavController(view).navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundle);
                 Log.e(TAG, "Create Button Clicked");
             }
         });

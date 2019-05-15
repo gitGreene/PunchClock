@@ -16,7 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import codemaestro.co.punchclock.Adapters.CategoryTemplateViewHolder;
 import codemaestro.co.punchclock.ViewModel.CreateCategoryViewModel;
 
-public class MainActivity extends AppCompatActivity implements CategoryTemplateViewHolder.TemplateCardListener {
+public class MainActivity extends AppCompatActivity {
     private NavController navController;
     private BottomNavigationView bottomNav;
     private FloatingActionButton fab;
@@ -33,16 +33,9 @@ public class MainActivity extends AppCompatActivity implements CategoryTemplateV
         createCategoryViewModel = ViewModelProviders.of(this).get(CreateCategoryViewModel.class);
 
 
-
-
         bottomNav = findViewById(R.id.bottom_nav_view);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNav, navController);
     }
 
-    @Override
-    public void onCreateButtonClicked(String categoryTitle) {
-        createCategoryViewModel.triggerCategoryWizard(categoryTitle);
-        Log.e(TAG, "Create Button MainActivity Listener");
-    }
 }
