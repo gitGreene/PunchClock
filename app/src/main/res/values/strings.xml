@@ -44,4 +44,8 @@
     <string name="create_goal">Create Goal</string>
     <string name="create_habit">Create Habit</string>
     <string name="create_category">Create Category</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="commit">Commit</string>
 </resources>

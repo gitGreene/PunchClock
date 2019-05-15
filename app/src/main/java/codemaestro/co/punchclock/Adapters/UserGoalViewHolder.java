@@ -12,15 +12,18 @@ import codemaestro.co.punchclock.Model.Goal;
 import codemaestro.co.punchclock.R;
 
 class UserGoalViewHolder extends RecyclerView.ViewHolder {
-    private TextView goalNameView;
+    private TextView goalCardTitle;
+    private TextView goalCardCategoryName;
 
     UserGoalViewHolder(@NonNull View itemView) {
         super(itemView);
-        goalNameView = itemView.findViewById(R.id.goal_card_title);
+        goalCardTitle = itemView.findViewById(R.id.goalCardTitle);
+        goalCardCategoryName = itemView.findViewById(R.id.goalCardCategoryName);
     }
 
     void setUserGoalCard(final Goal goal) {
-        goalNameView.setText(goal.getGoalName());
+        goalCardTitle.setText(goal.getGoalName());
+        goalCardCategoryName.setText(""+goal.getParentCategoryId());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

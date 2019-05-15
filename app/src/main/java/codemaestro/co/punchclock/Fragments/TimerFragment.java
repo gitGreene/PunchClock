@@ -25,7 +25,7 @@ import codemaestro.co.punchclock.ViewModel.TimerFragmentViewModel;
 
 
 //TODO: Make this better - especially about the lack of persistence. Maybe you can add pause time onto the initial system tier?
-public class TimerFragment extends Fragment {
+public class  TimerFragment extends Fragment {
     String TAG = "TimerFragment";
 
     Button playButton, pauseButton, stopButton;

@@ -14,15 +14,17 @@ import codemaestro.co.punchclock.Model.Habit;
 import codemaestro.co.punchclock.R;
 
 class UserHabitViewHolder extends RecyclerView.ViewHolder {
-    private TextView habitNameView;
+    private TextView habitNameView, categoryNameView;
 
     UserHabitViewHolder(@NonNull View itemView) {
         super(itemView);
-        habitNameView = itemView.findViewById(R.id.habit_card_title);
+        habitNameView = itemView.findViewById(R.id.habitCardTitle);
+        categoryNameView = itemView.findViewById(R.id.habitCardCategoryName);
     }
 
     void setUserHabitCard(final Habit habit) {
         habitNameView.setText(habit.getHabitName());
+        categoryNameView.setText(""+habit.getParentCategoryId());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

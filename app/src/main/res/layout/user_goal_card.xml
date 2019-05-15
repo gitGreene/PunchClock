@@ -9,8 +9,8 @@
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/goal_card_title_container"
+    <RelativeLayout
+        android:id="@+id/goalRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="3dp">
@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toTopOf="@+id/goalMoreInformationContainer">
 
             <TextView
-                android:id="@+id/goal_card_title"
+                android:id="@+id/goalCardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -37,14 +37,10 @@
                 android:layout_marginBottom="4dp"
                 android:textColor="@color/white"
                 android:textSize="27sp"
-                app:layout_constraintBottom_toBottomOf="@+id/goal_card_title_container"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Goal" />
 
             <TextView
-                android:id="@+id/goal_card_total_time"
+                android:id="@+id/goalCardTotalTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -53,24 +49,21 @@
                 android:layout_marginBottom="4dp"
                 android:textColor="@color/white"
                 android:textSize="27sp"
-                app:layout_constraintBottom_toBottomOf="@+id/goal_card_title_container"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:text="0d0h0m" />
+
         </LinearLayout>
 
         <LinearLayout
+            android:layout_below="@+id/goalTitleContainer"
             android:id="@+id/goalMoreInformationContainer"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
             android:background="@color/card_body_background"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/goalTitleContainer">
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/goalInformationPlaceholder"
+                android:id="@+id/goalCardCategoryName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -78,12 +71,9 @@
                 android:layout_weight="1"
                 android:text="More Information"
                 android:textColor="@color/total_time_text_color"
-                android:textSize="32sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="32sp"/>
         </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>
