@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import codemaestro.co.punchclock.R;
 
@@ -22,18 +23,15 @@ public class CreateHealthCategoryFragment extends Fragment {
 
     public static CreateHealthCategoryFragment newInstance(int templateId) {
         templateQuestionNumber = templateId;
-        return new CreateHealthCategoryFragment();
+        return  new CreateHealthCategoryFragment();
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_create_health_category, container, false);
-
-
-
-
-
+        TextView textView =  view.findViewById(R.id.textView);
+        textView.setText("Fuck you");
 
         return view;
     }
