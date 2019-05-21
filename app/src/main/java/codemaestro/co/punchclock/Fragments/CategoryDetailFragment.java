@@ -52,7 +52,7 @@ public class CategoryDetailFragment extends Fragment {
 //                Log.e(TAG, "goals observers");
 //            }
 //        });
-//        habitViewModel.getHabitsByCategoryId(1).observe(this, new Observer<List<Habit>>() {
+//        habitViewModel.getHabitByCategoryId(1).observe(this, new Observer<List<Habit>>() {
 //            @Override
 //            public void onChanged(@Nullable List<Habit> habits) {
 //                habitsAdapter.setHabits(habits);

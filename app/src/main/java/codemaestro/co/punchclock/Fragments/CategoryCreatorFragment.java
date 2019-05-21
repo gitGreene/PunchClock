@@ -20,6 +20,7 @@ public class CategoryCreatorFragment extends Fragment implements CreateHealthCat
     private int templateId;
     private CategoryWizardAdapter adapter;
     private ViewPager viewPager;
+    int x;
 
 
     public CategoryCreatorFragment() {

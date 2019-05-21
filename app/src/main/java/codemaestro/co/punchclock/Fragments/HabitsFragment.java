@@ -36,7 +36,7 @@ public class HabitsFragment extends Fragment {
         HabitViewModel habitViewModel = ViewModelProviders.of(this).get(HabitViewModel.class);
 
         RecyclerView recView = view.findViewById(R.id.habit_recycler_view);
-        recView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        recView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         final UserHabitAdapter adapter = new UserHabitAdapter(getContext());
         recView.setAdapter(adapter);
 

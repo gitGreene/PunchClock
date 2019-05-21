@@ -6,10 +6,48 @@
     tools:context=".Fragments.HabitDetailFragment">
 
     <TextView
-        android:id="@+id/goalName"
+        android:id="@+id/goalDetailGoalNameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Goal Name" />
+
+    <TextView
+        android:id="@+id/goalDetailCategoryView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="categoryName" />
+    <TextView
+        android:id="@+id/goalDetailStartDateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="startDate" />
+    <TextView
+        android:id="@+id/goalDetailGoalTargetDateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="ifTimeBased" />
+    <TextView
+        android:id="@+id/goalDetailIsGoalRecurringView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="habitGoalTimeInMillis" />
+    <TextView
+        android:id="@+id/goalDetailIsGoalTimeBasedView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="timeScheduledInMillis" />
+
+    <TextView
+        android:id="@+id/goalDetailGoalGoalTimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="TargetDate" />
 
 </FrameLayout>
