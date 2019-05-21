@@ -37,7 +37,7 @@ public interface HabitDao {
 
     // Get all Habits by Category
     @Query("SELECT * from habit_table WHERE parent_category_id =:parentCategoryId")
-    LiveData<List<Habit>> getHabitsByCategoryId(int parentCategoryId);
+    LiveData<Habit> getHabitByCategoryId(int parentCategoryId);
 
     @Query("SELECT * from habit_table WHERE parent_category_id =:parentCategoryId")
     List<Habit> getHabitsByCategoryIdForDB(int parentCategoryId);

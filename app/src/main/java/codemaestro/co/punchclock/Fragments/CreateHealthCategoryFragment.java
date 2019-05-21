@@ -51,46 +51,47 @@ public class CreateHealthCategoryFragment extends Fragment {
         });
 
         switch(templateQuestionNumber) {
-            case 0:
-                questionLabelOne.setVisibility(View.VISIBLE);
-                questionLabelOne.setText("Enter Category Name:");
-
-                questionEditText1 = view.findViewById(R.id.questionEditTextOne);
-                questionEditText1.setHint("Health");
-                questionEditText1.setVisibility(View.VISIBLE);
-
-                questionButton1 = view.findViewById(R.id.questionContinueButton);
-                questionButton1.setVisibility(View.VISIBLE);
-                break;
             case 1:
+
+                questionLabelOne.setText("Enter Category Name:");
+                questionLabelOne.setVisibility(View.VISIBLE);
+
+//                questionEditText1 = view.findViewById(R.id.questionEditTextOne);
+//                questionEditText1.setHint("Health");
+//                questionEditText1.setVisibility(View.VISIBLE);
+//
+//                questionButton1 = view.findViewById(R.id.questionContinueButton);
+//                questionButton1.setVisibility(View.VISIBLE);
+                break;
+            case 2:
                 questionLabelOne.setText("Enter a brief description of your new Category:");
                 questionLabelOne.setVisibility(View.VISIBLE);
 
-                questionEditText1 = view.findViewById(R.id.questionDescriptionEditText);
-                questionEditText1.setHint("0/240");
-                questionEditText1.setVisibility(View.VISIBLE);
-
-                questionButton1 = view.findViewById(R.id.questionContinueButton);
-                questionButton1.setVisibility(View.VISIBLE);
+//                questionEditText1 = view.findViewById(R.id.questionDescriptionEditText);
+//                questionEditText1.setHint("0/240");
+//                questionEditText1.setVisibility(View.VISIBLE);
+//
+//                questionButton1 = view.findViewById(R.id.questionContinueButton);
+//                questionButton1.setVisibility(View.VISIBLE);
                 break;
-            case 2:
+            case 3:
                 questionLabelOne.setText("Enter Weight:");
                 questionLabelOne.setVisibility(View.VISIBLE);
 
-                questionEditText1 = view.findViewById(R.id.questionWeightEditText);
-                questionEditText1.setVisibility(View.VISIBLE);
-
-                questionLabelTwo = view.findViewById(R.id.questionLabelTwo);
-                questionLabelTwo.setText("Enter Height:");
-
-                questionEditText2 = view.findViewById(R.id.questionEnterHeightFeet);
-                questionEditText2.setVisibility(View.VISIBLE);
-
-                getQuestionEditText3 = view.findViewById(R.id.questionEnterHeightInches);
-                getQuestionEditText3.setVisibility(View.VISIBLE);
-
-                questionButton1 = view.findViewById(R.id.questionContinueButton);
-                questionButton1.setVisibility(View.VISIBLE);
+//                questionEditText1 = view.findViewById(R.id.questionWeightEditText);
+//                questionEditText1.setVisibility(View.VISIBLE);
+//
+//                questionLabelTwo = view.findViewById(R.id.questionLabelTwo);
+//                questionLabelTwo.setText("Enter Height:");
+//
+//                questionEditText2 = view.findViewById(R.id.questionEnterHeightFeet);
+//                questionEditText2.setVisibility(View.VISIBLE);
+//
+//                getQuestionEditText3 = view.findViewById(R.id.questionEnterHeightInches);
+//                getQuestionEditText3.setVisibility(View.VISIBLE);
+//
+//                questionButton1 = view.findViewById(R.id.questionContinueButton);
+//                questionButton1.setVisibility(View.VISIBLE);
                 break;
             default:
                 break;

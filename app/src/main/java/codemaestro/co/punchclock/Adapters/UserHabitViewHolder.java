@@ -20,17 +20,19 @@ class UserHabitViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         habitNameView = itemView.findViewById(R.id.habitCardTitle);
         categoryNameView = itemView.findViewById(R.id.habitCardCategoryName);
+
     }
 
     void setUserHabitCard(final Habit habit) {
         habitNameView.setText(habit.getHabitName());
         categoryNameView.setText(habit.getCategoryName());
 
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("Category Title", habit.getHabitName());
+                bundle.putInt("habitId", habit.getHabitId());
                 Navigation.findNavController(view).navigate(R.id.action_habitsFragment_to_habitDetailFragment, bundle);
             }
         });

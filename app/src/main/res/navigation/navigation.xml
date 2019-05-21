@@ -35,6 +35,10 @@
         <action
             android:id="@+id/action_habitsFragment_to_habitDetailFragment"
             app:destination="@id/habitDetailFragment" />
+        <argument
+            android:name="HabitId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment

@@ -168,8 +168,8 @@ public class Repository {
 //        return habitDao.getAllHabitsDueToday();
 //    }
 
-    public LiveData<List<Habit>> getHabitsByCategoryId(int parentCategoryId) {
-        return habitDao.getHabitsByCategoryId(parentCategoryId);
+    public LiveData<Habit> getHabitByCategoryId(int parentCategoryId) {
+        return habitDao.getHabitByCategoryId(parentCategoryId);
     }
     public LiveData<Habit> getHabitByName(String habitName, int parentGoalId) {
         return habitDao.getHabitByName(habitName, parentGoalId);
