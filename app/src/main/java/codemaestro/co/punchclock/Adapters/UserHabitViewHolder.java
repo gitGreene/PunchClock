@@ -32,7 +32,7 @@ class UserHabitViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("habitId", habit.getHabitId());
+                bundle.putString("habit_name", habit.getHabitName());
                 Navigation.findNavController(view).navigate(R.id.action_habitsFragment_to_habitDetailFragment, bundle);
             }
         });

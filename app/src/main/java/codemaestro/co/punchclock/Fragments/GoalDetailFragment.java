@@ -24,8 +24,8 @@ import codemaestro.co.punchclock.ViewModel.HabitViewModel;
  */
 public class GoalDetailFragment extends Fragment {
 
-    private TextView goalName, categoryName, startDate, goalTargetDate, isGoalRecurring, isGoalTimeBased, goalGoalTime;
-    private static final String GOAL_NAME_TAG = "GOAL_NAME";
+    private TextView goalId, goalName, categoryName, startDate, goalTargetDate, isGoalRecurring, isGoalTimeBased, goalGoalTime;
+//    private static final String GOAL_NAME_TAG = "GOAL_NAME";
 
     public GoalDetailFragment() {
         // Required empty public constructor
@@ -35,10 +35,11 @@ public class GoalDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_goal, container, false);
-        goalName = view.findViewById(R.id.goalName);
-        goalName.setText(getArguments().getString(GOAL_NAME_TAG));
+//        goalName = view.findViewById(R.id.goalName);
+//        goalName.setText(getArguments().getString(GOAL_NAME_TAG));
 
         // TODO: Create Habit Detail Layout
+        goalId = view.findViewById(R.id.goalDetailGoalIdView);
         goalName = view.findViewById(R.id.goalDetailGoalNameView);
         categoryName = view.findViewById(R.id.goalDetailCategoryView);
         startDate = view.findViewById(R.id.goalDetailStartDateView);
@@ -50,20 +51,19 @@ public class GoalDetailFragment extends Fragment {
         GoalViewModel goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
 
 
-        goalViewModel.getCurrentGoal("1", 1).observe(this, new Observer<Goal>() {
+        goalViewModel.getGoalByName(getArguments().getString("goal_name")).observe(this, new Observer<Goal>() {
             @Override
             public void onChanged(@Nullable Goal goal) {
-                goalName.setText(goal.getGoalName());
-                categoryName.setText(goal.getCategoryName());
-                startDate.setText(""+goal.getStartDate());
-                goalTargetDate.setText(""+goal.getGoalTargetDate());
-                isGoalRecurring.setText(""+goal.isGoalRecurring());
-                isGoalTimeBased.setText(""+goal.isGoalTimeBased());
-                goalGoalTime.setText(goal.getGoalName());
-
+                goalId.setText("Goal Id: " + goal.getGoalId());
+                goalName.setText("Goal Name: " + goal.getGoalName());
+                categoryName.setText("Category: " + goal.getCategoryName());
+                startDate.setText("StartDate: "+goal.getStartDate());
+                goalTargetDate.setText("GoalTargetDate"+goal.getGoalTargetDate());
+                isGoalRecurring.setText("IsGoalRecurring: "+goal.isGoalRecurring());
+                isGoalTimeBased.setText("IsGoalTimeBased: "+goal.isGoalTimeBased());
+                goalGoalTime.setText("GoalGoalTime: "+goal.getGoalName());
             }
         });
-
         return view;
     }
 

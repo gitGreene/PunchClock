@@ -29,8 +29,8 @@ public interface GoalDao {
     List<Goal> getAllCategoryGoalsForDB(int parentCategoryId);
 
     // Get specific goal by Name and Parent Category Id
-    @Query("SELECT * from goal_table WHERE goal_name =:goalName AND parent_category_id =:parentCategoryId")
-    LiveData<Goal> getSpecificGoal(String goalName, int parentCategoryId);
+    @Query("SELECT * from goal_table WHERE goal_name =:goalName")
+    LiveData<Goal> getGoalByName(String goalName);
 
     // TODO: Get all goals On or Before specific Start Date
     // TODO: Get all goals After specific Start Date
