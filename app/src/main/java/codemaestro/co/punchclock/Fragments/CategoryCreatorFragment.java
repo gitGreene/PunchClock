@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import codemaestro.co.punchclock.Adapters.CategoryWizardAdapter;
 import codemaestro.co.punchclock.R;
@@ -32,12 +33,32 @@ public class CategoryCreatorFragment extends Fragment implements CreateHealthCat
         final View view = inflater.inflate(R.layout.fragment_category_creator, container, false);
         CreateCategoryViewModel viewModel = ViewModelProviders.of(this).get(CreateCategoryViewModel.class);
 
+
+
         int templateId = getArguments().getInt("TEMPLATE_ID");
 
         viewPager = view.findViewById(R.id.templateQuestionsViewPager);
         adapter = new CategoryWizardAdapter(getChildFragmentManager(), templateId, this);
         viewPager.setAdapter(adapter);
-        viewPager.getCurrentItem();
+        viewPager.setCurrentItem(1, true);
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+                Toast.makeText(getContext(), "onPageScrolled", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                Toast.makeText(getContext(), "onPageSelected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+                Toast.makeText(getContext(), "onPageScrollStateChanged", Toast.LENGTH_LONG).show();
+            }
+        });
         return view;
     }
 
@@ -46,3 +67,4 @@ public class CategoryCreatorFragment extends Fragment implements CreateHealthCat
         viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
     }
 }
+

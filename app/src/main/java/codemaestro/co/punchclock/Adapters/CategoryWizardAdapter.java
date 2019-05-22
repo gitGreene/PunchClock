@@ -24,12 +24,16 @@ public class CategoryWizardAdapter extends FragmentPagerAdapter {
 
 
 
+
+
+
     @Override
     public Fragment getItem(int position) {
+        int newPosition = position;
         Fragment fragment = null;
         switch (templateId) {
             case 0:
-                fragment = CreateHealthCategoryFragment.newInstance(0, listener);
+                fragment = CreateHealthCategoryFragment.newInstance(position, listener);
                 break;
             case 1:
                 fragment = CreateFamilyCategoryFragment.newInstance(position);

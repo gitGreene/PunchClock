@@ -7,24 +7,15 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import codemaestro.co.punchclock.Database.Repository;
+import codemaestro.co.punchclock.Model.Category;
 
 public class CreateCategoryViewModel extends AndroidViewModel {
     private Repository repository;
     public static final String TAG = "CreateCategoryVM: ";
 
-    public enum CategoryTemplate {
-        HEALTH,
-        FAMILY,
-        FRIENDS,
-        CAREER
-    }
-
-    final MutableLiveData<CategoryTemplate> categoryTemplate = new MutableLiveData<>();
-
-    public MutableLiveData<CategoryTemplate> getCategoryTemplate() {
-        return categoryTemplate;
-    }
 
     public CreateCategoryViewModel(@NonNull Application application) {
         super(application);
@@ -39,8 +30,25 @@ public class CreateCategoryViewModel extends AndroidViewModel {
             Log.e(TAG, "checkIfCategoryAlreadyExists = False");
             return false;
         }
-
     }
+
+    public int[] initializeWizard(String categoryName) {
+        if(!checkIfCategoryAlreadyExists(categoryName)) {
+            int[] questionNumber = new int[5];
+            return questionNumber;
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
