@@ -35,8 +35,8 @@ public class GoalViewModel extends AndroidViewModel {
         return repository.getAllCategoryGoals(parentCategoryId);
     }
 
-    public LiveData<Goal> getCurrentGoal(String goalName, int parentCategoryId){
-        return repository.getSpecificGoal(goalName, parentCategoryId);
+    public LiveData<Goal> getGoalByName(String goalName){
+        return repository.getGoalByName(goalName);
     }
 
     public LiveData<List<Goal>> getAllRecurringGoals() {

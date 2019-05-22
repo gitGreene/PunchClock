@@ -29,7 +29,7 @@ class UserGoalViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("Category Title", goal.getGoalName());
+                bundle.putString("goal_name", goal.getGoalName());
                 Navigation.findNavController(view).navigate(R.id.action_goalsFragment_to_goalDetailFragment, bundle);
             }
         });

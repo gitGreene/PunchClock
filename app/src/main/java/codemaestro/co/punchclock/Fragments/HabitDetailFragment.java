@@ -55,8 +55,7 @@ public class HabitDetailFragment extends Fragment {
 
         habitViewModel = ViewModelProviders.of(this).get(HabitViewModel.class);
 
-
-        habitViewModel.getHabitByCategoryId(getArguments().getInt("habitId")).observe(this, new Observer<Habit>() {
+        habitViewModel.getHabitByName(getArguments().getString("habit_name")).observe(this, new Observer<Habit>() {
             @Override
             public void onChanged(@Nullable Habit habit) {
                 if (habit != null) {

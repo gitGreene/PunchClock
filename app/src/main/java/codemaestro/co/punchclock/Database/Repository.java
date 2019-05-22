@@ -137,8 +137,8 @@ public class Repository {
         return goalDao.getAllCategoryGoals(parentCategoryId);
     }
 
-    public LiveData<Goal> getSpecificGoal(String goalName, int parentCategoryId) {
-        return goalDao.getSpecificGoal(goalName, parentCategoryId);
+    public LiveData<Goal> getGoalByName(String goalName) {
+        return goalDao.getGoalByName(goalName);
     }
 
     public LiveData<List<Goal>> getAllRecurringGoals() {
@@ -171,8 +171,8 @@ public class Repository {
     public LiveData<Habit> getHabitByCategoryId(int parentCategoryId) {
         return habitDao.getHabitByCategoryId(parentCategoryId);
     }
-    public LiveData<Habit> getHabitByName(String habitName, int parentGoalId) {
-        return habitDao.getHabitByName(habitName, parentGoalId);
+    public LiveData<Habit> getHabitByName(String habitName) {
+        return habitDao.getHabitByName(habitName);
     }
 
 
