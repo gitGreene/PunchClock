@@ -31,8 +31,8 @@ public class HabitViewModel extends AndroidViewModel {
         return repository.getAllHabits();
     }
 
-    public LiveData<Habit> getHabitByCategoryId(int parentCategoryId) {
-        return repository.getHabitByCategoryId(parentCategoryId);
+    public LiveData<List<Habit>> getHabitsByCategoryName(String categoryName) {
+        return repository.getHabitsByCategoryName(categoryName);
     }
 
     public LiveData<Habit> getHabitByName(String habitName) {

@@ -120,7 +120,7 @@ public class Repository {
 
 
 
-    // TODO: Goal Respository Methods
+    // TODO: Goal Repository Methods
     public void insertGoal(Goal goal) {
         new InsertGoalAsync(goalDao).execute(goal);
     }
@@ -133,8 +133,8 @@ public class Repository {
         return goalDao.getAllGoals();
     }
 
-    public LiveData<List<Goal>> getAllCategoryGoals(int parentCategoryId) {
-        return goalDao.getAllCategoryGoals(parentCategoryId);
+    public LiveData<List<Goal>> getAllCategoryGoals(String categoryName) {
+        return goalDao.getAllCategoryGoals(categoryName);
     }
 
     public LiveData<Goal> getGoalByName(String goalName) {
@@ -168,8 +168,8 @@ public class Repository {
 //        return habitDao.getAllHabitsDueToday();
 //    }
 
-    public LiveData<Habit> getHabitByCategoryId(int parentCategoryId) {
-        return habitDao.getHabitByCategoryId(parentCategoryId);
+    public LiveData<List<Habit>> getHabitsByCategoryName(String categoryName) {
+        return habitDao.getHabitsByCategoryName(categoryName);
     }
     public LiveData<Habit> getHabitByName(String habitName) {
         return habitDao.getHabitByName(habitName);

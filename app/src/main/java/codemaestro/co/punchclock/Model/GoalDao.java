@@ -22,8 +22,8 @@ public interface GoalDao {
     LiveData<List<Goal>> getAllGoals();
 
     // Get all of a Category's Goals
-    @Query("SELECT * from goal_table WHERE parent_category_id =:parentCategoryId")
-    LiveData<List<Goal>> getAllCategoryGoals(int parentCategoryId);
+    @Query("SELECT * from goal_table WHERE category_name = :categoryName")
+    LiveData<List<Goal>> getAllCategoryGoals(String categoryName);
 
     @Query("SELECT * from goal_table WHERE parent_category_id =:parentCategoryId")
     List<Goal> getAllCategoryGoalsForDB(int parentCategoryId);
