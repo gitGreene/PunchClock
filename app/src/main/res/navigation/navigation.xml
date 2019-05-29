@@ -103,6 +103,9 @@
             android:name="codemaestro.co.punchclock.Fragments.CreateHealthCategoryFragment"
             android:label="healthCategoryCreatorFragment"
             tools:layout="@layout/fragment_create_health_category">
+            <action
+                android:id="@+id/action_categoryWizard_to_newCategoryDetailFragment"
+                app:destination="@id/categoryDetailFragment" />
         </fragment>
 
         <fragment
@@ -110,6 +113,9 @@
             android:name="codemaestro.co.punchclock.Fragments.CreateFamilyCategoryFragment"
             android:label="familyCategoryCreatorFragment"
             tools:layout="@layout/fragment_create_family_category">
+            <action
+                android:id="@+id/action_categoryWizard_to_newCategoryDetailFragment"
+                app:destination="@id/categoryDetailFragment" />
         </fragment>
 
         <fragment
@@ -117,6 +123,9 @@
             android:name="codemaestro.co.punchclock.Fragments.CreateFriendsCategoryFragment"
             android:label="friendsCategoryCreatorFragment"
             tools:layout="@layout/fragment_create_friends_category">
+            <action
+                android:id="@+id/action_categoryWizard_to_newCategoryDetailFragment"
+                app:destination="@id/categoryDetailFragment" />
         </fragment>
 
         <fragment
@@ -124,6 +133,9 @@
             android:name="codemaestro.co.punchclock.Fragments.CreateCareerCategoryFragment"
             android:label="careerCategoryCreatorFragment"
             tools:layout="@layout/fragment_create_career_category">
+            <action
+                android:id="@+id/action_categoryWizard_to_newCategoryDetailFragment"
+                app:destination="@id/categoryDetailFragment" />
         </fragment>
 
         <!-- TODO: implement customCategoryCreatorFragment -->

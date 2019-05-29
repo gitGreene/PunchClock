@@ -10,8 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ViewFlipper;
 
+import androidx.navigation.Navigation;
+
+import java.util.Date;
+
+import codemaestro.co.punchclock.Model.Category;
 import codemaestro.co.punchclock.R;
 import codemaestro.co.punchclock.ViewModel.CreateCategoryViewModel;
 
@@ -25,6 +31,10 @@ public class CreateHealthCategoryFragment extends Fragment {
     private Button continueButton;
     private CreateCategoryViewModel viewModel;
     public static final String TEMPLATE_ID = "TEMPLATE_ID";
+    private String categoryName, categoryDescription;
+    private Date dateCreated;
+    private boolean isFavorite;
+
 
     public CreateHealthCategoryFragment() {
         // Required empty public constructor
@@ -45,14 +55,33 @@ public class CreateHealthCategoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 viewModel.setQuestionNumber(questionNumber+1);
+
+                switch (viewFlipper.getDisplayedChild()) {
+                    case 0:
+                        View questionLayout = viewFlipper.getCurrentView();
+                        EditText enterName = questionLayout.findViewById(R.id.enterName);
+                        categoryName = enterName.getText().toString();
+                        break;
+                    case 1:
+                        questionLayout = viewFlipper.getCurrentView();
+                        EditText enterDescription = questionLayout.findViewById(R.id.enterDescription);
+                        categoryDescription = enterDescription.getText().toString();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
         viewModel.getQuestionNumber().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer integer) {
-                viewFlipper.setDisplayedChild(integer);
-                questionNumber = integer;
+                if(integer==3) {
+                    Navigation.findNavController(view).navigate(R.id.action_categoryWizard_to_newCategoryDetailFragment);
+                } else {
+                    viewFlipper.setDisplayedChild(integer);
+                    questionNumber = integer;
+                }
             }
         });
 
