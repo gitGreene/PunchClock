@@ -79,26 +79,43 @@ public class CategoryDetailFragment extends Fragment {
         GoalViewModel goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
         HabitViewModel habitViewModel = ViewModelProviders.of(this).get(HabitViewModel.class);
         categoryTitle = view.findViewById(R.id.categoryTitle);
+        goalOneView = view.findViewById(R.id.categoryDetailGoalOne);
+        goalTwoView = view.findViewById(R.id.categoryDetailGoalTwo);
+        habitOneView = view.findViewById(R.id.categoryDetailHabitOne);
+        habitTwoView = view.findViewById(R.id.categoryDetailHabitTwo);
+        String money = getArguments().getString("category_title");
 
 
 
-        categoryViewModel.getCurrentCategory(getArguments().getString("category_title")).observe(this, new Observer<Category>() {
+        categoryViewModel.getCurrentCategory(money).observe(this, new Observer<Category>() {
             @Override
             public void onChanged(@Nullable Category category) {
                 categoryTitle.setText(category.getCategoryName());
             }
         });
 
-        goalViewModel.getAllCategoryGoals(1).observe(this, new Observer<List<Goal>>() {
+        goalViewModel.getAllCategoryGoals(money).observe(this, new Observer<List<Goal>>() {
             @Override
             public void onChanged(@Nullable List<Goal> goals) {
-                goalOneView.setText(""+goals.get(1));
-                goalOneView.setText(""+goals.get(2));
-                goalOneView.setText(""+goals.get(3));
+                if (goals != null) {
+                    Goal goalOne = goals.get(0);
+                    goalOneView.setText(goalOne.getGoalName());
+                    goalTwoView.setText(goals.get(1).getGoalName());
+//                goalOneView.setText(""+goals.get(3));
+                }
             }
         });
 
         //Todo: Habit
+        habitViewModel.getHabitsByCategoryName(money).observe(this, new Observer<List<Habit>>() {
+            @Override
+            public void onChanged(@Nullable List<Habit> habits) {
+                if (habits != null) {
+                    habitOneView.setText(habits.get(0).getHabitName());
+                    habitTwoView.setText(habits.get(1).getHabitName());
+                }
+            }
+        });
 
 
 
