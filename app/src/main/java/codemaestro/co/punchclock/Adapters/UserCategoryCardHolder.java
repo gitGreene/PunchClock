@@ -36,7 +36,7 @@ public class UserCategoryCardHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("Category Title", userCategory.getCategoryName());
+                bundle.putString("category_title", userCategory.getCategoryName());
                 Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_categoryDetailFragment, bundle);
             }
         });

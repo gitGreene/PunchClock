@@ -1,62 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
     tools:context=".Fragments.CategoryDetailFragment">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/categoryTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Category Title"
-                android:textAlignment="viewStart"
+                android:textAlignment="center"
                 android:textSize="50sp" />
 
-            <TextView
-                android:id="@+id/goalsLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="Goals"
-                android:textSize="25sp" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/goalsRecyclerView"
+            <android.support.v7.widget.CardView
+                android:id="@+id/categoryDetailGoalsCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:nestedScrollingEnabled="false"
-                tools:listitem="@layout/card_small_goal" />
-
-            <TextView
-                android:id="@+id/habitsLabel"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:text="Habits"
-                android:textSize="25sp" />
+                android:layout_margin="8dp"
+                app:cardElevation="20dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primaryDarkColor"
+                    android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/habitsRecyclerView"
+                    <TextView
+                        android:id="@+id/categoryDetailGoalsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Goals"
+                        android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/categoryDetailGoalOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Goal: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/categoryDetailGoalTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Goal: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/categoryDetailGoalThree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Goal: "
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/categoryDetailHabitsCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:nestedScrollingEnabled="false"
-                tools:listitem="@layout/card_small_habit" />
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardElevation="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/secondaryLightColor"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/categoryDetailHabitsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Habits"
+                        android:textSize="50sp" />
+
+                    <TextView
+                        android:id="@+id/categoryDetailHabitOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Habit: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/categoryDetailHabitTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Habit: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/categoryDetailHabitThree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Habit: "
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/categoryDetailCategoryStuffCard"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="8dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_primary">
+                    <TextView
+                        android:id="@+id/categoryDetailCategoryCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category stuff"
+                        android:textSize="25sp"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
-
-
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>
