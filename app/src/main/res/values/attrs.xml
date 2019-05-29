@@ -22,4 +22,7 @@
         <attr name="clockwise" format="boolean" />
         <attr name="enabled" format="boolean" />
     </declare-styleable>
+
+
+
 </resources>

@@ -78,38 +78,25 @@
     <navigation
         android:id="@+id/createCategoryGraph"
         app:startDestination="@id/createCategoryFormFragment">
+
         <fragment
             android:id="@+id/createCategoryFormFragment"
             android:name="codemaestro.co.punchclock.Fragments.CreateCategoryFormFragment"
             android:label="createCategoryFormFragment"
             tools:layout="@layout/fragment_create_category_form">
             <action
-                android:id="@+id/action_createCategoryFormFragment_to_categoryCreatorFragment"
-                app:destination="@id/categoryCreatorFragment" />
-        </fragment>
-
-        <fragment
-            android:id="@+id/categoryCreatorFragment"
-            android:name="codemaestro.co.punchclock.Fragments.CategoryCreatorFragment"
-            android:label="categoryCreatorFragment"
-            tools:layout="@layout/fragment_category_creator">
-            <action
-                android:id="@+id/action_categoryCreatorFragment_to_healthCategoryCreatorFragment"
+                android:id="@+id/action_categoryTemplates_to_healthCategoryCreatorFragment"
                 app:destination="@id/healthCategoryCreatorFragment" />
             <action
-                android:id="@+id/action_categoryCreatorFragment_to_familyCategoryCreatorFragment"
+                android:id="@+id/action_categoryTemplates_to_familyCategoryCreatorFragment"
                 app:destination="@id/familyCategoryCreatorFragment" />
             <action
-                android:id="@+id/action_categoryCreatorFragment_to_friendsCategoryCreatorFragment"
+                android:id="@+id/action_categoryTemplates_to_friendsCategoryCreatorFragment"
                 app:destination="@id/friendsCategoryCreatorFragment" />
             <action
-                android:id="@+id/action_categoryCreatorFragment_to_careerCategoryCreatorFragment"
+                android:id="@+id/action_categoryTemplates_to_careerCategoryCreatorFragment"
                 app:destination="@id/careerCategoryCreatorFragment" />
         </fragment>
-
-
-
-
 
         <fragment
             android:id="@+id/healthCategoryCreatorFragment"
@@ -117,18 +104,21 @@
             android:label="healthCategoryCreatorFragment"
             tools:layout="@layout/fragment_create_health_category">
         </fragment>
+
         <fragment
             android:id="@+id/familyCategoryCreatorFragment"
             android:name="codemaestro.co.punchclock.Fragments.CreateFamilyCategoryFragment"
             android:label="familyCategoryCreatorFragment"
             tools:layout="@layout/fragment_create_family_category">
         </fragment>
+
         <fragment
             android:id="@+id/friendsCategoryCreatorFragment"
             android:name="codemaestro.co.punchclock.Fragments.CreateFriendsCategoryFragment"
             android:label="friendsCategoryCreatorFragment"
             tools:layout="@layout/fragment_create_friends_category">
         </fragment>
+
         <fragment
             android:id="@+id/careerCategoryCreatorFragment"
             android:name="codemaestro.co.punchclock.Fragments.CreateCareerCategoryFragment"
