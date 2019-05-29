@@ -49,7 +49,26 @@ public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt(TEMPLATE_ID, position);
-                Navigation.findNavController(view).navigate(R.id.action_createCategoryFormFragment_to_categoryCreatorFragment, bundle);
+
+                switch (position) {
+                    case 0:
+                        Navigation.findNavController(view).navigate(R.id.action_categoryTemplates_to_healthCategoryCreatorFragment, bundle);
+                        break;
+                    case 1:
+                        Navigation.findNavController(view).navigate(R.id.action_categoryTemplates_to_familyCategoryCreatorFragment, bundle);
+                        break;
+                    case 2:
+                        Navigation.findNavController(view).navigate(R.id.action_categoryTemplates_to_friendsCategoryCreatorFragment, bundle);
+                        break;
+                    case 3:
+                        Navigation.findNavController(view).navigate(R.id.action_categoryTemplates_to_careerCategoryCreatorFragment, bundle);
+                        break;
+                    default:
+                        break;
+                }
+
+
+
                 Log.e(TAG, "Create Button Clicked");
             }
         });
