@@ -66,9 +66,6 @@ public class CategoryTemplateViewHolder extends RecyclerView.ViewHolder {
                     default:
                         break;
                 }
-
-
-
                 Log.e(TAG, "Create Button Clicked");
             }
         });
