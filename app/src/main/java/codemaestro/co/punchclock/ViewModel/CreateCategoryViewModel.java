@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import codemaestro.co.punchclock.Database.Repository;
+import codemaestro.co.punchclock.Model.Category;
 
 public class CreateCategoryViewModel extends AndroidViewModel {
     private Repository repository;
@@ -36,6 +37,10 @@ public class CreateCategoryViewModel extends AndroidViewModel {
         this.categoryNumber = categoryNumber;
     }
 
+
+    public void saveNewCategory(Category category) {
+        repository.insertCategory(category);
+    }
 
     public boolean checkIfCategoryAlreadyExists(String categoryName) {
         if (repository.getCategoryByNameTest(categoryName) != null) {

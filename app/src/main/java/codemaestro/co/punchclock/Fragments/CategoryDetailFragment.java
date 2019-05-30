@@ -30,7 +30,7 @@ import codemaestro.co.punchclock.ViewModel.HabitViewModel;
 
 public class CategoryDetailFragment extends Fragment {
 
-    private TextView categoryTitle, goalOneView, goalTwoView, goalThreeView, habitOneView, habitTwoView, habitThreeView;
+    private TextView categoryTitle, categoryDescription, goalOneView, goalTwoView, goalThreeView, habitOneView, habitTwoView, habitThreeView;
     private GoalViewModel goalViewModel;
     private HabitViewModel habitViewModel;
     private FrameLayout goalsContainer, habitsContainer;
@@ -45,40 +45,14 @@ public class CategoryDetailFragment extends Fragment {
         return new CategoryDetailFragment();
     }
 
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
-//        habitViewModel = ViewModelProviders.of(this).get(HabitViewModel.class);
-//        //TODO: Fix this senseless violence against my eyes
-////        goalViewModel.getAllCategoryGoals(1).observe(this, new Observer<List<Goal>>() {
-////            @Override
-////            public void onChanged(@Nullable List<Goal> goals) {
-////                goalsAdpater.setCategoryGoals(goals);
-////                Log.e(TAG, "goals observers");
-////            }
-////        });
-////        habitViewModel.getHabitByCategoryId(1).observe(this, new Observer<List<Habit>>() {
-////            @Override
-////            public void onChanged(@Nullable List<Habit> habits) {
-////                habitsAdapter.setHabits(habits);
-////                Log.e(TAG, "habits observer");
-////            }
-////        });
-//        //TODO: Code that checks to see whether this category has any Goals or Habits
-//        //TODO: If not, then the create Goals Dialog will appear, then create Habits dialog will appear in that order
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_category, container, false);
-
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         CategoryViewModel categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         GoalViewModel goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
         HabitViewModel habitViewModel = ViewModelProviders.of(this).get(HabitViewModel.class);
         categoryTitle = view.findViewById(R.id.categoryTitle);
+        categoryDescription = view.findViewById(R.id.categoryDescription);
         goalOneView = view.findViewById(R.id.categoryDetailGoalOne);
         goalTwoView = view.findViewById(R.id.categoryDetailGoalTwo);
         habitOneView = view.findViewById(R.id.categoryDetailHabitOne);

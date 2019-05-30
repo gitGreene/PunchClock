@@ -26,7 +26,7 @@ import codemaestro.co.punchclock.Model.TimerDataDao;
 
 
 
-@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, Habit.class, TimeEntry.class, TimerData.class}, version = 46, exportSchema = false)
+@android.arch.persistence.room.Database(entities = {Category.class, Goal.class, Habit.class, TimeEntry.class, TimerData.class}, version = 47, exportSchema = false)
 @TypeConverters({DateUtils.class})
 public abstract class Database extends RoomDatabase {
 
@@ -46,7 +46,7 @@ public abstract class Database extends RoomDatabase {
                 if(INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             Database.class, "database")
-                            .addCallback(populateDatabaseCallback)
+//                            .addCallback(populateDatabaseCallback)
                             .fallbackToDestructiveMigration()//TODO: understand migrations
                             .build();
                 }

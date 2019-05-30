@@ -145,10 +145,10 @@
                     android:layout_height="match_parent"
                     android:background="@color/design_default_color_primary">
                     <TextView
-                        android:id="@+id/categoryDetailCategoryCardTitle"
+                        android:id="@+id/categoryDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Category stuff"
+                        android:text="Category Description"
                         android:textSize="25sp"/>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
