@@ -1,61 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.HabitDetailFragment"
-    android:orientation="vertical">
+    android:background="@color/cardview_dark_background">
 
-    <TextView
-        android:id="@+id/habitDetailHabitIdView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Habit Id" />
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/habitDetailHabitNameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Habit Name" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/secondaryLightColor">
 
-    <TextView
-        android:id="@+id/habitDetailCategoryNameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="categoryName" />
-    <TextView
-        android:id="@+id/habitDetailStartDateView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="startDate" />
-    <TextView
-        android:id="@+id/habitDetailIsTimeBasedView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="ifTimeBased" />
-    <TextView
-        android:id="@+id/habitDetailHabitCycleValueInMillisView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="habitGoalTimeInMillis" />
-    <TextView
-        android:id="@+id/habitDetailTimeScheduledInMillisView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="timeScheduledInMillis" />
+            <TextView
+                android:id="@+id/habitDetailHabitIdView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Habit Id" />
 
-    <TextView
-        android:id="@+id/habitDetailTargetDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="TargetDate" />
+            <TextView
+                android:id="@+id/habitDetailHabitNameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Habit Name" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/habitDetailCategoryNameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="categoryName" />
+            <TextView
+                android:id="@+id/habitDetailStartDateView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="startDate" />
+            <TextView
+                android:id="@+id/habitDetailIsTimeBasedView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="ifTimeBased" />
+            <TextView
+                android:id="@+id/habitDetailHabitCycleValueInMillisView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="habitGoalTimeInMillis" />
+            <TextView
+                android:id="@+id/habitDetailTimeScheduledInMillisView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="timeScheduledInMillis" />
+
+            <TextView
+                android:id="@+id/habitDetailTargetDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="TargetDate" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
