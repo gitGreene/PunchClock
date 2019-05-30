@@ -30,7 +30,7 @@ import codemaestro.co.punchclock.ViewModel.HabitViewModel;
 
 public class CategoryDetailFragment extends Fragment {
 
-    private TextView categoryTitle, goalOneView, goalTwoView, goalThreeView, habitOneView, habitTwoView, habitThreeView;
+    private TextView categoryTitle, categoryDescription, goalOneView, goalTwoView, goalThreeView, habitOneView, habitTwoView, habitThreeView;
     private GoalViewModel goalViewModel;
     private HabitViewModel habitViewModel;
     private FrameLayout goalsContainer, habitsContainer;
@@ -52,12 +52,14 @@ public class CategoryDetailFragment extends Fragment {
         GoalViewModel goalViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
         HabitViewModel habitViewModel = ViewModelProviders.of(this).get(HabitViewModel.class);
         categoryTitle = view.findViewById(R.id.categoryTitle);
+        categoryDescription = view.findViewById(R.id.categoryDescription);
 
         categoryViewModel.getCurrentCategory(getArguments().getString("category_title")).observe(this, new Observer<Category>() {
             @Override
             public void onChanged(@Nullable Category category) {
                 if(category != null) {
                     categoryTitle.setText(category.getCategoryName());
+                    categoryDescription.setText(category.getCategoryDescription());
                 } else {
                     categoryTitle.setText("Ya stupid fuck it didn't work");
                 }
