@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.navigation.Navigation;
@@ -33,6 +35,7 @@ public class CreateHealthCategoryFragment extends Fragment {
     private CreateCategoryViewModel viewModel;
     public static final String TEMPLATE_ID = "TEMPLATE_ID";
     private String categoryName, categoryDescription;
+
     private Date dateCreated;
     private boolean isFavorite;
     private Category newCategory;
@@ -61,10 +64,14 @@ public class CreateHealthCategoryFragment extends Fragment {
                         break;
                     case 1:
                         questionLayout = viewFlipper.getCurrentView();
-                        EditText enterDescription = questionLayout.findViewById(R.id.enterDescription);
+                        EditText enterDescription = questionLayout.findViewById(R.id.enterMotivationalQuote);
                         categoryDescription = enterDescription.getText().toString();
                         viewModel.setQuestionNumber(questionNumber+1);
                         break;
+                    case 2:
+                        //TODO: Put in case for weight question
+                        questionLayout = viewFlipper.getCurrentView();
+                        RadioGroup weightChoiceRadioGroup = questionLayout.findViewById(R.id.weightChoiceRadioGroup);
                     default:
                         break;
                 }
@@ -74,7 +81,7 @@ public class CreateHealthCategoryFragment extends Fragment {
         viewModel.getQuestionNumber().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer integer) {
-                if(integer==2) {
+                if(integer==3) {
                     newCategory = new Category(categoryName, categoryDescription, 0L, Calendar.getInstance().getTime(), false);
                     viewModel.saveNewCategory(newCategory);
                     Bundle bundle = new Bundle();
