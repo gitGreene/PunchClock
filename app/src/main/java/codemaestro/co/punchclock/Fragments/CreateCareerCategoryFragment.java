@@ -60,8 +60,8 @@ public class CreateCareerCategoryFragment extends Fragment {
                         break;
                     case 1:
                         questionLayout = viewFlipper.getCurrentView();
-                        EditText enterDescription = questionLayout.findViewById(R.id.enterDescription);
-                        categoryDescription = enterDescription.getText().toString();
+//                        EditText enterDescription = questionLayout.findViewById(R.id.);
+//                        categoryDescription = enterDescription.getText().toString();
                         viewModel.setQuestionNumber(questionNumber+1);
                         break;
                     default:
