@@ -82,6 +82,7 @@ public class CategoryDetailFragment extends Fragment {
                 categoryTitle.setText(category.getCategoryName());
             }
         });
+
         return view;
     }
 
