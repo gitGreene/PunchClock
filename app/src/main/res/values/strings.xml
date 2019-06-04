@@ -54,8 +54,16 @@
     <string name="stop">Stop</string>
     <string name="commit">Commit</string>
     <string name="template_title_health">Health</string>
-    <string name="error">I AM ERROR</string>
-    <string name="journal">JOURNAL</string>
+
+
+    <string name="enter_health_title_label">Here is where you name your category. We recommend you call it Health, but if you would like to change it you can here</string>
+    <string name="enter_family_title_label">Here is where you name your category. We recommend you call it Family, but if you would like to change it you can here</string>
+    <string name="enter_friends_title_label">Here is where you name your category. We recommend you call it Friends, but if you would like to change it you can here</string>
+    <string name="enter_career_title_label">Here is where you name your category. We recommend you call it Career, but if you would like to change it you can here</string>
+
+
+
+
 
     <string name="motivational_quote_label">Enter your first motivational statement. This will be displayed prominently on your category dashboard to help you daily. You can change it at any time</string>
     <string name="motivational_quote_hint">Motivational Quote</string>
@@ -63,3 +71,4 @@
     <string name="choice_maintain_weight">maintain my weight</string>
     <string name="choice_gain_weight">gain weight</string>
 </resources>
+

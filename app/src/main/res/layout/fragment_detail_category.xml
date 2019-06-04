@@ -10,7 +10,7 @@
         android:id="@+id/categoryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/error"
+        android:text="error"
         android:textAlignment="center"
         android:textSize="50sp"
         android:background="@android:color/darker_gray"/>
