@@ -5,6 +5,11 @@
     <string name="habits_string">Habits</string>
     <string name="timer_string">Timer</string>
 
+    <string name="health">Health</string>
+    <string name="family">Family</string>
+    <string name="friends">Friends</string>
+    <string name="career">Career</string>
+
     <string-array name="category_template_names">
         <item>Health</item>
         <item>Family</item>
@@ -51,4 +56,10 @@
     <string name="template_title_health">Health</string>
     <string name="error">I AM ERROR</string>
     <string name="journal">JOURNAL</string>
+
+    <string name="motivational_quote_label">Enter your first motivational statement. This will be displayed prominently on your category dashboard to help you daily. You can change it at any time</string>
+    <string name="motivational_quote_hint">Motivational Quote</string>
+    <string name="choice_lose_weight">lose weight</string>
+    <string name="choice_maintain_weight">maintain my weight</string>
+    <string name="choice_gain_weight">gain weight</string>
 </resources>
