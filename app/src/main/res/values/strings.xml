@@ -49,4 +49,6 @@
     <string name="stop">Stop</string>
     <string name="commit">Commit</string>
     <string name="template_title_health">Health</string>
+    <string name="error">I AM ERROR</string>
+    <string name="journal">JOURNAL</string>
 </resources>
